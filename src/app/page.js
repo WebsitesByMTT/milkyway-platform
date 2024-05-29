@@ -19,9 +19,7 @@ export default function Home() {
 
         <div className=" relative  h-full flex flex-col justify-between ">
           <Header />
-
           <Game />
-
           <Footer />
         </div>
       </div>
