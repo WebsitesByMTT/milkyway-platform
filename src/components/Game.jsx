@@ -66,13 +66,12 @@ const Game = () => {
       />
       <Carousel
         className="w-[100%] m-auto"
-        opts={{
-          loop: true,
-        }}
+        opts={selectedOption === "all" ? { loop: true } : {}}
       >
-        <CarouselContent>
+        <CarouselContent className="min-h-[37vw]">
           {selectedOption === "all" && <AllGames data={data} />}
           {selectedOption === "fishing" && <FishingGames data={data} />}
+          {selectedOption === "slot" && <SlotGames data={data} />}
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
         <CarouselNext className="CarouselNext w-[5%]" />
@@ -163,16 +162,24 @@ const AllGames = ({ data }) => {
 };
 
 const FishingGames = ({ data }) => {
+  const [filteredData, setFilteredData] = useState();
+
+  useEffect(() => {
+    setFilteredData(data.filter((game) => game.category === "fishing"));
+  }, [data]);
+
   return (
     <>
-      {data
-        .reduce((chunks, _, index) => {
-          chunks.push(data.slice(index, index + 8));
-          return chunks;
-        }, [])
-        .map((chunk, chunkIndex) => (
-          <React.Fragment key={chunkIndex}>
-            <CarouselItem>
+      {filteredData &&
+        filteredData
+          .reduce((chunks, _, index) => {
+            if (index % 8 === 0) {
+              chunks.push(filteredData.slice(index, index + 8));
+            }
+            return chunks;
+          }, [])
+          .map((chunk, chunkIndex) => (
+            <CarouselItem key={chunkIndex}>
               <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
                 {chunk.map((game, index) => (
                   <GameCard
@@ -186,8 +193,44 @@ const FishingGames = ({ data }) => {
                 ))}
               </div>
             </CarouselItem>
-          </React.Fragment>
-        ))}
+          ))}
+    </>
+  );
+};
+
+const SlotGames = ({ data }) => {
+  const [filteredData, setFilteredData] = useState();
+
+  useEffect(() => {
+    setFilteredData(data.filter((game) => game.category === "slot"));
+  }, [data]);
+
+  return (
+    <>
+      {filteredData &&
+        filteredData
+          .reduce((chunks, _, index) => {
+            if (index % 8 === 0) {
+              chunks.push(filteredData.slice(index, index + 8));
+            }
+            return chunks;
+          }, [])
+          .map((chunk, chunkIndex) => (
+            <CarouselItem key={chunkIndex}>
+              <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
+                {chunk.map((game, index) => (
+                  <GameCard
+                    key={index}
+                    src={game.gameThumbnailUrl}
+                    // gameId={game.gameId}
+                    // gameName={game.gameName}
+                    // gameHostLink={game.gameHostLink}
+                    type={game.type}
+                  />
+                ))}
+              </div>
+            </CarouselItem>
+          ))}
     </>
   );
 };

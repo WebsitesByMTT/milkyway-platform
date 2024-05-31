@@ -9,7 +9,6 @@ const Header = () => {
       !document.webkitFullscreenElement && // alternative method for older Safari
       !document.msFullscreenElement
     ) {
-      // alternative method for IE11
       if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
       }
@@ -171,6 +170,7 @@ const Header = () => {
         className="absolute top-0 left-auto h-full w-auto"
         height={400}
         width={400}
+        alt="logo"
       />
       <button onClick={toggleScreen}>
         <svg
