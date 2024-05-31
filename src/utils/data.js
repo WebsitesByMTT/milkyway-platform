@@ -5,6 +5,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/rFYPn09/Viking-slot-2-1-01.png",
     gameHostLink: "https://slot-vikings.vercel.app/",
     type: "",
+    category: "fishing",
   },
   {
     gameId: "2",
@@ -12,6 +13,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/0MgKxs0/Walking-Death-4-01-01.png",
     gameHostLink: "https://slot-mafia.vercel.app",
     type: "",
+    category: "slot",
   },
   {
     gameName: "GCT",
@@ -19,6 +21,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
+    category: "fishing",
   },
   {
     gameName: "GoldOfEgypt",
@@ -26,6 +29,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "new",
+    category: "fishing",
   },
   {
     gameName: "GoldOfEgypt",
@@ -40,6 +44,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "new",
+    category: "fishing",
   },
   {
     gameName: "GoldOfEgypt",
@@ -47,6 +52,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "new",
+    category: "slot",
   },
   {
     gameName: "GoldOfEgypt",
@@ -89,6 +95,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "",
+    category: "fishing",
   },
   {
     gameName: "GoldOfEgypt",
@@ -110,6 +117,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/TRqcHG7/game1-thumbnail.jpg",
     gameHostLink: "https://goldenchinatown.netlify.app",
     type: "",
+    category: "slot",
   },
   {
     gameName: "Game 2",
@@ -124,7 +132,8 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/MCckg5M/game2-thumbnail.jpg",
     gameHostLink: "https://exmpcheck.netlify.app",
     type: "",
-    flag: "feature"
+    flag: "feature",
+    category: "slot",
   },
   {
     gameName: "GoldOfEgypt",

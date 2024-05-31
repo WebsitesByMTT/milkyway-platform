@@ -2,13 +2,13 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const GameCard = ({ src, type }) => {
+const GameCard = ({ src, type}) => {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => {
     setClicked(!clicked);
   };
   return (
-    <div className="w-full h-[15vw] gamecard relative z-[2]">
+    <div className="w-full h-[14.5vw] gamecard relative z-[2]">
       <button
         className="absolute right-[-6px] top-5 z-10 w-[25%]"
         onClick={handleClick}
