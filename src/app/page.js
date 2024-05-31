@@ -12,12 +12,12 @@ export default function Home() {
           fill
           alt="bg"
           priority={true}
-          objectFit="cover"
+          objectFit="cover" 
           quality={100}
           objectPosition="center"
         />
 
-        <div className=" relative  h-full flex flex-col justify-between ">
+        <div className=" relative">
           <Header />
 
           <Game />
