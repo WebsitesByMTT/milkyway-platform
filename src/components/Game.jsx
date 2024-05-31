@@ -13,6 +13,8 @@ import Image from "next/image";
 import Sidebar from "./Sidebar";
 
 const Game = () => {
+  const [selectedOption, setSelectedOption] = useState("all");
+
   useEffect(() => {
     const carousel = document.querySelector(".Carousel");
     let isScrolling = false;
@@ -58,54 +60,19 @@ const Game = () => {
 
   return (
     <div className="Carousel relative">
-      <Sidebar />
-      <Carousel className="w-[100%] m-auto">
+      <Sidebar
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+      />
+      <Carousel
+        className="w-[100%] m-auto"
+        opts={{
+          loop: true,
+        }}
+      >
         <CarouselContent>
-          {data
-            .reduce((chunks, _, index) => {
-              if (index === 0) {
-                chunks.push(data.slice(0, 6));
-              } else if ((index - 6) % 8 === 0) {
-                chunks.push(data.slice(index, index + 8));
-              }
-              return chunks;
-            }, [])
-            .map((chunk, chunkIndex) => (
-              <React.Fragment key={chunkIndex}>
-                {chunk.length === 6 ? (
-                  <CarouselItem className="flex justify-center m-auto w-[80%]">
-                    <FeaturedCard data={data} />
-                    <div className="grid grid-cols-3 gap-6 w-[65%] py-[2rem]">
-                      {chunk.map((game, index) => (
-                        <GameCard
-                          key={index}
-                          src={game.gameThumbnailUrl}
-                          // gameId={game.gameId}
-                          // gameName={game.gameName}
-                          // gameHostLink={game.gameHostLink}
-                          type={game.type}
-                        />
-                      ))}
-                    </div>
-                  </CarouselItem>
-                ) : (
-                  <CarouselItem>
-                    <div className="grid grid-cols-4 gap-6 w-[85%] py-[2rem] m-auto">
-                      {chunk.map((game, index) => (
-                        <GameCard
-                          key={index}
-                          src={game.gameThumbnailUrl}
-                          // gameId={game.gameId}
-                          // gameName={game.gameName}
-                          // gameHostLink={game.gameHostLink}
-                          type={game.type}
-                        />
-                      ))}
-                    </div>
-                  </CarouselItem>
-                )}
-              </React.Fragment>
-            ))}
+          {selectedOption === "all" && <AllGames data={data} />}
+          {selectedOption === "fishing" && <FishingGames data={data} />}
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
         <CarouselNext className="CarouselNext w-[5%]" />
@@ -123,11 +90,11 @@ const FeaturedCard = ({ data }) => {
   }, []);
 
   return (
-    <div className="w-[20%] h-auto py-[2rem]">
-      <div className="m-auto w-[90%] h-full rounded-[2rem] p-1 bg-[#B18423] shadow-lg">
-        <div className="bg-[#DC6E0E] rounded-[1.5rem] w-full h-full p-4">
-          <div className="bg-gradient-to-b p-2 rounded-[1.5rem] from-[#EFC54C] shadow-lg via-[#F98F08] to-[#943E00] w-full h-full">
-            <div className="relative bg-gradient-to-br rounded-[1.5rem] from-blue-900 to-indigo-900 w-full h-full">
+    <div className="w-[20%] h-auto py-[3%]">
+      <div className="w-[90%] h-full rounded-[6%] p-[2%] bg-[#B18423] shadow-lg">
+        <div className="bg-[#DC6E0E] rounded-[6%] w-full h-full p-[3%]">
+          <div className="bg-gradient-to-b p-[2%] rounded-[6%] from-[#EFC54C] shadow-lg via-[#F98F08] to-[#943E00] w-full h-full">
+            <div className="relative bg-gradient-to-br rounded-[6%] from-blue-900 to-indigo-900 w-full h-full">
               <Image
                 src={featured?.gameThumbnailUrl}
                 className="rounded-xl"
@@ -140,5 +107,87 @@ const FeaturedCard = ({ data }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const AllGames = ({ data }) => {
+  return (
+    <>
+      {data
+        .reduce((chunks, _, index) => {
+          if (index === 0) {
+            chunks.push(data.slice(0, 6));
+          } else if ((index - 6) % 8 === 0) {
+            chunks.push(data.slice(index, index + 8));
+          }
+          return chunks;
+        }, [])
+        .map((chunk, chunkIndex) => (
+          <React.Fragment key={chunkIndex}>
+            {chunk.length === 6 ? (
+              <CarouselItem className="flex justify-center m-auto w-[80%]">
+                <FeaturedCard data={data} />
+                <div className="grid grid-cols-3 gap-6 w-[65%] py-[3%]">
+                  {chunk.map((game, index) => (
+                    <GameCard
+                      key={index}
+                      src={game.gameThumbnailUrl}
+                      // gameId={game.gameId}
+                      // gameName={game.gameName}
+                      // gameHostLink={game.gameHostLink}
+                      type={game.type}
+                    />
+                  ))}
+                </div>
+              </CarouselItem>
+            ) : (
+              <CarouselItem>
+                <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
+                  {chunk.map((game, index) => (
+                    <GameCard
+                      key={index}
+                      src={game.gameThumbnailUrl}
+                      // gameId={game.gameId}
+                      // gameName={game.gameName}
+                      // gameHostLink={game.gameHostLink}
+                      type={game.type}
+                    />
+                  ))}
+                </div>
+              </CarouselItem>
+            )}
+          </React.Fragment>
+        ))}
+    </>
+  );
+};
+
+const FishingGames = ({ data }) => {
+  return (
+    <>
+      {data
+        .reduce((chunks, _, index) => {
+          chunks.push(data.slice(index, index + 8));
+          return chunks;
+        }, [])
+        .map((chunk, chunkIndex) => (
+          <React.Fragment key={chunkIndex}>
+            <CarouselItem>
+              <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
+                {chunk.map((game, index) => (
+                  <GameCard
+                    key={index}
+                    src={game.gameThumbnailUrl}
+                    // gameId={game.gameId}
+                    // gameName={game.gameName}
+                    // gameHostLink={game.gameHostLink}
+                    type={game.type}
+                  />
+                ))}
+              </div>
+            </CarouselItem>
+          </React.Fragment>
+        ))}
+    </>
   );
 };

@@ -399,7 +399,7 @@ const GameCard = ({ src, type }) => {
         src={src}
         objectFit="cover"
         fill
-        className="h-full w-full z-[1] p-[0.4rem] rounded-xl"
+        className="h-full w-full z-[1] p-[1.5%] rounded-xl"
         alt="game-img"
       />
       {type ? (
