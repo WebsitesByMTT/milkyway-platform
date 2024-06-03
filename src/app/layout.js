@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} `}>
+      <body className={`${inter.className} rotate-90 md:rotate-0`}>
         <MouseClickEffect />
         {children}
       </body>
