@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Popup = ({ setOpen }) => {
+const PopUp = ({ setOpen }) => {
   const handleClick = () => {
     setOpen(false);
   };
@@ -228,4 +228,4 @@ const Popup = ({ setOpen }) => {
   );
 };
 
-export default Popup;
+export default PopUp;

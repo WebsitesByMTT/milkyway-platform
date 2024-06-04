@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
-import Popup from "./Popup";
+import Popup from "./Pop-Up";
 
 const Footer = () => {
   const [open, setOpen] = useState(false);
@@ -38,7 +38,7 @@ const Footer = () => {
       value: "0.0",
     },
   ];
-  
+
   const handleClick = () => {
     setOpen(true);
   };
