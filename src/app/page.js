@@ -5,26 +5,28 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className=" w-screen h-screen flex items-center justify-center">
-      <div className=" max-w-screen  w-full flex-1  relative">
-        <Image
-          src={"/bg.png"}
-          fill
-          alt="bg"
-          priority={true}
-          objectFit="cover" 
-          quality={100}
-          objectPosition="center"
-        />
-
-        <div className=" relative">
-          <Header />
-
-          <Game />
-
-          <Footer />
+    <main className="relative border w-full">
+      <div class="animated">
+        <div class="wrapper">
+          <div class="one"></div>
+          <div class="two"></div>
+          <div class="three"></div>
+          <div class="four"></div>
         </div>
       </div>
+      <Image
+        src={"/bg1.png"}
+        fill
+        alt="bg"
+        priority={true}
+        objectFit="cover"
+        quality={100}
+        objectPosition="center"
+       className="z-[-2]"
+      />
+      <Header />
+      <Game />
+      <Footer />
     </main>
   );
 }
