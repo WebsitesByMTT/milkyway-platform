@@ -30,7 +30,7 @@ const Header = ({}) => {
       >
         <mask
           id="mask0_676_9446"
-          style={{maskType: "alpha"}}
+          style={{ maskType: "alpha" }}
           maskUnits="userSpaceOnUse"
           x="0"
           y="0"
@@ -96,7 +96,7 @@ const Header = ({}) => {
           />
           <mask
             id="mask1_676_9446"
-            style={{maskType: "alpha"}}
+            style={{ maskType: "alpha" }}
             maskUnits="userSpaceOnUse"
             x="676"
             y="0"
@@ -517,6 +517,13 @@ const Header = ({}) => {
           </linearGradient>
         </defs>
       </svg>
+      <Image
+        src="/star-animation.gif"
+        className="absolute top-0 left-auto h-[80%] w-auto"
+        height={400}
+        width={400}
+        alt="logo"
+      />
       <Image
         src="/logo.png"
         className="absolute top-0 left-auto h-full w-auto"

@@ -54,7 +54,7 @@ const Game = () => {
         className="w-[100%] m-auto"
         opts={selectedOption === "all" ? { loop: true } : {}}
       >
-        <CarouselContent className="min-h-[37vw]">
+        <CarouselContent className="min-h-[52vw] sm:min-h-[37vw]">
           {selectedOption === "all" && <AllGames data={data} />}
           {selectedOption === "fishing" && <FishingGames data={data} />}
           {selectedOption === "slot" && <SlotGames data={data} />}
@@ -112,7 +112,7 @@ const AllGames = ({ data }) => {
             {chunk.length === 6 ? (
               <CarouselItem className="flex justify-center m-auto w-[80%]">
                 <FeaturedCard data={data} />
-                <div className="grid grid-cols-3 gap-6 w-[65%] py-[3%]">
+                <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
                   {chunk.map((game, index) => (
                     <GameCard
                       key={index}
@@ -127,7 +127,7 @@ const AllGames = ({ data }) => {
               </CarouselItem>
             ) : (
               <CarouselItem>
-                <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
+                <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
                   {chunk.map((game, index) => (
                     <GameCard
                       key={index}
@@ -166,7 +166,7 @@ const FishingGames = ({ data }) => {
           }, [])
           .map((chunk, chunkIndex) => (
             <CarouselItem key={chunkIndex}>
-              <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
+              <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
                 {chunk.map((game, index) => (
                   <GameCard
                     key={index}
@@ -203,7 +203,7 @@ const SlotGames = ({ data }) => {
           }, [])
           .map((chunk, chunkIndex) => (
             <CarouselItem key={chunkIndex}>
-              <div className="grid grid-cols-4 gap-6 w-[85%] py-[3%] m-auto">
+              <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
                 {chunk.map((game, index) => (
                   <GameCard
                     key={index}

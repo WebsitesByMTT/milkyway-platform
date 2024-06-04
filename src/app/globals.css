@@ -137,9 +137,9 @@ input:focus::placeholder {
 }
 .animated .one {
   border-radius: 100%;
-  width: 30%;
-  height: 50%;
-  background-color: #cdc5d554;
+  width: 50%;
+  height: 80%;
+  background-color: #b886e950;
   left: 30%;
   top: 10%;
   z-index: 3;
@@ -149,35 +149,35 @@ input:focus::placeholder {
 .animated .two {
   width: 50%;
   height: 70%;
-  background-color: #a6cfc889;
+  background-color: #639a9176;
   bottom: -10%;
   left: 0;
   animation: flyPlus 15s linear infinite;
 }
 .animated .three {
-  border-radius: 100%;
+  /* border-radius: 100%;
   width: 50%;
-  height: 50%;
+  height: 70%;
   bottom: 20%;
   right: -20%;
-  background-color: #ffca575b;
-  animation: flyPlus 10s linear infinite;
+  background-color: #ffca577c;
+  animation: fly 15s linear infinite;
   -webkit-animation: flyPlus 10s linear infinite;
   transform: rotate(0) translate(200px) rotate(0);
   -webkit-transform: rotate(0) translate(200px) rotate(0);
   -moz-transform: rotate(0) translate(200px) rotate(0);
   -ms-transform: rotate(0) translate(200px) rotate(0);
-  -o-transform: rotate(0) translate(200px) rotate(0);
+  -o-transform: rotate(0) translate(200px) rotate(0); */
 }
 .four {
   border-radius: 100%;
-  width: 350px;
-  height: 350px;
+  width: 50%;
+  height: 60%;
   margin: auto;
-  bottom: 0;
+  bottom: -30%;
   right: 0;
-  background-color: #a2d7ec96;
-  animation: flyPlus 15s linear infinite;
+  background-color: #61b1d163;
+  animation: fly 15s linear infinite;
   -webkit-animation: flyPlus 15s linear infinite;
   transform: rotate(0) translate(200px) rotate(0);
   -webkit-transform: rotate(0) translate(200px) rotate(0);
