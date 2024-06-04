@@ -11,6 +11,7 @@ import { useState } from "react";
 import Popup from "./Popup";
 
 const Footer = () => {
+  const [open, setOpen] = useState(false);
   const footerCarousel = [
     {
       text: "MINOR",
@@ -37,7 +38,7 @@ const Footer = () => {
       value: "0.0",
     },
   ];
-  const [open, setOpen] = useState(false);
+  
   const handleClick = () => {
     setOpen(true);
   };
@@ -16282,7 +16283,7 @@ const Footer = () => {
                 key={index}
                 className="h-auto m-auto w-[100%] flex justify-evenly"
               >
-                <div className="w-[40%] h-full">
+                <div className="w-fit h-full">
                   <p
                     className={`stroke ${ele.style} bg-gradient-to-b text-transparent bg-clip-text  w-full h-full text-center text-[2.2vw] uppercase font-[800]`}
                   >
@@ -16473,7 +16474,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-const Settings = () => {
-  return <div>Settings</div>;
-};
