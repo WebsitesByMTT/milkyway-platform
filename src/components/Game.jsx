@@ -26,23 +26,9 @@ const Game = () => {
         if (event.deltaY > 0) {
           const nextButton = document.querySelector(".CarouselNext");
           nextButton.click();
-          // if (nextButton.disabled) {
-          //   setCurrentIndex(0);
-          // } else {
-          //   nextButton.click();
-          //   setCurrentIndex((prev) => prev + 1);
-          // }
-          // console.log(currentIndex);
         } else {
           const prevButton = document.querySelector(".CarouselPrevious");
           prevButton.click();
-          // if (prevButton.disabled) {
-          //   setCurrentIndex(0);
-          // } else {
-          //   nextButton.click();
-          //   setCurrentIndex((prev) => prev - 1);
-          // }
-          // console.log(currentIndex);
         }
 
         setTimeout(() => {

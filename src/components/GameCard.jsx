@@ -8,7 +8,7 @@ const GameCard = ({ src, type}) => {
     setClicked(!clicked);
   };
   return (
-    <div className="w-full h-[14.5vw] gamecard relative z-[2]">
+    <div className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]">
       <button
         className="absolute right-[-6px] top-5 z-10 w-[25%]"
         onClick={handleClick}
