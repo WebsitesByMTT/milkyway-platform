@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 const Popup = ({ setOpen }) => {
-
   const handleClick = () => {
     setOpen(false);
   };
