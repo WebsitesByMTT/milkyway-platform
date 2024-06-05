@@ -19,7 +19,7 @@ const PopUp = ({ setOpen }) => {
           <path
             d="M2.5 52.9702C2.5 40.6438 12.2052 30.3717 24.541 29.5288C547.153 -6.18173 849.769 -6.8227 1368.5 29.4898C1380.82 30.352 1390.5 40.6162 1390.5 52.9268V744.714C1390.5 757.693 1379.98 768.214 1367 768.214H26C13.0213 768.214 2.5 757.693 2.5 744.714V52.9702Z"
             stroke="url(#paint0_linear_618_11008)"
-            stroke-width="5"
+            strokeWidth="5"
           />
           <path
             d="M8 60.15C8 46.4842 18.7493 35.1373 32.3839 34.2137C549.216 -0.797786 848.657 -1.42648 1361.66 34.1752C1375.28 35.1201 1386 46.4589 1386 60.107V737.714C1386 752.073 1374.36 763.714 1360 763.714H34C19.6406 763.714 8 752.073 8 737.714V60.15Z"
@@ -38,9 +38,9 @@ const PopUp = ({ setOpen }) => {
               y2="770.714"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#37F6F8" />
-              <stop offset="0.503743" stop-color="#00C1E3" />
-              <stop offset="1" stop-color="#0DDBEC" />
+              <stop stopColor="#37F6F8" />
+              <stop offset="0.503743" stopColor="#00C1E3" />
+              <stop offset="1" stopColor="#0DDBEC" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_618_11008"
@@ -50,10 +50,10 @@ const PopUp = ({ setOpen }) => {
               y2="763.714"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#1D273E" />
-              <stop offset="0.504154" stop-color="#0E1122" />
-              <stop offset="0.765549" stop-color="#0F1222" stop-opacity="0.8" />
-              <stop offset="1" stop-color="#0B319D" />
+              <stop stopColor="#1D273E" />
+              <stop offset="0.504154" stopColor="#0E1122" />
+              <stop offset="0.765549" stopColor="#0F1222" stop-opacity="0.8" />
+              <stop offset="1" stopColor="#0B319D" />
             </linearGradient>
           </defs>
         </svg>
@@ -78,7 +78,7 @@ const PopUp = ({ setOpen }) => {
               d="M90 47C90 71.8936 70.2602 92 46 92C21.7398 92 2 71.8936 2 47C2 22.1064 21.7398 2 46 2C70.2602 2 90 22.1064 90 47Z"
               fill="#242637"
               stroke="url(#paint0_linear_147_4598)"
-              stroke-width="4"
+              strokeWidth="4"
             />
             <g filter="url(#filter0_d_147_4598)">
               <circle
@@ -92,7 +92,7 @@ const PopUp = ({ setOpen }) => {
               d="M79.5 46.5C79.5 64.1522 64.9703 78.5 47 78.5C29.0297 78.5 14.5 64.1522 14.5 46.5C14.5 28.8478 29.0297 14.5 47 14.5C64.9703 14.5 79.5 28.8478 79.5 46.5Z"
               fill="#313C5A"
               stroke="url(#paint2_linear_147_4598)"
-              stroke-width="3"
+              strokeWidth="3"
             />
             <g filter="url(#filter1_d_147_4598)">
               <path
@@ -112,7 +112,7 @@ const PopUp = ({ setOpen }) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -147,7 +147,7 @@ const PopUp = ({ setOpen }) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -181,9 +181,9 @@ const PopUp = ({ setOpen }) => {
                 y2="94"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#53E6E5" />
-                <stop offset="0.485" stop-color="#1B5280" />
-                <stop offset="1" stop-color="#01BCE6" />
+                <stop stopColor="#53E6E5" />
+                <stop offset="0.485" stopColor="#1B5280" />
+                <stop offset="1" stopColor="#01BCE6" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_147_4598"
@@ -193,8 +193,8 @@ const PopUp = ({ setOpen }) => {
                 y2="83"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#465982" />
-                <stop offset="1" stop-color="#0B1E32" />
+                <stop stopColor="#465982" />
+                <stop offset="1" stopColor="#0B1E32" />
               </linearGradient>
               <linearGradient
                 id="paint2_linear_147_4598"
@@ -204,9 +204,9 @@ const PopUp = ({ setOpen }) => {
                 y2="80"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#4ED6D7" />
-                <stop offset="0.494341" stop-color="#2284DF" />
-                <stop offset="1" stop-color="#1586A7" />
+                <stop stopColor="#4ED6D7" />
+                <stop offset="0.494341" stopColor="#2284DF" />
+                <stop offset="1" stopColor="#1586A7" />
               </linearGradient>
               <linearGradient
                 id="paint3_linear_147_4598"
@@ -216,9 +216,9 @@ const PopUp = ({ setOpen }) => {
                 y2="63.9818"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#F3F3F3" />
-                <stop offset="0.507169" stop-color="#A9E5E5" />
-                <stop offset="1" stop-color="#5CD7E5" />
+                <stop stopColor="#F3F3F3" />
+                <stop offset="0.507169" stopColor="#A9E5E5" />
+                <stop offset="1" stopColor="#5CD7E5" />
               </linearGradient>
             </defs>
           </svg>

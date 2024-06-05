@@ -1,14 +1,26 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const GameCard = ({ src, type}) => {
+const GameCard = ({ src, type }) => {
   const [clicked, setClicked] = useState(false);
-  const handleClick = () => {
+  const router = useRouter();
+
+  const handleClick = (event) => {
+    event.stopPropagation();
     setClicked(!clicked);
+    console.log("button");
+  };
+
+  const handleGame = (game) => {
+    router.push(`/${game.gameName}`);
   };
   return (
-    <div className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]">
+    <div
+      className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2] border-4 "
+      onClick={() => handleGame(src)}
+    >
       <button
         className="absolute right-[-6px] top-5 z-10 w-[25%]"
         onClick={handleClick}
@@ -58,7 +70,7 @@ const GameCard = ({ src, type}) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -93,7 +105,7 @@ const GameCard = ({ src, type}) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"
@@ -133,7 +145,7 @@ const GameCard = ({ src, type}) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -167,10 +179,10 @@ const GameCard = ({ src, type}) => {
                 y2="33"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#F7C53B" />
-                <stop offset="0.395" stop-color="#DBC731" />
-                <stop offset="0.864383" stop-color="#C08C3A" />
-                <stop offset="1" stop-color="#D8C936" />
+                <stop stopColor="#F7C53B" />
+                <stop offset="0.395" stopColor="#DBC731" />
+                <stop offset="0.864383" stopColor="#C08C3A" />
+                <stop offset="1" stopColor="#D8C936" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_285_2223"
@@ -180,8 +192,8 @@ const GameCard = ({ src, type}) => {
                 y2="59"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.190419" stop-color="#221A3E" />
-                <stop offset="1" stop-color="#363769" />
+                <stop offset="0.190419" stopColor="#221A3E" />
+                <stop offset="1" stopColor="#363769" />
               </linearGradient>
               <radialGradient
                 id="paint2_radial_285_2223"
@@ -191,10 +203,10 @@ const GameCard = ({ src, type}) => {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(38.375 23) rotate(90) scale(28.4926 33.2492)"
               >
-                <stop stop-color="#FD8A91" />
-                <stop offset="0.556254" stop-color="#FFB597" />
-                <stop offset="0.784361" stop-color="#FFF1A9" />
-                <stop offset="1" stop-color="#FFF1A9" />
+                <stop stopColor="#FD8A91" />
+                <stop offset="0.556254" stopColor="#FFB597" />
+                <stop offset="0.784361" stopColor="#FFF1A9" />
+                <stop offset="1" stopColor="#FFF1A9" />
               </radialGradient>
               <radialGradient
                 id="paint3_radial_285_2223"
@@ -204,9 +216,9 @@ const GameCard = ({ src, type}) => {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(38 21) scale(16 9.19495)"
               >
-                <stop stop-color="white" stop-opacity="0" />
-                <stop offset="0.420244" stop-color="white" />
-                <stop offset="1" stop-color="white" stop-opacity="0" />
+                <stop stopColor="white" stop-opacity="0" />
+                <stop offset="0.420244" stopColor="white" />
+                <stop offset="1" stopColor="white" stop-opacity="0" />
               </radialGradient>
             </defs>
           </svg>
@@ -250,7 +262,7 @@ const GameCard = ({ src, type}) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                   in="SourceAlpha"
                   type="matrix"
@@ -285,7 +297,7 @@ const GameCard = ({ src, type}) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"
@@ -325,7 +337,7 @@ const GameCard = ({ src, type}) => {
                 filterUnits="userSpaceOnUse"
                 color-interpolation-filters="sRGB"
               >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
                   mode="normal"
                   in="SourceGraphic"
@@ -364,10 +376,10 @@ const GameCard = ({ src, type}) => {
                 y2="33"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#F7C53B" />
-                <stop offset="0.395" stop-color="#DBC731" />
-                <stop offset="0.864383" stop-color="#C08C3A" />
-                <stop offset="1" stop-color="#D8C936" />
+                <stop stopColor="#F7C53B" />
+                <stop offset="0.395" stopColor="#DBC731" />
+                <stop offset="0.864383" stopColor="#C08C3A" />
+                <stop offset="1" stopColor="#D8C936" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_285_2222"
@@ -377,8 +389,8 @@ const GameCard = ({ src, type}) => {
                 y2="59"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#7051F6" />
-                <stop offset="1" stop-color="#56C1F9" />
+                <stop stopColor="#7051F6" />
+                <stop offset="1" stopColor="#56C1F9" />
               </linearGradient>
               <linearGradient
                 id="paint2_linear_285_2222"
@@ -388,15 +400,15 @@ const GameCard = ({ src, type}) => {
                 y2="51.4926"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.190419" stop-color="#221A3E" />
-                <stop offset="1" stop-color="#363769" />
+                <stop offset="0.190419" stopColor="#221A3E" />
+                <stop offset="1" stopColor="#363769" />
               </linearGradient>
             </defs>
           </svg>
         )}
       </button>
       <Image
-        src={src}
+        src={src.gameThumbnailUrl}
         objectFit="cover"
         fill
         className="h-full w-full z-[1] p-[1.5%] rounded-xl"
@@ -433,7 +445,7 @@ const GameCard = ({ src, type}) => {
                   filterUnits="userSpaceOnUse"
                   color-interpolation-filters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feBlend
                     mode="normal"
                     in="SourceGraphic"
@@ -472,8 +484,8 @@ const GameCard = ({ src, type}) => {
                   y2="78"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#00E500" />
-                  <stop offset="1" stop-color="#029802" />
+                  <stop stopColor="#00E500" />
+                  <stop offset="1" stopColor="#029802" />
                 </linearGradient>
               </defs>
             </svg>
@@ -506,7 +518,7 @@ const GameCard = ({ src, type}) => {
                   filterUnits="userSpaceOnUse"
                   color-interpolation-filters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feBlend
                     mode="normal"
                     in="SourceGraphic"
@@ -545,8 +557,8 @@ const GameCard = ({ src, type}) => {
                   y2="78"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#FA805F" />
-                  <stop offset="1" stop-color="#E12D7C" />
+                  <stop stopColor="#FA805F" />
+                  <stop offset="1" stopColor="#E12D7C" />
                 </linearGradient>
               </defs>
             </svg>

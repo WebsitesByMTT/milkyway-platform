@@ -3,7 +3,18 @@ import Game from "@/components/Game";
 import Header from "@/components/Header";
 import Image from "next/image";
 
-export default function Home() {
+async function getGames() {
+  const res = await fetch("http://localhost:3000/api/games");
+
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  return res.json();
+}
+
+const Home = async () => {
+  const games = await getGames();
+  console.log("Games : ", games);
   return (
     <main className="relative w-full overflow-hidden">
       <svg
@@ -17,7 +28,7 @@ export default function Home() {
         <g opacity="0.5" clip-path="url(#clip0_618_11011)">
           <mask
             id="mask0_618_11011"
-            style={{maskType: "luminance"}}
+            style={{ maskType: "luminance" }}
             maskUnits="userSpaceOnUse"
             x="-854"
             y="-82"
@@ -27,7 +38,7 @@ export default function Home() {
             <path d="M993 -82H-854V1085.82H993V-82Z" fill="white" />
           </mask>
           <g mask="url(#mask0_618_11011)">
-            <g style={{mixBlendMode: "overlay"}} opacity="0.91">
+            <g style={{ mixBlendMode: "overlay" }} opacity="0.91">
               <path
                 opacity="0.83"
                 d="M203.871 179.884C430.603 -212.827 568.683 -557.58 512.281 -590.144C455.88 -622.708 226.354 -330.75 -0.377563 61.9612C-227.11 454.672 -365.189 799.426 -308.788 831.989C-252.386 864.553 -22.8607 572.595 203.871 179.884Z"
@@ -146,7 +157,7 @@ export default function Home() {
           </g>
           <mask
             id="mask1_618_11011"
-            style={{maskType: "luminance"}}
+            style={{ maskType: "luminance" }}
             maskUnits="userSpaceOnUse"
             x="993"
             y="-82"
@@ -156,7 +167,7 @@ export default function Home() {
             <path d="M993 -82H2840V1085.82H993V-82Z" fill="white" />
           </mask>
           <g mask="url(#mask1_618_11011)">
-            <g style={{mixBlendMode: "overlay"}} opacity="0.91">
+            <g style={{ mixBlendMode: "overlay" }} opacity="0.91">
               <path
                 opacity="0.83"
                 d="M1782.13 179.885C1555.4 -212.826 1417.32 -557.58 1473.72 -590.143C1530.12 -622.707 1759.65 -330.75 1986.38 61.9616C2213.11 454.673 2351.19 799.426 2294.79 831.99C2238.39 864.553 2008.86 572.596 1782.13 179.885Z"
@@ -274,16 +285,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(90.6456 114.615) rotate(30) scale(114.941 821.01)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint1_radial_618_11011"
@@ -293,16 +304,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(430.38 514.296) rotate(16.2602) scale(74.1925 794.92)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint2_radial_618_11011"
@@ -312,16 +323,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(536.011 566.614) rotate(11.18) scale(132.494 794.964)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint3_radial_618_11011"
@@ -331,16 +342,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(603.519 566.879) rotate(11.18) scale(132.494 794.964)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint4_radial_618_11011"
@@ -350,16 +361,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(693.331 564.664) rotate(4.77) scale(132.501 795.008)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint5_radial_618_11011"
@@ -369,16 +380,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(876.799 578.31) scale(132.509 795.052)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint6_radial_618_11011"
@@ -388,15 +399,15 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(277.618 571.94) rotate(23.25) scale(132.509 614.84)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.99" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.73" />
-            <stop offset="0.34" stop-color="white" stop-opacity="0.51" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.33" />
-            <stop offset="0.64" stop-color="white" stop-opacity="0.18" />
-            <stop offset="0.78" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.99" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.73" />
+            <stop offset="0.34" stopColor="white" stop-opacity="0.51" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.33" />
+            <stop offset="0.64" stopColor="white" stop-opacity="0.18" />
+            <stop offset="0.78" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint7_radial_618_11011"
@@ -406,15 +417,15 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(118.697 570.832) rotate(23.25) scale(200.506 930.348)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.99" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.73" />
-            <stop offset="0.34" stop-color="white" stop-opacity="0.51" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.33" />
-            <stop offset="0.64" stop-color="white" stop-opacity="0.18" />
-            <stop offset="0.78" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.99" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.73" />
+            <stop offset="0.34" stopColor="white" stop-opacity="0.51" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.33" />
+            <stop offset="0.64" stopColor="white" stop-opacity="0.18" />
+            <stop offset="0.78" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint8_radial_618_11011"
@@ -424,15 +435,15 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(991.296 513.835) scale(200.513 930.383)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.99" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.73" />
-            <stop offset="0.34" stop-color="white" stop-opacity="0.51" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.33" />
-            <stop offset="0.64" stop-color="white" stop-opacity="0.18" />
-            <stop offset="0.78" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.99" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.73" />
+            <stop offset="0.34" stopColor="white" stop-opacity="0.51" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.33" />
+            <stop offset="0.64" stopColor="white" stop-opacity="0.18" />
+            <stop offset="0.78" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint9_radial_618_11011"
@@ -442,16 +453,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(278.531 6.56984) rotate(23.25) scale(88.5349 632.392)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint10_radial_618_11011"
@@ -461,16 +472,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(243.449 26.5795) rotate(23.25) scale(88.5349 632.392)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint11_radial_618_11011"
@@ -480,16 +491,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(-16.2729 222.947) rotate(45) scale(104.425 568.535)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint12_radial_618_11011"
@@ -499,18 +510,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(507.894 1002.01) rotate(180) scale(10.8194 10.8195)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint13_radial_618_11011"
@@ -520,18 +531,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(303.415 543.261) rotate(180) scale(10.8194 10.8194)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint14_radial_618_11011"
@@ -541,18 +552,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(506.856 247.748) rotate(180) scale(29.127 29.127)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint15_radial_618_11011"
@@ -562,18 +573,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(41.5948 35.5996) rotate(180) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint16_radial_618_11011"
@@ -583,18 +594,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(174.673 952.159) rotate(180) scale(16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint17_radial_618_11011"
@@ -604,18 +615,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(779.647 835.002) rotate(180) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint18_radial_618_11011"
@@ -625,18 +636,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(762.902 913.745) rotate(180) scale(16.745 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint19_radial_618_11011"
@@ -646,18 +657,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(933.831 284.358) rotate(180) scale(16.745 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint20_radial_618_11011"
@@ -667,18 +678,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(411.874 76.4593) rotate(180) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint21_radial_618_11011"
@@ -688,18 +699,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(552.763 35.5699) rotate(180) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint22_radial_618_11011"
@@ -709,18 +720,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(199.789 397.419) rotate(180) scale(8.37253 8.37254)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint23_radial_618_11011"
@@ -730,18 +741,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(709.157 395.591) rotate(180) scale(10.2004 10.2004)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint24_radial_618_11011"
@@ -751,18 +762,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(70.8701 736.055) rotate(180) scale(41.6563)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint25_radial_618_11011"
@@ -772,18 +783,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(261.755 118.01) rotate(-180) scale(41.6563 41.6563)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint26_radial_618_11011"
@@ -793,16 +804,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1895.35 114.616) rotate(150) scale(114.941 821.01)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint27_radial_618_11011"
@@ -812,16 +823,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1555.62 514.296) rotate(163.74) scale(74.1925 794.92)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint28_radial_618_11011"
@@ -831,16 +842,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1449.99 566.614) rotate(168.82) scale(132.494 794.964)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint29_radial_618_11011"
@@ -850,16 +861,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1382.48 566.879) rotate(168.82) scale(132.494 794.964)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint30_radial_618_11011"
@@ -869,16 +880,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1292.67 564.664) rotate(175.23) scale(132.501 795.008)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint31_radial_618_11011"
@@ -888,16 +899,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1109.2 578.31) rotate(180) scale(132.509 795.052)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint32_radial_618_11011"
@@ -907,15 +918,15 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1708.38 571.941) rotate(156.75) scale(132.509 614.84)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.99" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.73" />
-            <stop offset="0.34" stop-color="white" stop-opacity="0.51" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.33" />
-            <stop offset="0.64" stop-color="white" stop-opacity="0.18" />
-            <stop offset="0.78" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.99" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.73" />
+            <stop offset="0.34" stopColor="white" stop-opacity="0.51" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.33" />
+            <stop offset="0.64" stopColor="white" stop-opacity="0.18" />
+            <stop offset="0.78" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint33_radial_618_11011"
@@ -925,15 +936,15 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1867.3 570.832) rotate(156.75) scale(200.506 930.348)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.99" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.73" />
-            <stop offset="0.34" stop-color="white" stop-opacity="0.51" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.33" />
-            <stop offset="0.64" stop-color="white" stop-opacity="0.18" />
-            <stop offset="0.78" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.99" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.73" />
+            <stop offset="0.34" stopColor="white" stop-opacity="0.51" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.33" />
+            <stop offset="0.64" stopColor="white" stop-opacity="0.18" />
+            <stop offset="0.78" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint34_radial_618_11011"
@@ -943,15 +954,15 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(994.704 513.835) rotate(180) scale(200.513 930.383)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.99" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.73" />
-            <stop offset="0.34" stop-color="white" stop-opacity="0.51" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.33" />
-            <stop offset="0.64" stop-color="white" stop-opacity="0.18" />
-            <stop offset="0.78" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.9" stop-color="white" stop-opacity="0.02" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.99" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.73" />
+            <stop offset="0.34" stopColor="white" stop-opacity="0.51" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.33" />
+            <stop offset="0.64" stopColor="white" stop-opacity="0.18" />
+            <stop offset="0.78" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.9" stopColor="white" stop-opacity="0.02" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint35_radial_618_11011"
@@ -961,16 +972,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1707.47 6.56984) rotate(156.75) scale(88.5349 632.392)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint36_radial_618_11011"
@@ -980,16 +991,16 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1742.55 26.58) rotate(156.75) scale(88.5349 632.392)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.08" stop-color="white" stop-opacity="0.82" />
-            <stop offset="0.17" stop-color="white" stop-opacity="0.63" />
-            <stop offset="0.26" stop-color="white" stop-opacity="0.46" />
-            <stop offset="0.36" stop-color="white" stop-opacity="0.32" />
-            <stop offset="0.46" stop-color="white" stop-opacity="0.2" />
-            <stop offset="0.57" stop-color="white" stop-opacity="0.11" />
-            <stop offset="0.69" stop-color="white" stop-opacity="0.05" />
-            <stop offset="0.82" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.08" stopColor="white" stop-opacity="0.82" />
+            <stop offset="0.17" stopColor="white" stop-opacity="0.63" />
+            <stop offset="0.26" stopColor="white" stop-opacity="0.46" />
+            <stop offset="0.36" stopColor="white" stop-opacity="0.32" />
+            <stop offset="0.46" stopColor="white" stop-opacity="0.2" />
+            <stop offset="0.57" stopColor="white" stop-opacity="0.11" />
+            <stop offset="0.69" stopColor="white" stop-opacity="0.05" />
+            <stop offset="0.82" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint37_radial_618_11011"
@@ -999,18 +1010,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1478.11 1002.01) scale(10.8194 10.8195)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint38_radial_618_11011"
@@ -1020,18 +1031,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1682.58 543.261) scale(10.8194 10.8194)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint39_radial_618_11011"
@@ -1041,18 +1052,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1479.14 247.748) scale(29.127 29.127)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint40_radial_618_11011"
@@ -1062,18 +1073,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1811.33 952.159) scale(16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint41_radial_618_11011"
@@ -1083,18 +1094,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1206.35 835.003) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint42_radial_618_11011"
@@ -1104,18 +1115,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1223.1 913.746) scale(16.745 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint43_radial_618_11011"
@@ -1125,18 +1136,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1052.17 284.358) scale(16.745 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint44_radial_618_11011"
@@ -1146,18 +1157,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1574.13 76.4597) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint45_radial_618_11011"
@@ -1167,18 +1178,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1433.24 35.5699) scale(16.7451 16.7451)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint46_radial_618_11011"
@@ -1188,18 +1199,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1786.21 397.42) scale(8.37253 8.37254)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint47_radial_618_11011"
@@ -1209,18 +1220,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1276.84 395.591) scale(10.2004 10.2004)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint48_radial_618_11011"
@@ -1230,18 +1241,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1915.13 736.055) scale(41.6563)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <radialGradient
             id="paint49_radial_618_11011"
@@ -1251,18 +1262,18 @@ export default function Home() {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(1724.24 118.01) scale(41.6563 41.6563)"
           >
-            <stop stop-color="white" />
-            <stop offset="0.01" stop-color="white" stop-opacity="0.96" />
-            <stop offset="0.05" stop-color="white" stop-opacity="0.78" />
-            <stop offset="0.09" stop-color="white" stop-opacity="0.61" />
-            <stop offset="0.14" stop-color="white" stop-opacity="0.47" />
-            <stop offset="0.2" stop-color="white" stop-opacity="0.34" />
-            <stop offset="0.25" stop-color="white" stop-opacity="0.23" />
-            <stop offset="0.32" stop-color="white" stop-opacity="0.15" />
-            <stop offset="0.4" stop-color="white" stop-opacity="0.08" />
-            <stop offset="0.49" stop-color="white" stop-opacity="0.03" />
-            <stop offset="0.63" stop-color="white" stop-opacity="0.01" />
-            <stop offset="1" stop-color="white" stop-opacity="0" />
+            <stop stopColor="white" />
+            <stop offset="0.01" stopColor="white" stop-opacity="0.96" />
+            <stop offset="0.05" stopColor="white" stop-opacity="0.78" />
+            <stop offset="0.09" stopColor="white" stop-opacity="0.61" />
+            <stop offset="0.14" stopColor="white" stop-opacity="0.47" />
+            <stop offset="0.2" stopColor="white" stop-opacity="0.34" />
+            <stop offset="0.25" stopColor="white" stop-opacity="0.23" />
+            <stop offset="0.32" stopColor="white" stop-opacity="0.15" />
+            <stop offset="0.4" stopColor="white" stop-opacity="0.08" />
+            <stop offset="0.49" stopColor="white" stop-opacity="0.03" />
+            <stop offset="0.63" stopColor="white" stop-opacity="0.01" />
+            <stop offset="1" stopColor="white" stop-opacity="0" />
           </radialGradient>
           <clipPath id="clip0_618_11011">
             <rect width="1920" height="1080" fill="white" />
@@ -1270,12 +1281,12 @@ export default function Home() {
         </defs>
       </svg>
 
-      <div class="animated">
-        <div class="wrapper">
-          <div class="one"></div>
-          <div class="two"></div>
-          <div class="three"></div>
-          <div class="four"></div>
+      <div className="animated">
+        <div className="wrapper">
+          <div className="one"></div>
+          <div className="two"></div>
+          <div className="three"></div>
+          <div className="four"></div>
         </div>
       </div>
       <Image
@@ -1289,8 +1300,10 @@ export default function Home() {
         className="z-[-2]"
       />
       <Header />
-      <Game />
+      <Game data={games} />
       <Footer />
     </main>
   );
-}
+};
+
+export default Home;

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import GameCard from "./GameCard";
-import data from "@/utils/data";
+
 import {
   Carousel,
   CarouselContent,
@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Sidebar from "./Sidebar";
 
-const Game = () => {
+const Game = ({ data }) => {
   const [selectedOption, setSelectedOption] = useState("all");
 
   useEffect(() => {
@@ -116,7 +116,7 @@ const AllGames = ({ data }) => {
                   {chunk.map((game, index) => (
                     <GameCard
                       key={index}
-                      src={game.gameThumbnailUrl}
+                      src={game}
                       // gameId={game.gameId}
                       // gameName={game.gameName}
                       // gameHostLink={game.gameHostLink}
