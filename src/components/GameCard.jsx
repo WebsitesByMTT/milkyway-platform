@@ -57,7 +57,7 @@ const GameCard = ({ src, type }) => {
                 <path
                   d="M56.75 30.1719C56.75 41.6562 39.722 50.952 38.9968 51.3359C38.8057 51.4388 38.592 51.4926 38.375 51.4926C38.158 51.4926 37.9443 51.4388 37.7532 51.3359C37.028 50.952 20 41.6562 20 30.1719C20.003 27.4751 21.0757 24.8896 22.9826 22.9826C24.8896 21.0757 27.4751 20.003 30.1719 20C33.5598 20 36.526 21.4569 38.375 23.9195C40.224 21.4569 43.1902 20 46.5781 20C49.2749 20.003 51.8604 21.0757 53.7674 22.9826C55.6743 24.8896 56.747 27.4751 56.75 30.1719Z"
                   fill="url(#paint3_radial_285_2223)"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                 />
               </g>
             </g>
@@ -69,7 +69,7 @@ const GameCard = ({ src, type }) => {
                 width="92"
                 height="73"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
@@ -104,7 +104,7 @@ const GameCard = ({ src, type }) => {
                 width="53"
                 height="57"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
@@ -144,7 +144,7 @@ const GameCard = ({ src, type }) => {
                 width="76.75"
                 height="71.4926"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
@@ -217,9 +217,9 @@ const GameCard = ({ src, type }) => {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(38 21) scale(16 9.19495)"
               >
-                <stop stopColor="white" stop-opacity="0" />
+                <stop stopColor="white" stopOpacity="0" />
                 <stop offset="0.420244" stopColor="white" />
-                <stop offset="1" stopColor="white" stop-opacity="0" />
+                <stop offset="1" stopColor="white" stopOpacity="0" />
               </radialGradient>
             </defs>
           </svg>
@@ -261,7 +261,7 @@ const GameCard = ({ src, type }) => {
                 width="92"
                 height="73"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
@@ -296,7 +296,7 @@ const GameCard = ({ src, type }) => {
                 width="53"
                 height="57"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
@@ -336,7 +336,7 @@ const GameCard = ({ src, type }) => {
                 width="36.75"
                 height="35.4926"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
               >
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend
@@ -444,7 +444,7 @@ const GameCard = ({ src, type }) => {
                   width="75.5516"
                   height="37.5115"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
                   <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feBlend
@@ -517,7 +517,7 @@ const GameCard = ({ src, type }) => {
                   width="64.7789"
                   height="38.2775"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
                   <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feBlend

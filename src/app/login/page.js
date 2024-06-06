@@ -1,9 +1,9 @@
 "use client";
-import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import { config } from "../../utils/config";
 const Login = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
@@ -35,16 +35,13 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://game-rtp-backend-w7g7.onrender.com/api/users/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
-        }
-      );
+      const response = await fetch(`${config.server}/api/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
       const data = await response.json();
 

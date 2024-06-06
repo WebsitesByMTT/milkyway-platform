@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const GameIframe = ({ data }: any) => {
+  const [gameData, setGameData] = useState(data);
   const router = useRouter();
 
   useEffect(() => {
@@ -29,7 +30,10 @@ const GameIframe = ({ data }: any) => {
   }, []);
 
   return (
-    <iframe src={`${data?.game?.gameHostLink}`} className=" w-full h-full" />
+    <iframe
+      src={`${gameData?.game?.gameHostLink}`}
+      className=" w-full h-full"
+    />
   );
 };
 
