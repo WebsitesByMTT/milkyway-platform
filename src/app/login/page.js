@@ -2,11 +2,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const Page = () => {
+const Login = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const handleSubmit = (e) => {
- e.preventDefault();
+    e.preventDefault();
     console.log(account, password);
   };
   return (
@@ -78,4 +78,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Login;

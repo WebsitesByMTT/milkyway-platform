@@ -2,22 +2,14 @@ import Footer from "@/components/Footer";
 import Game from "@/components/Game";
 import Header from "@/components/Header";
 import Image from "next/image";
-import { Suspense } from "react";
 
 async function getGames() {
-  const res = await fetch("http://localhost:3000/api/games", {
-    next: { tags: ["games"] },
-  });
+  const res = await fetch("http://localhost:3000/api/games");
 
   if (!res.ok) {
     throw new Error("Something went wrong");
   }
   return res.json();
-}
-
-async function RenderGame() {
-  const games = await getGames();
-  return <Game data={games} />;
 }
 
 const Home = async () => {
@@ -1287,7 +1279,6 @@ const Home = async () => {
           </clipPath>
         </defs>
       </svg>
-
       <div className="animated">
         <div className="wrapper">
           <div className="one"></div>
@@ -1307,9 +1298,7 @@ const Home = async () => {
         className="z-[-2]"
       />
       <Header />
-      <Suspense fallback={<h1>Loading</h1>}>
-        <RenderGame />
-      </Suspense>
+      <Game data={games} />
       <Footer />
     </main>
   );

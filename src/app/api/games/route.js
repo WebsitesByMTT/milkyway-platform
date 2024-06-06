@@ -15,6 +15,6 @@ export const GET = async (request) => {
 
     return NextResponse.json(data);
   } catch (err) {
-    throw new Error("Failed to fetch games");
+    return NextResponse.json({ error: err.message });
   }
 };
