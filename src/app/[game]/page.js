@@ -1,5 +1,5 @@
 "use server";
-import GameIframe from "@/components/GameIframe";
+import GameIframe from "@/components/GameIFrame";
 import { redirect } from "next/navigation";
 
 async function getGameById(gameId) {

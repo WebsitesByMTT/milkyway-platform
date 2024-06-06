@@ -1,8 +1,11 @@
 "use client";
+import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
-
+import Cookies from "js-cookie";
 const Login = () => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -48,6 +51,9 @@ const Login = () => {
       if (response.ok) {
         // Handle successful login
         console.log("Login successful:", data);
+        router.push("/");
+
+        Cookies.set("token", data?.token);
       } else {
         // Handle login errors
         setError(data.message || "Login failed");

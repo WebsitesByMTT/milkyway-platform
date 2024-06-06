@@ -3,11 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-const GameIframe = ({ data }) => {
+const GameIframe = ({ data }: any) => {
   const router = useRouter();
 
   useEffect(() => {
-    const handleMessage = (event) => {
+    const handleMessage = (event: any) => {
       const message = event.data;
 
       console.log("HERE L: ", message);
