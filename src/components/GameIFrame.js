@@ -10,8 +10,14 @@ const GameIframe = ({ data }) => {
     const handleMessage = (event) => {
       const message = event.data;
 
+      console.log("HERE L: ", message);
+
       if (message === "onExit") {
         router.push("/");
+      }
+
+      if (message === "OnEnter") {
+        console.log("AAAA RHA HU MAI");
       }
     };
 

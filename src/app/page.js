@@ -2,9 +2,12 @@ import Footer from "@/components/Footer";
 import Game from "@/components/Game";
 import Header from "@/components/Header";
 import Image from "next/image";
+import { Suspense } from "react";
 
 async function getGames() {
-  const res = await fetch("http://localhost:3000/api/games");
+  const res = await fetch("http://localhost:3000/api/games", {
+    next: { tags: ["games"] },
+  });
 
   if (!res.ok) {
     throw new Error("Something went wrong");
@@ -12,9 +15,13 @@ async function getGames() {
   return res.json();
 }
 
+async function RenderGame() {
+  const games = await getGames();
+  return <Game data={games} />;
+}
+
 const Home = async () => {
   const games = await getGames();
-  console.log("Games : ", games);
   return (
     <main className="relative w-full overflow-hidden">
       <svg
@@ -1300,7 +1307,9 @@ const Home = async () => {
         className="z-[-2]"
       />
       <Header />
-      <Game data={games} />
+      <Suspense fallback={<h1>Loading</h1>}>
+        <RenderGame />
+      </Suspense>
       <Footer />
     </main>
   );

@@ -14,11 +14,12 @@ const GameCard = ({ src, type }) => {
   };
 
   const handleGame = (game) => {
+    console.log("OPETN : ", game);
     router.push(`/${game.gameName}`);
   };
   return (
     <div
-      className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2] border-4 "
+      className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
       onClick={() => handleGame(src)}
     >
       <button

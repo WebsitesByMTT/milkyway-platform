@@ -2,11 +2,12 @@ import CreateError from "@/utils/Error";
 import data from "@/utils/data";
 import { NextResponse } from "next/server";
 
-export const GET = async (request, response, { params }) => {
+export const GET = async (request, { params }) => {
   const { gameId } = params;
+  console.log("GAME OEP : ", gameId);
 
   try {
-    const game = data.find((item) => item.gameName === gameId);
+    const game = data.find((item) => item.gameName == gameId);
     if (!game || game === undefined) {
       throw new CreateError(204, "No Game Found");
     }
