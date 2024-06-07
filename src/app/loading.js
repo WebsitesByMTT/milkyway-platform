@@ -1,13 +1,8 @@
 import React from "react";
+import Loader from "../components/ui/Loader";
 
 const loading = () => {
-  return (
-    <div className=" w-full h-screen flex items-center justify-center text-white spin-loader">
-      <svg viewBox="25 25 50 50">
-        <circle r="20" cy="50" cx="50"></circle>
-      </svg>
-    </div>
-  );
+  return <Loader />;
 };
 
 export default loading;

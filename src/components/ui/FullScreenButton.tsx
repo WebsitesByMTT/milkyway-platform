@@ -2,21 +2,29 @@
 
 const FullScreenButton = () => {
   const fullScreenHandler = () => {
+    const doc: any = document;
     if (
       !document.fullscreenElement &&
-      !document.webkitFullscreenElement &&
-      !document.msFullscreenElement
+      !doc.webkitFullscreenElement &&
+      !doc.msFullscreenElement
     ) {
       if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
+      } else if (doc.documentElement.webkitRequestFullscreen) {
+        doc.documentElement.webkitRequestFullscreen();
+      } else if (doc.documentElement.msRequestFullscreen) {
+        doc.documentElement.msRequestFullscreen();
       }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
+      } else if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+      } else if (doc.msExitFullscreen) {
+        doc.msExitFullscreen();
       }
     }
   };
-
   return (
     <button onClick={fullScreenHandler}>
       <svg

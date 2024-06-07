@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Game from "@/components/Game";
 import Header from "@/components/Header";
+import AudioPlayer from "@/components/ui/AudioPlayer";
 import { getGames, getUser } from "@/utils/utils";
 import Image from "next/image";
 
@@ -16,7 +17,7 @@ const Home = async () => {
         viewBox="0 0 1920 1080"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto absolute top-0 left-0 object-cover"
+        className="w-full h-auto absolute top-0 left-0 object-cover border"
       >
         <g opacity="0.5" clipPath="url(#clip0_618_11011)">
           <mask
@@ -1294,6 +1295,7 @@ const Home = async () => {
       <Header user={currentUser} />
       <Game data={games} />
       <Footer />
+      <AudioPlayer />
     </main>
   );
 };
