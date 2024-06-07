@@ -4,7 +4,7 @@
 
 body {
   cursor: url("/cursor.svg"), auto;
-  background: #000;
+  background: #0f172a;
   overflow: hidden;
   font-family: sans-serif;
 }
@@ -119,7 +119,7 @@ input:focus::placeholder {
   justify-content: center;
   position: absolute;
   z-index: -1;
-   width: 100%;
+  width: 100%;
   height: 100%;
 }
 .wrapper {
@@ -137,9 +137,9 @@ input:focus::placeholder {
 }
 .animated .one {
   border-radius: 100%;
-  width: 30%;
-  height: 50%;
-  background-color: #cdc5d554;
+  width: 50%;
+  height: 80%;
+  background-color: #b886e950;
   left: 30%;
   top: 10%;
   z-index: 3;
@@ -149,35 +149,35 @@ input:focus::placeholder {
 .animated .two {
   width: 50%;
   height: 70%;
-  background-color: #a6cfc889;
+  background-color: #639a9176;
   bottom: -10%;
   left: 0;
   animation: flyPlus 15s linear infinite;
 }
 .animated .three {
-  border-radius: 100%;
+  /* border-radius: 100%;
   width: 50%;
-  height: 50%;
+  height: 70%;
   bottom: 20%;
   right: -20%;
-  background-color: #ffca575b;
-  animation: flyPlus 10s linear infinite;
+  background-color: #ffca577c;
+  animation: fly 15s linear infinite;
   -webkit-animation: flyPlus 10s linear infinite;
   transform: rotate(0) translate(200px) rotate(0);
   -webkit-transform: rotate(0) translate(200px) rotate(0);
   -moz-transform: rotate(0) translate(200px) rotate(0);
   -ms-transform: rotate(0) translate(200px) rotate(0);
-  -o-transform: rotate(0) translate(200px) rotate(0);
+  -o-transform: rotate(0) translate(200px) rotate(0); */
 }
 .four {
   border-radius: 100%;
-  width: 350px;
-  height: 350px;
+  width: 50%;
+  height: 60%;
   margin: auto;
-  bottom: 0;
+  bottom: -30%;
   right: 0;
-  background-color: #a2d7ec96;
-  animation: flyPlus 15s linear infinite;
+  background-color: #61b1d163;
+  animation: fly 15s linear infinite;
   -webkit-animation: flyPlus 15s linear infinite;
   transform: rotate(0) translate(200px) rotate(0);
   -webkit-transform: rotate(0) translate(200px) rotate(0);
@@ -192,7 +192,7 @@ input:focus::placeholder {
     -moz-transform: rotate(2turn) translate(200px) rotate(-2turn);
     -ms-transform: rotate(2turn) translate(200px) rotate(-2turn);
     -o-transform: rotate(2turn) translate(200px) rotate(-2turn);
-}
+  }
 }
 @keyframes flyPlus {
   100% {
@@ -201,5 +201,71 @@ input:focus::placeholder {
     -moz-transform: rotate(-2turn) translate(200px) rotate(2turn);
     -ms-transform: rotate(-2turn) translate(200px) rotate(2turn);
     -o-transform: rotate(-2turn) translate(200px) rotate(2turn);
+  }
 }
+
+.spin-loader {
+  svg {
+    width: 3.25em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+  }
+
+  circle {
+    fill: none;
+    stroke: hsl(214, 97%, 59%);
+    stroke-width: 2;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
+
+.spinner {
+  background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
+  width: 100px;
+  height: 100px;
+  animation: spinning82341 1.7s linear infinite;
+  text-align: center;
+  border-radius: 50px;
+  filter: blur(1px);
+  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255),
+    0px 5px 20px 0px rgb(0, 225, 255);
+}
+
+.spinner1 {
+  background-color: rgb(36, 36, 36);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  filter: blur(10px);
+}
+
+@keyframes spinning82341 {
+  to {
+    transform: rotate(360deg);
+  }
 }
