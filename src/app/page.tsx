@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import Game from "@/components/Game";
 import Header from "@/components/Header";
 import AudioPlayer from "@/components/ui/AudioPlayer";
-import { getGames, getUser } from "@/utils/utils";
+import { getGames, getUser } from "@/utils/actions";
 import Image from "next/image";
 
 const Home = async () => {

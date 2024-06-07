@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { config } from "../../utils/config";
 
-
 const Login = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
@@ -48,11 +47,9 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Handle successful login
         console.log("Login successful:", data);
-        router.push("/");
-
         Cookies.set("token", data?.token);
+        router.push("/");
       } else {
         // Handle login errors
         setError(data.message || "Login failed");
