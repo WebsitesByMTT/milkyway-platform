@@ -3,15 +3,18 @@
 import { cookies } from "next/headers";
 import { config } from "./config";
 
-const cookieStore = cookies();
+async function getCookieData() {
+  const cookieData = cookies().get("token")?.value as string;
+  return cookieData;
+}
 
-export const getUser = async () => {
+export async function getUser() {
   try {
-    const token = cookieStore.get("token")?.value as string;
+    const token = await getCookieData();
 
     const response = await fetch(`${config.server}/api/users/userData`, {
       method: "GET",
-      credentials: "include", // This sends cookies along with the request
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         Cookie: `userToken=${token}`,
@@ -27,12 +30,12 @@ export const getUser = async () => {
   } catch (error) {
     console.error("Fetch failed:", error);
   }
-};
+}
 
-export const getGames = async () => {
+export async function getGames() {
   const res = await fetch("http://localhost:3000/api/games");
   if (!res.ok) {
     throw new Error("Something went wrong");
   }
   return res.json();
-};
+}
