@@ -23,11 +23,8 @@ const GameIframe = ({ data }: any) => {
       }
 
       if (message === "OnEnter") {
-        alert("ON ENTER");
-
-        console.log(
-          "      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus cupiditate, laborum quam hic eaque deserunt repellendus adipisci quae facere aut perferendis, obcaecati eligendi. Harum sunt eveniet id? Temporibus, fugit sapiente!"
-        );
+        setIframeLoaded(true);
+        console.log("I FRAME LOADED");
       }
     };
 
@@ -38,16 +35,11 @@ const GameIframe = ({ data }: any) => {
     };
   }, []);
 
-  const handleIframeLoad = () => {
-    setIframeLoaded(true);
-  };
-
   return (
     <>
       <iframe
         src={`${gameData?.game?.gameHostLink}`}
         className=" w-full h-full "
-        onLoad={handleIframeLoad}
       />
 
       {!iframeLoaded && (
