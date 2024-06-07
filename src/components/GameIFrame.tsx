@@ -1,10 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import Portal from "./ui/Portal";
+import Loader from "./ui/Loader";
 
 const GameIframe = ({ data }: any) => {
   const [gameData, setGameData] = useState(data);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -18,7 +23,11 @@ const GameIframe = ({ data }: any) => {
       }
 
       if (message === "OnEnter") {
-        console.log("AAAA RHA HU MAI");
+        alert("ON ENTER");
+
+        console.log(
+          "      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus cupiditate, laborum quam hic eaque deserunt repellendus adipisci quae facere aut perferendis, obcaecati eligendi. Harum sunt eveniet id? Temporibus, fugit sapiente!"
+        );
       }
     };
 
@@ -29,11 +38,28 @@ const GameIframe = ({ data }: any) => {
     };
   }, []);
 
+  const handleIframeLoad = () => {
+    setIframeLoaded(true);
+  };
+
   return (
-    <iframe
-      src={`${gameData?.game?.gameHostLink}`}
-      className=" w-full h-full"
-    />
+    <>
+      <iframe
+        src={`${gameData?.game?.gameHostLink}`}
+        className=" w-full h-full "
+        onLoad={handleIframeLoad}
+      />
+
+      {!iframeLoaded && (
+        <Portal>
+          <div className=" w-full h-full flex items-center justify-center text-white spin-loader">
+            <div className="spinner">
+              <div className="spinner1"></div>
+            </div>
+          </div>{" "}
+        </Portal>
+      )}
+    </>
   );
 };
 
