@@ -9,6 +9,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { useState } from "react";
 import Popup from "./Pop-Up";
+import Modal from "./ui/Modal";
 
 const Footer = () => {
   const [open, setOpen] = useState(false);
@@ -16468,7 +16469,8 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      {open && <Popup setOpen={setOpen} />}
+
+      {open && <Modal isOpen={open} setOpen={setOpen} />}
     </footer>
   );
 };

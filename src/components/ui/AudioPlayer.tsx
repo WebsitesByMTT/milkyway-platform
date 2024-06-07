@@ -56,51 +56,13 @@ const AudioPlayer = () => {
   };
 
   return (
-    <div>
-      {error && (
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            position: "fixed",
-            top: "0px",
-            left: "0px",
-            padding: "16px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            backdropFilter: "blur(5px)",
-          }}
-        >
-          <p style={{ color: "white", fontWeight: "bold", marginTop: "16px" }}>
-            {error}
-          </p>
-          <button
-            onClick={handlePlay}
-            disabled={isPlaying}
-            style={{
-              marginTop: "8px",
-              padding: "10px 20px",
-              backgroundColor: isPlaying ? "#cccccc" : "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: isPlaying ? "not-allowed" : "pointer",
-            }}
-          >
-            Play Audio
-          </button>
-        </div>
-      )}
-      <audio
-        ref={audioRef}
-        src={"/audio/bg-audio.wav"}
-        autoPlay
-        loop
-        className="hidden"
-      />
-    </div>
+    <audio
+      ref={audioRef}
+      src={"/audio/bg-audio.wav"}
+      autoPlay
+      loop
+      className="hidden"
+    />
   );
 };
 
