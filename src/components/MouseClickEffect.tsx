@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 
 export default function MouseClickEffect() {
-  function handleClick(event) {
+  function handleClick(event: any) {
     const effect = document.createElement("div");
     effect.classList.add("click-effect");
     effect.style.left = `${event.clientX}px`;
