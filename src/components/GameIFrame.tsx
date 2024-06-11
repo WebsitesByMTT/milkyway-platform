@@ -42,10 +42,13 @@ const GameIframe = ({ data }: any) => {
   useEffect(() => {
     const handleMessage = (event: any) => {
       const message = event.data;
+      console.log("message : ", message);
 
       const iframe = document.getElementById("gameIframe") as HTMLIFrameElement;
       if (message === "authToken") {
         if (iframe.contentWindow) {
+          console.log("Sending to IFRAME ");
+
           iframe.contentWindow.postMessage(
             { type: "authToken", cookie: getToken("token") },
             `${gameData?.game?.gameHostLink}`
