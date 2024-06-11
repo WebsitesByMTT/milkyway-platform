@@ -2,14 +2,16 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import Setting from "../Setting";
 
 interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
+  setModalType: (type: string) => void;
 }
 
-const Modal = ({ children, isOpen, setOpen }: ModalProps) => {
+const Modal = ({ children, isOpen, setOpen, setModalType }: ModalProps) => {
   const [isOnClient, setIsOnClient] = useState<Boolean>(false);
 
   useEffect(() => {
@@ -17,13 +19,18 @@ const Modal = ({ children, isOpen, setOpen }: ModalProps) => {
   }, []);
 
   const handleClick = () => {
+    setModalType("");
     setOpen(false);
   };
+
+  if (!isOpen) {
+    return null;
+  }
 
   return isOnClient
     ? ReactDOM.createPortal(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00000096] z-[999]">
-          <div className="w-[60%] h-auto relative animate-popup">
+          <div className="w-[60%] h-auto relative animate-popup ">
             <svg
               width="1393"
               height="771"
@@ -77,8 +84,8 @@ const Modal = ({ children, isOpen, setOpen }: ModalProps) => {
                 </linearGradient>
               </defs>
             </svg>
-            <div className="w-full absolute top-0 left-0 h-full flex flex-col items-start justify-start ">
-              <div className="relative w-[98.5%] mx-auto h-[15%]">
+            <div className="w-full absolute top-0 left-0 h-full flex flex-col items-center justify-center ">
+              <div className="relative w-[98.5%] mx-auto h-[15%] mt-1">
                 <Image
                   fill
                   src="/popupbg.png"
@@ -86,6 +93,7 @@ const Modal = ({ children, isOpen, setOpen }: ModalProps) => {
                   alt="popup-bg"
                 />
               </div>
+              <div className=" h-full  w-[98.5%]  ">{children}</div>
             </div>
             <button
               className="absolute right-[-5%] top-[-2%] h-[12%] w-[10%]"

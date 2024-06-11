@@ -84,6 +84,7 @@ const Login = () => {
               onChange={handleUsernameChange}
               placeholder="ACCOUNT"
               className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              autoComplete="off"
             ></input>
           </div>
         </div>
@@ -96,6 +97,7 @@ const Login = () => {
               onChange={handlePasswordChange}
               placeholder="PASSWORD"
               className="placeholder-inherit focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              autoComplete="off"
             ></input>
           </div>
         </div>
