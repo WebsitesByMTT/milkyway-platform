@@ -7,12 +7,30 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Popup from "./Pop-Up";
 import Modal from "./ui/Modal";
+import Setting from "./Setting";
+import AudioPlayer from "./ui/AudioPlayer";
+import Password from "@/components/Password";
+import Annoucement from "@/components/Annoucement";
+import Share from "@/components/Share";
 
 const Footer = () => {
   const [open, setOpen] = useState(false);
+  const audioRef = useRef(null);
+  const [volume, setVolume] = useState(0.5);
+  const [modalType, setModalType] = useState("");
+
+  const handleVolumneChange = (event) => {
+    const newVolumne = event.target.value;
+    setVolume(newVolumne);
+
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume / 100;
+    }
+  };
+
   const footerCarousel = [
     {
       text: "MINOR",
@@ -40,9 +58,31 @@ const Footer = () => {
     },
   ];
 
-  const handleClick = () => {
+  const handleModalOpen = (type) => {
+    setModalType(type);
     setOpen(true);
   };
+
+  // Dynamically render the modal content based on modalType using a switch statement
+  let ModalContent;
+  switch (modalType) {
+    case "SETTING":
+      ModalContent = <Setting />;
+      break;
+    case "PASSWORD":
+      ModalContent = <Password />;
+      break;
+
+    case "ANNOUNCEMENT":
+      ModalContent = <Annoucement />;
+      break;
+
+    case "SHARE":
+      ModalContent = <Share />;
+      break;
+    default:
+      ModalContent = null; // No modal content by default
+  }
 
   return (
     <footer className="relative flex items-center justify-center">
@@ -16100,7 +16140,10 @@ const Footer = () => {
       </svg>
       <div className="absolute h-full w-[83%] m-auto flex justify-between top-0 left-auto">
         <div className="flex justify-evenly w-[30%] h-[95%]">
-          <button className="w-[50%] h-full" onClick={handleClick}>
+          <button
+            className="w-[50%] h-full"
+            onClick={() => handleModalOpen("SHARE")}
+          >
             <svg
               width="100"
               height="134"
@@ -16182,7 +16225,10 @@ const Footer = () => {
               </defs>
             </svg>
           </button>
-          <button className="w-[50%] h-full" onClick={handleClick}>
+          <button
+            className="w-[50%] h-full"
+            onClick={() => handleModalOpen("ANNOUNCEMENT")}
+          >
             <svg
               width="160"
               height="134"
@@ -16301,7 +16347,10 @@ const Footer = () => {
           </CarouselContent>
         </Carousel>
         <div className="flex justify-evenly w-[30%] h-[95%]">
-          <button className="w-[50%] h-full" onClick={handleClick}>
+          <button
+            className="w-[50%] h-full "
+            onClick={() => handleModalOpen("PASSWORD")}
+          >
             <svg
               width="104"
               height="134"
@@ -16385,7 +16434,10 @@ const Footer = () => {
               </defs>
             </svg>
           </button>
-          <button className="w-[50%] h-full" onClick={handleClick}>
+          <button
+            className="w-[50%] h-full "
+            onClick={() => handleModalOpen("SETTING")}
+          >
             <svg
               width="100"
               height="134"
@@ -16469,8 +16521,9 @@ const Footer = () => {
           </button>
         </div>
       </div>
-
-      {open && <Modal isOpen={open} setOpen={setOpen} />}
+      <Modal isOpen={open} setOpen={setOpen} setModalType={setModalType}>
+        {ModalContent}
+      </Modal>
     </footer>
   );
 };

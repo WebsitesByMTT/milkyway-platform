@@ -1,7 +1,9 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useVolumeControl } from "../context/VolumeControlContext";
 
 const AudioPlayer = () => {
+  const { volume } = useVolumeControl();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -40,6 +42,12 @@ const AudioPlayer = () => {
       audio.removeEventListener("error", handleError);
     };
   }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume]);
 
   const handlePlay = async () => {
     const audio = audioRef.current;
