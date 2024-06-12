@@ -5,7 +5,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/rFYPn09/Viking-slot-2-1-01.png",
     gameHostLink: "https://slot-vikings.vercel.app/",
     type: "featured",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameId: "2",
@@ -21,7 +21,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GCT",
@@ -29,7 +29,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GCT",
@@ -37,7 +37,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GCT",
@@ -45,7 +45,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GCT",
@@ -53,7 +53,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GCT",
@@ -61,7 +61,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/7gK8YsN/Egyptian-Treasures-1-01.png",
     gameHostLink: "https://slot-golden-china-town.vercel.app",
     type: "hot",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GoldOfEgypt",
@@ -69,7 +69,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "new",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GoldOfEgypt",
@@ -77,7 +77,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "new",
-    category: "fishing",
+    category: "fish",
   },
 
   {
@@ -86,7 +86,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "new",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GoldOfEgypt",
@@ -110,7 +110,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GoldOfEgypt",
@@ -118,7 +118,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GoldOfEgypt",
@@ -126,7 +126,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "GoldOfEgypt",
@@ -142,7 +142,7 @@ const data = [
     gameThumbnailUrl: "https://i.ibb.co/Sn2prcb/Gold-Of-Egypt-1-01.png",
     gameHostLink: "https://slot-gold-of-egypt.vercel.app",
     type: "",
-    category: "fishing",
+    category: "fish",
   },
   {
     gameName: "Game 1",

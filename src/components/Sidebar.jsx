@@ -1,14 +1,21 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useState } from "react";
 
-const Sidebar = ({ selectedOption, setSelectedOption }) => {
+const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  console.log("path : ", searchParams.get("category"));
+  const [selectedOption, setSelectedOption] = useState(
+    searchParams.get("category")
+  );
+
   const [open, setOpen] = useState(true);
   const menu = [
     {
+      name: "all",
+      url: "/",
       icon: (
         <svg
           width="85"
@@ -124,7 +131,6 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
           </defs>
         </svg>
       ),
-      name: "all",
       selectedIcon: (
         <svg
           width="85"
@@ -281,6 +287,8 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
       ),
     },
     {
+      name: "favourite",
+      url: "/favourite",
       icon: (
         <svg
           width="85"
@@ -396,7 +404,6 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
           </defs>
         </svg>
       ),
-      name: "favourite",
       selectedIcon: (
         <svg
           width="85"
@@ -554,6 +561,8 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
       ),
     },
     {
+      name: "fish",
+      url: "/fish",
       icon: (
         <svg
           width="85"
@@ -695,7 +704,6 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
           </defs>
         </svg>
       ),
-      name: "fishing",
       selectedIcon: (
         <svg
           width="85"
@@ -890,6 +898,8 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
       ),
     },
     {
+      name: "slot",
+      url: "/slot",
       icon: (
         <svg
           width="85"
@@ -1005,7 +1015,6 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
           </defs>
         </svg>
       ),
-      name: "slot",
       selectedIcon: (
         <svg
           width="85"
@@ -1162,6 +1171,8 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
       ),
     },
     {
+      name: "others",
+      url: "/others",
       icon: (
         <svg
           width="85"
@@ -1277,7 +1288,6 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
           </defs>
         </svg>
       ),
-      name: "others",
       selectedIcon: (
         <svg
           width="85"
@@ -1434,6 +1444,8 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
       ),
     },
     {
+      name: "link",
+      url: "/link",
       icon: (
         <svg
           width="85"
@@ -1549,7 +1561,6 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
           </defs>
         </svg>
       ),
-      name: "link",
       selectedIcon: (
         <svg
           width="85"
@@ -1709,7 +1720,18 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
 
   const handleCategory = (category) => {
     setSelectedOption(category);
+    router.push(pathname + "?" + createQueryString("category", `${category}`));
   };
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   return (
     <div
@@ -1720,11 +1742,13 @@ const Sidebar = ({ selectedOption, setSelectedOption }) => {
       {open && (
         <div className="p-[5%] bg-gradient-to-r from-[#53EFF1] via-[#3786FA] to-[#12C7F5] rounded-[5px]">
           <div className="flex gap-1 flex-col p-[4%] rounded-[5px] bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900">
-            {menu.map((ele, index) => (
-              <button key={index} onClick={() => handleCategory(ele.name)}>
-                {selectedOption === ele.name ? ele?.selectedIcon : ele.icon}
-              </button>
-            ))}
+            {menu.map((ele, index) => {
+              return (
+                <div key={index} onClick={() => handleCategory(ele.name)}>
+                  {selectedOption === ele.name ? ele?.selectedIcon : ele.icon}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

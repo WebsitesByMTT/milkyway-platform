@@ -93,6 +93,8 @@ const Modal = ({ children, isOpen, setOpen, setModalType }: ModalProps) => {
                   alt="popup-bg"
                 />
               </div>
+              <h1 className="text-white modal-title">Hello</h1>
+
               <div className=" h-full  w-[98.5%]  ">{children}</div>
             </div>
             <button

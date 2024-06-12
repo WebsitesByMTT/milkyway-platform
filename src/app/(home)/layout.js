@@ -1,17 +1,15 @@
 import Footer from "@/components/Footer";
-import Game from "@/components/Game";
 import Header from "@/components/Header";
 import AudioPlayer from "@/components/ui/AudioPlayer";
-import { getGames, getUser } from "@/utils/actions";
+import { getUser } from "@/utils/actions";
 import Image from "next/image";
 
-const Home = async () => {
-  const games = await getGames();
+export default async function RootLayout({ children }) {
   const currentUser = await getUser();
 
   return (
-    <main className="relative w-full overflow-hidden">
-      <svg
+    <main className="relative w-full overflow-hidden ">
+      {/* <svg
         width="1920"
         height="1080"
         viewBox="0 0 1920 1080"
@@ -1273,15 +1271,18 @@ const Home = async () => {
             <rect width="1920" height="1080" fill="white" />
           </clipPath>
         </defs>
-      </svg>
-      <div className="animated">
+      </svg> */}
+      {/* <div className="animated">
         <div className="wrapper">
           <div className="one"></div>
           <div className="two"></div>
           <div className="three"></div>
           <div className="four"></div>
         </div>
-      </div>
+      </div> */}
+
+      <div className="wave-bg w-full h-full absolute top-0 left-0"></div>
+
       <Image
         src={"/bg1.png"}
         fill
@@ -1293,11 +1294,9 @@ const Home = async () => {
         className="z-[-2]"
       />
       <Header user={currentUser} />
-      <Game data={games} />
+      {children}
       <Footer />
       <AudioPlayer />
     </main>
   );
-};
-
-export default Home;
+}

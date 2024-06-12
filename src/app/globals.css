@@ -9,6 +9,18 @@ body {
   font-family: sans-serif;
 }
 
+a,
+a:hover {
+  cursor: url("/cursor.svg"), auto;
+}
+
+button,
+input,
+select,
+textarea {
+  cursor: url("/cursor.svg"), auto;
+}
+
 button {
   cursor: inherit;
 }
@@ -112,7 +124,7 @@ button {
 input:focus::placeholder {
   opacity: 0;
 }
-
+/* 
 .animated {
   display: flex;
   align-items: center;
@@ -153,7 +165,7 @@ input:focus::placeholder {
   bottom: -10%;
   left: 0;
   animation: flyPlus 15s linear infinite;
-}
+} */
 .animated .three {
   /* border-radius: 100%;
   width: 50%;
@@ -169,7 +181,7 @@ input:focus::placeholder {
   -ms-transform: rotate(0) translate(200px) rotate(0);
   -o-transform: rotate(0) translate(200px) rotate(0); */
 }
-.four {
+/* .four {
   border-radius: 100%;
   width: 50%;
   height: 60%;
@@ -202,7 +214,7 @@ input:focus::placeholder {
     -ms-transform: rotate(-2turn) translate(200px) rotate(2turn);
     -o-transform: rotate(-2turn) translate(200px) rotate(2turn);
   }
-}
+} */
 
 .spin-loader {
   svg {
@@ -324,4 +336,96 @@ input:focus::placeholder {
   cursor: pointer;
   border: none;
   position: relative;
+}
+
+.modal-title {
+  font-weight: 700;
+  font-size: 75.0257px;
+  line-height: 90px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffe600 50.05%,
+    #ce3313 83.77%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #f86e02;
+}
+
+@property --blink-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes blink-animation {
+  0%,
+  100% {
+    opacity: var(--blink-opacity, 1);
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes smoothBg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+:root {
+  font-family: Inter, sans-serif;
+
+  --stripe-color: #fff;
+  --bg: var(--stripe-color);
+  --maincolor: var(--bg);
+}
+
+.wave-bg {
+  --stripes: repeating-linear-gradient(
+    100deg,
+    #fff 0%,
+    #fff 7%,
+    transparent 10%,
+    transparent 12%,
+    #fff 16%
+  );
+
+  --rainbow: repeating-linear-gradient(
+    100deg,
+    #60a5fae1 10%,
+    #e879f9b9 15%,
+    #60a5faa9 20%,
+    #5eead5be 25%,
+    #60a5fabb 30%
+  );
+
+  background-image: var(--stripes), var(--rainbow);
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+
+  filter: blur(5px) invert(20%);
+
+  mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--stripes), var(--rainbow);
+    background-size: 200%, 100%;
+    animation: smoothBg 60s linear infinite;
+    background-attachment: fixed;
+    mix-blend-mode: difference;
+  }
 }
