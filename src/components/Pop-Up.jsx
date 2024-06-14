@@ -59,7 +59,12 @@ const PopUp = ({ setOpen }) => {
         </svg>
         <div className="w-full absolute top-0 left-0 h-full flex flex-col items-start justify-start ">
           <div className="relative w-[98.5%] mx-auto h-[15%]">
-            <Image fill src="/popupbg.png" objectFit="contain" alt="popup-bg" />
+            <Image
+              fill
+              src="/popupbg.png"
+              alt="popup-bg"
+              className=" object-contain"
+            />
           </div>
         </div>
         <button

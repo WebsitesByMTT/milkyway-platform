@@ -14,13 +14,12 @@ const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
         className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
         onClick={gameOpenHandler}
       >
-        <FavButton />
+        <FavButton id={src?._id} />
         <div className=" w-full h-full relative">
           <Image
             src={src.gameThumbnailUrl}
-            objectFit="cover"
             fill
-            className="h-full w-full z-[1] p-[1.5%] rounded-xl"
+            className="h-full w-full z-[1] p-[1.5%] rounded-xl object-cover"
             alt="game-img"
           />
           {type ? (
