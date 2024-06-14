@@ -33,6 +33,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
   }
 
   useEffect(() => {
+    console.log("Current Src : ", src);
     const handleMessage = (event) => {
       const message = event.data;
       console.log("message : ", message);
@@ -40,7 +41,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
         if (iframe.contentWindow) {
-          console.log("Sending to IFRAME ");
+          console.log("Sending to IFRAME....................... ");
 
           iframe.contentWindow.postMessage(
             { type: "authToken", cookie: getToken("token") },
@@ -55,6 +56,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
       }
 
       if (message === "OnEnter") {
+        console.log("OnENter message received.........................");
         setGameLoaded(true);
       }
     };
@@ -64,7 +66,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, []);
+  }, [show, onClose, src, gameLoaded, setGameLoaded]);
 
   if (!show) {
     return null;
@@ -74,6 +76,12 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
     ? ReactDOM.createPortal(
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className=" rounded-lg shadow-lg  relative w-full h-full">
+            <button
+              onClick={onClose}
+              className="absolute top-0 right-0 m-4 text-white"
+            >
+              Close
+            </button>
             {show && (
               <iframe
                 key={iframeKey}
