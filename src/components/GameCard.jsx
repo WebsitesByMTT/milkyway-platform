@@ -1,25 +1,12 @@
 "use client";
 import Image from "next/image";
 import FavButton from "./ui/FavButton";
-import GameModal from "./ui/GameModal";
-import { useState, useEffect } from "react";
 
-const GameCard = ({ src, type }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [gameLoaded, setGameLoaded] = useState(false);
-
+const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
   const gameOpenHandler = () => {
+    setCurrentGame(src?.gameHostLink);
     setIsModalOpen(true);
   };
-
-  const closeModalHandler = () => {
-    setGameLoaded(false);
-    setIsModalOpen(false);
-  };
-
-  useEffect(() => {
-    console.log("Game Loaded : ", gameLoaded);
-  }, [gameLoaded]);
 
   return (
     <>
@@ -189,13 +176,6 @@ const GameCard = ({ src, type }) => {
           ) : null}
         </div>
       </div>
-      <GameModal
-        show={isModalOpen}
-        onClose={closeModalHandler}
-        src={src.gameHostLink}
-        gameLoaded={gameLoaded}
-        setGameLoaded={setGameLoaded}
-      />
     </>
   );
 };
