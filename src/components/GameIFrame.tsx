@@ -1,12 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import Portal from "./ui/Portal";
-import Loader from "./ui/Loader";
-import Cookies from "js-cookie";
 
 const GameIframe = ({ data }: any) => {
   const [gameData, setGameData] = useState(data);
@@ -32,12 +28,6 @@ const GameIframe = ({ data }: any) => {
     // Access the token
     return cookieObject[cookieName];
   }
-
-  useEffect(() => {
-    console.log("Token:", getToken("token"));
-
-    // Use the token as needed...
-  }, []);
 
   useEffect(() => {
     const handleMessage = (event: any) => {

@@ -10,7 +10,7 @@ import {
 import Sidebar from "./Sidebar";
 import GamesGrid from "./GamesGrid";
 
-const Game = ({ data }) => {
+const Games = ({ data }) => {
   useEffect(() => {
     const carousel = document.querySelector(".Carousel");
     let isScrolling = false;
@@ -54,4 +54,4 @@ const Game = ({ data }) => {
   );
 };
 
-export default Game;
+export default Games;

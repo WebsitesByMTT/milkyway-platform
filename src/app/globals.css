@@ -226,7 +226,7 @@ input:focus::placeholder {
   circle {
     fill: none;
     stroke: hsl(214, 97%, 59%);
-    stroke-width: 2;
+    strokewidth: 2;
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
@@ -340,9 +340,9 @@ input:focus::placeholder {
 
 .modal-title {
   font-weight: 700;
-  font-size: 75.0257px;
+  /* font-size: 75.0257px;
   line-height: 90px;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.11em; */
   text-transform: uppercase;
 
   background: linear-gradient(
@@ -355,7 +355,7 @@ input:focus::placeholder {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-strokewidth: 1px;
   -webkit-text-stroke-color: #f86e02;
 }
 

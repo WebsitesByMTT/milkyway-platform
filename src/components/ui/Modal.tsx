@@ -2,16 +2,22 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import Setting from "../Setting";
 
 interface ModalProps {
   children: React.ReactNode;
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
+  modalType: string;
   setModalType: (type: string) => void;
 }
 
-const Modal = ({ children, isOpen, setOpen, setModalType }: ModalProps) => {
+const Modal = ({
+  children,
+  isOpen,
+  setOpen,
+  modalType,
+  setModalType,
+}: ModalProps) => {
   const [isOnClient, setIsOnClient] = useState<Boolean>(false);
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const Modal = ({ children, isOpen, setOpen, setModalType }: ModalProps) => {
   return isOnClient
     ? ReactDOM.createPortal(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00000096] z-[999]">
-          <div className="w-[60%] h-auto relative animate-popup ">
+          <div className="w-[65%] h-auto relative animate-popup ">
             <svg
               width="1393"
               height="771"
@@ -84,16 +90,22 @@ const Modal = ({ children, isOpen, setOpen, setModalType }: ModalProps) => {
                 </linearGradient>
               </defs>
             </svg>
+
             <div className="w-full absolute top-0 left-0 h-full flex flex-col items-center justify-center ">
-              <div className="relative w-[98.5%] mx-auto h-[15%] mt-1">
+              <div className="relative w-[98.5%] mx-auto h-[15%] mt-1 ">
                 <Image
                   fill
                   src="/popupbg.png"
                   objectFit="contain"
                   alt="popup-bg"
+                  className="z-0"
                 />
               </div>
-              <h1 className="text-white modal-title">Hello</h1>
+              <div className=" w-[98.5%] h-[15%] mt-1 absolute top-0 left-0 flex items-center justify-center">
+                <h1 className="text-white modal-title text-[2.5vw]">
+                  {modalType}
+                </h1>
+              </div>
 
               <div className=" h-full  w-[98.5%]  ">{children}</div>
             </div>

@@ -1,6 +1,4 @@
 "use server";
-import { revalidatePath } from "next/cache";
-import CreateError from "./Error";
 import { config } from "./config";
 import data from "./data";
 import { getCookie } from "./utils";
@@ -29,13 +27,36 @@ export const getUser = async () => {
   }
 };
 
+// export const getGames = async (category: string) => {
+//   if (category === "all") {
+//     return data;
+//   }
+//   console.log("Categor : ", category);
+//   const filteredData = data.filter((game) => game.category === category);
+//   return filteredData;
+// };
+
 export const getGames = async (category: string) => {
-  if (category === "all") {
+  const token = await getCookie();
+
+  try {
+    const response = await fetch(
+      `${config.server}/api/games/getGames?category=all`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `userToken=${token}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+    console.log("Games : ", data);
+
     return data;
-  }
-  console.log("Categor : ", category);
-  const filteredData = data.filter((game) => game.category === category);
-  return filteredData;
+  } catch (error) {}
 };
 
 export const getGameById = async (gameId: string) => {

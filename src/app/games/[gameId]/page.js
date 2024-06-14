@@ -7,6 +7,8 @@ const page = async ({ params }) => {
   const { gameId } = params;
   const data = await getGameById(gameId);
 
+  console.log("Game : ", data);
+
   if (data.game === null) {
     notFound(true);
   }

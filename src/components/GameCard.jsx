@@ -1,12 +1,76 @@
+"use client";
 import Image from "next/image";
 import FavButton from "./ui/FavButton";
-import Link from "next/link";
+import GameModal from "./ui/GameModal";
+import { useState, useEffect } from "react";
 
 const GameCard = ({ src, type }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [gameLoaded, setGameLoaded] = useState(false);
+
+  const gameOpenHandler = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
+  };
+
+  function getToken(cookieName) {
+    const cookies = document.cookie;
+
+    const cookieArray = cookies.split(";").map((cookie) => cookie.trim());
+    const cookieObject = {};
+    cookieArray.forEach((cookie) => {
+      const parts = cookie.split("=");
+      const key = decodeURIComponent(parts[0]);
+      const value = decodeURIComponent(parts.slice(1).join("="));
+      cookieObject[key] = value;
+    });
+
+    return cookieObject[cookieName];
+  }
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      const message = event.data;
+      console.log("message : ", message);
+
+      const iframe = document.getElementById("gameIframe");
+      if (message === "authToken") {
+        if (iframe.contentWindow) {
+          console.log("Sending to IFRAME ");
+
+          iframe.contentWindow.postMessage(
+            { type: "authToken", cookie: getToken("token") },
+            `${src}`
+          );
+        }
+      }
+
+      if (message === "onExit") {
+        router.push("/");
+      }
+
+      if (message === "OnEnter") {
+        setGameLoaded(true);
+        console.log("I FRAME LOADED");
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
   return (
-    <div className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]">
-      <FavButton />
-      <Link href={`/games/${src?.gameName}`} className=" cursor-auto">
+    <>
+      <div
+        className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
+        onClick={gameOpenHandler}
+      >
+        <FavButton />
         <div className=" w-full h-full relative">
           <Image
             src={src.gameThumbnailUrl}
@@ -167,8 +231,15 @@ const GameCard = ({ src, type }) => {
             </div>
           ) : null}
         </div>
-      </Link>
-    </div>
+      </div>
+      <GameModal
+        show={isModalOpen}
+        onClose={closeModalHandler}
+        src={src.gameHostLink}
+        gameLoaded={gameLoaded}
+        setGameLoaded={setGameLoaded}
+      />
+    </>
   );
 };
 

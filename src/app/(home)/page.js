@@ -1,4 +1,4 @@
-import Game from "@/components/Game";
+import Games from "@/components/Games";
 import { getGames } from "@/utils/actions";
 
 const Home = async ({ searchParams }) => {
@@ -6,7 +6,7 @@ const Home = async ({ searchParams }) => {
   const gamesCategory = category || "all";
   const games = await getGames(gamesCategory);
 
-  return <Game data={games} />;
+  return <Games data={games} />;
 };
 
 export default Home;

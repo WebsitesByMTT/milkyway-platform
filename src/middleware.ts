@@ -19,5 +19,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/games", "/games:gameId"],
+  matcher: "/((?!api|static|.*\\..*|_next).*)",
 };
