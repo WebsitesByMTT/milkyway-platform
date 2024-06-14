@@ -9,6 +9,10 @@ export const getCookie = async () => {
   return token;
 };
 
+export const deleteCookie = async () => {
+  cookies().delete("name");
+};
+
 export const getCurrentUser = async () => {
   const token = await getCookie();
   const user = jwt.decode(token as string);

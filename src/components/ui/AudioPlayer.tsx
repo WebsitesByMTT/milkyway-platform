@@ -37,9 +37,28 @@ const AudioPlayer = () => {
 
     audio.addEventListener("error", handleError);
 
+    // Pause audio when window is out of focus
+    const handleBlur = () => {
+      if (audio && !audio.paused) {
+        audio.pause();
+      }
+    };
+
+    // Resume audio when window is back in focus
+    const handleFocus = () => {
+      if (audio && audio.paused) {
+        playAudio(); // Re-attempt to play the audio
+      }
+    };
+
+    window.addEventListener("blur", handleBlur);
+    window.addEventListener("focus", handleFocus);
+
     // Clean up the event listener on component unmount
     return () => {
       audio.removeEventListener("error", handleError);
+      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("focus", handleFocus);
     };
   }, []);
 

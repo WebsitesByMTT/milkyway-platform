@@ -1,16 +1,40 @@
 import Image from "next/image";
 import React from "react";
 import FullScreenButton from "./ui/FullScreenButton";
+import LogoutButton from "./ui/LogoutButton";
+import Connector from "./svgs/Connector";
+import AvatarBorder from "./svgs/AvatarBorder";
 
 const Header = ({ user }) => {
   return (
     <header className="relative flex items-center justify-center">
-      <div className=" absolute top-1/2 transform -translate-y-1/2 left-[2%] text-white">
-        <span className=" capitalize text-base">{user?.username}</span>
+      <div className=" absolute top-[45%] left-[4%] flex gap-4">
+        <div className=" user">
+          <div className="avatar w-[4vw] h-[4vw] rounded-full relative flex items-center justify-center">
+            <AvatarBorder className=" w-full h-full  absolute top-0 left-0 z-[1]" />
+            <div className="relative  w-[90%] h-[90%] ">
+              <Image
+                src={"/avatar.png"}
+                alt={user?.username}
+                fill
+                objectFit="cover"
+              />
+            </div>
+            {/* <Connector className=" w-[60%] h-auto absolute -bottom-[.5vw] left-1/2 transform -translate-x-1/2 z-[2]" /> */}
+          </div>
+        </div>
+        <div className=" border">
+          <div className=" coin relative w-[3vw] h-[3vw]">
+            <Image
+              src={"/coin.png"}
+              alt="coin"
+              fill
+              className=" w-full h-full"
+            />
+          </div>
+        </div>
       </div>
-      <div className=" absolute top-1/2 transform -translate-y-1/2 right-[2%] text-white">
-        <span className=" capitalize text-base">{user?.credits}</span>
-      </div>
+
       <svg
         width="1920"
         height="110"
@@ -522,7 +546,11 @@ const Header = ({ user }) => {
         width={400}
         alt="logo"
       />
-      <FullScreenButton />
+
+      <div className=" absolute top-[45%] right-[4%] flex gap-4">
+        <FullScreenButton />
+        <LogoutButton />
+      </div>
     </header>
   );
 };

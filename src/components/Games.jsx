@@ -10,11 +10,7 @@ import {
 import Sidebar from "./Sidebar";
 import GamesGrid from "./GamesGrid";
 
-const Game = ({ data }) => {
-  const [gamesData, setGamesData] = useState(data);
-  const [selectedOption, setSelectedOption] = useState("all");
-  const [category, setCategory] = useState(["fishing", "slot"]);
-
+const Games = ({ data }) => {
   useEffect(() => {
     const carousel = document.querySelector(".Carousel");
     let isScrolling = false;
@@ -44,33 +40,12 @@ const Game = ({ data }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const filterData = () => {
-      if (selectedOption === "all") {
-        setGamesData(data);
-      } else {
-        const newFilteredData = data.filter(
-          (game) => game.category === selectedOption
-        );
-        setGamesData(newFilteredData);
-      }
-    };
-
-    filterData();
-  }, [selectedOption, category, data]);
-
   return (
     <div className="Carousel relative">
-      <Sidebar
-        selectedOption={selectedOption}
-        setSelectedOption={setSelectedOption}
-      />
-      <Carousel
-        className="w-[100%] m-auto"
-        opts={selectedOption === "all" ? { loop: true } : {}}
-      >
+      <Sidebar />
+      <Carousel className="w-[100%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[52vw] sm:min-h-[37vw]">
-          <GamesGrid data={gamesData} />
+          <GamesGrid data={data} />
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
         <CarouselNext className="CarouselNext w-[5%]" />
@@ -79,4 +54,4 @@ const Game = ({ data }) => {
   );
 };
 
-export default Game;
+export default Games;

@@ -18,18 +18,7 @@ import Share from "@/components/Share";
 
 const Footer = () => {
   const [open, setOpen] = useState(false);
-  const audioRef = useRef(null);
-  const [volume, setVolume] = useState(0.5);
   const [modalType, setModalType] = useState("");
-
-  const handleVolumneChange = (event) => {
-    const newVolumne = event.target.value;
-    setVolume(newVolumne);
-
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume / 100;
-    }
-  };
 
   const footerCarousel = [
     {
@@ -68,6 +57,7 @@ const Footer = () => {
   switch (modalType) {
     case "SETTING":
       ModalContent = <Setting />;
+
       break;
     case "PASSWORD":
       ModalContent = <Password />;
@@ -16349,7 +16339,7 @@ const Footer = () => {
         <div className="flex justify-evenly w-[30%] h-[95%]">
           <button
             className="w-[50%] h-full "
-            onClick={() => handleModalOpen("PASSWORD")}
+            onClick={() => handleModalOpen("MODIFY PASSWORD")}
           >
             <svg
               width="104"
@@ -16521,7 +16511,12 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <Modal isOpen={open} setOpen={setOpen} setModalType={setModalType}>
+      <Modal
+        isOpen={open}
+        setOpen={setOpen}
+        modalType={modalType}
+        setModalType={setModalType}
+      >
         {ModalContent}
       </Modal>
     </footer>
