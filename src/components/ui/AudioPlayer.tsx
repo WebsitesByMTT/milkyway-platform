@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "../context/VolumeControlContext";
 
 const AudioPlayer = () => {
-  const { volume } = useVolumeControl();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { volume, audioRef, playAudio, pauseAudio } = useVolumeControl();
   const [error, setError] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
@@ -13,9 +12,9 @@ const AudioPlayer = () => {
     if (!audio) return;
 
     // Attempt to play the audio when the component mounts
-    const playAudio = async () => {
+    const handlePlayAudio = async () => {
       try {
-        await audio.play();
+        await playAudio();
         setIsPlaying(true);
       } catch (err: any) {
         if (err.name === "NotAllowedError") {
@@ -27,7 +26,7 @@ const AudioPlayer = () => {
       }
     };
 
-    playAudio();
+    handlePlayAudio();
 
     // Error event listener
     const handleError = () => {
@@ -40,14 +39,14 @@ const AudioPlayer = () => {
     // Pause audio when window is out of focus
     const handleBlur = () => {
       if (audio && !audio.paused) {
-        audio.pause();
+        pauseAudio();
       }
     };
 
     // Resume audio when window is back in focus
     const handleFocus = () => {
       if (audio && audio.paused) {
-        playAudio(); // Re-attempt to play the audio
+        handlePlayAudio(); // Re-attempt to play the audio
       }
     };
 
@@ -60,27 +59,13 @@ const AudioPlayer = () => {
       window.removeEventListener("blur", handleBlur);
       window.removeEventListener("focus", handleFocus);
     };
-  }, []);
+  }, [audioRef]);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
     }
-  }, [volume]);
-
-  const handlePlay = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    try {
-      await audio.play();
-      setIsPlaying(true);
-      setError(null);
-    } catch (err: any) {
-      setError("Failed to play the audio.");
-      console.error("Audio play error:", err);
-    }
-  };
+  }, [volume, audioRef]);
 
   return (
     <audio
