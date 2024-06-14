@@ -34,7 +34,13 @@ const GamesGrid = ({ data }) => {
   return (
     <>
       <CarouselItem className="flex justify-center m-auto w-[80%]">
-        {featured.length > 0 && <FeaturedGameCard data={featured[0]} />}
+        {featured.length > 0 && (
+          <FeaturedGameCard
+            src={featured[0]}
+            setCurrentGame={setCurrentGame}
+            setIsModalOpen={setIsModalOpen}
+          />
+        )}
         <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
           {otherGames.slice(0, 6).map((game, index) => (
             <GameCard
