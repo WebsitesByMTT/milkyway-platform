@@ -17,7 +17,7 @@ const Header = ({ user }) => {
                 src={"/avatar.png"}
                 alt={user?.username}
                 fill
-                objectFit="cover"
+                className=" object-cover"
               />
             </div>
             {/* <Connector className=" w-[60%] h-auto absolute -bottom-[.5vw] left-1/2 transform -translate-x-1/2 z-[2]" /> */}

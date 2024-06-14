@@ -1,3 +1,4 @@
+"use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useState } from "react";
 
@@ -1735,7 +1736,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`absolute bottom-0 left-[1.8%] z-[10] w-[4.5%] py-[3%] flex justify-between items-center flex-col ${
+      className={`absolute bottom-0 left-[1.5%] z-[10] w-[4.5%] py-[3%] flex justify-between items-center flex-col ${
         open ? "h-full" : " h-fit"
       } `}
     >

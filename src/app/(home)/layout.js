@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
 import { VolumeProvider } from "@/components/context/VolumeControlContext";
 import AudioPlayer from "@/components/ui/AudioPlayer";
 import { getUser } from "@/utils/actions";
@@ -15,13 +16,15 @@ export default async function RootLayout({ children }) {
         fill
         alt="bg"
         priority={true}
-        objectFit="cover"
         quality={100}
         objectPosition="center"
-        className="z-[-2]"
+        className="z-[-2] object-cover"
       />
       <Header user={currentUser} />
-      {children}
+      <div className=" relative">
+        <Sidebar />
+        {children}
+      </div>
       <Footer />
       <AudioPlayer />
     </main>

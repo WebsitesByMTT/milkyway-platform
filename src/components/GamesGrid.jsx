@@ -6,20 +6,10 @@ import GameCard from "./GameCard";
 import GameModal from "./ui/GameModal";
 
 const GamesGrid = ({ data }) => {
-  const [featuredGames, setFeaturedGames] = useState(data);
-  const [unfeaturedGames, setUnfeaturedGames] = useState(data);
-
+  const { featured, otherGames } = data;
   const [currentGame, setCurrentGame] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameLoaded, setGameLoaded] = useState(false);
-
-  useEffect(() => {
-    const newFeaturedGames = data.filter((game) => game.type === "featured");
-    const newUnfeaturedGames = data.filter((game) => game.type !== "featured");
-
-    setFeaturedGames(newFeaturedGames);
-    setUnfeaturedGames(newUnfeaturedGames);
-  }, [data]);
 
   const closeModalHandler = () => {
     setGameLoaded(false);
@@ -29,48 +19,49 @@ const GamesGrid = ({ data }) => {
   useEffect(() => {
     console.log("Is Game Loade : ", gameLoaded);
   }, [gameLoaded]);
+
+  const chunkArray = (array, chunkSize) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, i + chunkSize));
+    }
+    return chunks;
+  };
+
+  // Create chunks for the slides after the first one
+  const remainingChunks = chunkArray(otherGames.slice(6), 8);
+
   return (
     <>
-      {unfeaturedGames
-        .reduce((chunks, _, index) => {
-          if (index === 0) {
-            chunks.push(data.slice(0, 6));
-          } else if ((index - 6) % 8 === 0) {
-            chunks.push(data.slice(index, index + 8));
-          }
-          return chunks;
-        }, [])
-        .map((chunk, chunkIndex) => (
-          <React.Fragment key={chunkIndex}>
-            {chunk.length === 6 ? (
-              <CarouselItem className="flex justify-center m-auto w-[80%]">
-                {featuredGames.length > 0 && (
-                  <FeaturedGameCard data={featuredGames[0]} />
-                )}
-                <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
-                  {chunk.map((game, index) => (
-                    <GameCard
-                      key={index}
-                      src={game}
-                      type={game.type}
-                      setCurrentGame={setCurrentGame}
-                      setIsModalOpen={setIsModalOpen}
-                    />
-                  ))}
-                </div>
-              </CarouselItem>
-            ) : (
-              <CarouselItem>
-                <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
-                  {chunk.map((game, index) => (
-                    <GameCard key={index} src={game} type={game.type} />
-                  ))}
-                </div>
-              </CarouselItem>
-            )}
-          </React.Fragment>
-        ))}
-
+      <CarouselItem className="flex justify-center m-auto w-[80%]">
+        {featured.length > 0 && <FeaturedGameCard data={featured[0]} />}
+        <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
+          {otherGames.slice(0, 6).map((game, index) => (
+            <GameCard
+              key={index}
+              src={game}
+              type={game.type}
+              setCurrentGame={setCurrentGame}
+              setIsModalOpen={setIsModalOpen}
+            />
+          ))}
+        </div>
+      </CarouselItem>
+      {remainingChunks.map((chunk, chunkIndex) => (
+        <CarouselItem key={chunkIndex}>
+          <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
+            {chunk.map((game, index) => (
+              <GameCard
+                key={index}
+                src={game}
+                type={game.type}
+                setCurrentGame={setCurrentGame}
+                setIsModalOpen={setIsModalOpen}
+              />
+            ))}
+          </div>
+        </CarouselItem>
+      ))}
       <GameModal
         show={isModalOpen}
         onClose={closeModalHandler}

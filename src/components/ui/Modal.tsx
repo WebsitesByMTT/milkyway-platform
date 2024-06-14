@@ -33,6 +33,14 @@ const Modal = ({
     return null;
   }
 
+  const modalElement = document.getElementById("modal");
+
+  if (!modalElement) {
+    // Optionally log a warning or handle the case when the element doesn't exist
+    console.warn('Element with id "modal" not found');
+    return null; // Return null or render a fallback UI
+  }
+
   return isOnClient
     ? ReactDOM.createPortal(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00000096] z-[999]">
@@ -96,9 +104,8 @@ const Modal = ({
                 <Image
                   fill
                   src="/popupbg.png"
-                  objectFit="contain"
                   alt="popup-bg"
-                  className="z-0"
+                  className="z-0 object-contain"
                 />
               </div>
               <div className=" w-[98.5%] h-[15%] mt-1 absolute top-0 left-0 flex items-center justify-center">
@@ -272,7 +279,7 @@ const Modal = ({
             </button>
           </div>
         </div>,
-        document.body
+        modalElement
       )
     : null;
 };
