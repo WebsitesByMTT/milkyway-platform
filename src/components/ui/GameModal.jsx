@@ -5,10 +5,17 @@ import Loader from "@/components/ui/Loader";
 
 const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
   const [isOnClient, setIsOnClient] = useState(false);
+  const [iframeKey, setIframeKey] = useState(0);
 
   useEffect(() => {
     setIsOnClient(true);
   }, []);
+
+  useEffect(() => {
+    if (show) {
+      setIframeKey((prevKey) => prevKey + 1); // Change iframe key when modal is shown
+    }
+  }, [show]);
 
   function getToken(cookieName) {
     const cookies = document.cookie;
@@ -43,12 +50,12 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
       }
 
       if (message === "onExit") {
-        router.push("/");
+        setGameLoaded(false);
+        onClose();
       }
 
       if (message === "OnEnter") {
         setGameLoaded(true);
-        alert("I FRAME LOADED");
       }
     };
 
@@ -67,21 +74,18 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
     ? ReactDOM.createPortal(
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className=" rounded-lg shadow-lg  relative w-full h-full">
-            <button
-              onClick={onClose}
-              className="absolute top-0 right-0 m-4 text-white"
-            >
-              Close
-            </button>
-            <iframe
-              src={src}
-              width="100%"
-              height="100%"
-              className={`rounded-lg transition-opacity duration-300 ${
-                gameLoaded ? "opacity-100" : "opacity-0"
-              }`}
-              id="gameIframe"
-            ></iframe>
+            {show && (
+              <iframe
+                key={iframeKey}
+                src={src}
+                width="100%"
+                height="100%"
+                className={`rounded-lg transition-opacity duration-300 ${
+                  gameLoaded ? " block" : " hidden"
+                }`}
+                id="gameIframe"
+              ></iframe>
+            )}
 
             {!gameLoaded && (
               <div className="absolute inset-0 flex items-center justify-center">

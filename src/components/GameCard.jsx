@@ -17,6 +17,10 @@ const GameCard = ({ src, type }) => {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    console.log("Game Loaded : ", gameLoaded);
+  }, [gameLoaded]);
+
   return (
     <>
       <div

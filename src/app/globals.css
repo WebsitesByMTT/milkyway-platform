@@ -2,24 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  cursor: url("/cursor.svg"), auto;
-  background: #0f172a;
-  overflow: hidden;
-  font-family: sans-serif;
+@layer base {
+  body {
+    @apply cursor-custom;
+    background: #0f172a;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
 }
 
-a,
+/* a,
 a:hover {
-  cursor: url("/cursor.svg"), auto;
+  cursor: url("/cursor.png"), auto;
 }
 
 button,
 input,
 select,
 textarea {
-  cursor: url("/cursor.svg"), auto;
-}
+  cursor: url("/cursor.png"), auto;
+} */
 
 button {
   cursor: inherit;
