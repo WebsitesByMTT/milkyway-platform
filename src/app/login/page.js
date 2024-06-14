@@ -71,9 +71,9 @@ const Login = () => {
         alt="login-bg"
         fill
         priority={true}
-        objectFit="cover"
         quality={100}
         objectPosition="center"
+        className=" object-cover"
       />
       <form
         onSubmit={handleSubmit}
@@ -126,8 +126,7 @@ const Login = () => {
           src="/character.png"
           alt="login-character"
           fill
-          objectFit="cover"
-          className="z-[2]"
+          className="z-[2] object-cover"
         />
       </div>
     </div>

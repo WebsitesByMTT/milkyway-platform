@@ -88,9 +88,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
                 src={src}
                 width="100%"
                 height="100%"
-                className={`rounded-lg transition-opacity duration-300 ${
-                  gameLoaded ? " block" : " hidden"
-                }`}
+                className={`rounded-lg transition-opacity duration-300`}
                 id="gameIframe"
               ></iframe>
             )}

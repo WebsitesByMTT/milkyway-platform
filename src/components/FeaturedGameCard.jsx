@@ -11,9 +11,8 @@ const FeaturedGameCard = ({ data }) => {
             <div className="relative bg-gradient-to-br rounded-[6%] from-blue-900 to-indigo-900 w-full h-full">
               <Image
                 src={data?.gameThumbnailUrl}
-                className="rounded-xl"
+                className="rounded-xl object-cover"
                 fill
-                objectFit="cover"
                 alt="game-img"
               />
             </div>
