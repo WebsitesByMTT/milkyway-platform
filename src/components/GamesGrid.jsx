@@ -3,10 +3,15 @@ import React, { useEffect, useState } from "react";
 import { CarouselItem } from "./ui/carousel";
 import FeaturedGameCard from "./FeaturedGameCard";
 import GameCard from "./GameCard";
+import GameModal from "./ui/GameModal";
 
 const GamesGrid = ({ data }) => {
   const [featuredGames, setFeaturedGames] = useState(data);
   const [unfeaturedGames, setUnfeaturedGames] = useState(data);
+
+  const [currentGame, setCurrentGame] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [gameLoaded, setGameLoaded] = useState(false);
 
   useEffect(() => {
     const newFeaturedGames = data.filter((game) => game.type === "featured");
@@ -16,6 +21,14 @@ const GamesGrid = ({ data }) => {
     setUnfeaturedGames(newUnfeaturedGames);
   }, [data]);
 
+  const closeModalHandler = () => {
+    setGameLoaded(false);
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    console.log("Is Game Loade : ", gameLoaded);
+  }, [gameLoaded]);
   return (
     <>
       {unfeaturedGames
@@ -36,7 +49,13 @@ const GamesGrid = ({ data }) => {
                 )}
                 <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
                   {chunk.map((game, index) => (
-                    <GameCard key={index} src={game} type={game.type} />
+                    <GameCard
+                      key={index}
+                      src={game}
+                      type={game.type}
+                      setCurrentGame={setCurrentGame}
+                      setIsModalOpen={setIsModalOpen}
+                    />
                   ))}
                 </div>
               </CarouselItem>
@@ -51,6 +70,14 @@ const GamesGrid = ({ data }) => {
             )}
           </React.Fragment>
         ))}
+
+      <GameModal
+        show={isModalOpen}
+        onClose={closeModalHandler}
+        src={currentGame}
+        gameLoaded={gameLoaded}
+        setGameLoaded={setGameLoaded}
+      />
     </>
   );
 };
