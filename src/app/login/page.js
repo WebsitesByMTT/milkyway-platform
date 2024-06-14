@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { config } from "../../utils/config";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleUsernameChange = (e) => {
@@ -22,10 +22,9 @@ const Login = () => {
 
   const validateForm = () => {
     if (username === "" || password === "") {
-      setError("Username and password are required");
+      toast.error("Username and password are required");
       return false;
     }
-    setError("");
     return true;
   };
 
@@ -36,6 +35,7 @@ const Login = () => {
     setLoading(true);
 
     try {
+      toast.loading("Logging in...");
       const response = await fetch(`${config.server}/api/users/login`, {
         method: "POST",
         headers: {
@@ -47,15 +47,19 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Login successful:", data);
+        toast.dismiss();
+        toast.success("Login successful");
+
         Cookies.set("token", data?.token);
         router.push("/");
       } else {
-        // Handle login errors
-        setError(data.message || "Login failed");
+        toast.dismiss();
+        console.log(data.error);
+        toast.error(data.error || "Login failed");
       }
     } catch (error) {
-      setError("An error occurred. Please try again later.");
+      toast.dismiss();
+      toast.error("An error occurred. Please try again later.");
     }
 
     setLoading(false);
@@ -110,13 +114,12 @@ const Login = () => {
                   disabled={loading}
                   className="bg-gradient-to-t from-[#119EBF] from-[0%] via-[#0D82B3D6] via-[549.72%] to-[#17C5D8] text-white w-[100%] h-[100%] text-[2vw] p-[2%] rounded-[1vw]"
                 >
-                  {loading ? "Logging in..." : "Login"}{" "}
+                  login
                 </button>
               </div>
             </div>
           </div>
         </div>
-        {error && <div className="error">{error}</div>}
       </form>
       <div className="relative w-[55%] sm:w-[45%] h-[80vw] sm:h-[50vw]">
         <Image
