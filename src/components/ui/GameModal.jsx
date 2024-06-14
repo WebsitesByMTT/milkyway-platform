@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import Loader from "@/components/ui/Loader";
+import { useVolumeControl } from "../context/VolumeControlContext";
 
 const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
   const [isOnClient, setIsOnClient] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
+  const { playAudio, pauseAudio } = useVolumeControl();
 
   useEffect(() => {
     setIsOnClient(true);
@@ -53,11 +54,13 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
       if (message === "onExit") {
         setGameLoaded(false);
         onClose();
+        playAudio(); // Play audio on exit
       }
 
       if (message === "OnEnter") {
-        console.log("OnENter message received.........................");
+        console.log("OnEnter message received.........................");
         setGameLoaded(true);
+        pauseAudio(); // Pause audio on enter
       }
     };
 
@@ -66,22 +69,21 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
     return () => {
       window.removeEventListener("message", handleMessage);
     };
-  }, [show, onClose, src, gameLoaded, setGameLoaded]);
+  }, [show, onClose, src, gameLoaded, setGameLoaded, playAudio, pauseAudio]);
 
   if (!show) {
     return null;
   }
 
+  const handleClose = () => {
+    setGameLoaded(false);
+    onClose();
+  };
+
   return isOnClient
     ? ReactDOM.createPortal(
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className=" rounded-lg shadow-lg  relative w-full h-full">
-            <button
-              onClick={onClose}
-              className="absolute top-0 right-0 m-4 text-white"
-            >
-              Close
-            </button>
+          <div className="rounded-lg shadow-lg relative w-full h-full">
             {show && (
               <iframe
                 key={iframeKey}
@@ -94,8 +96,16 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
             )}
 
             {!gameLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Loader />
+              <div className="absolute inset-0 flex items-center justify-center bg-black">
+                <div className="pyramid-loader">
+                  <div className="wrapper">
+                    <span className="side side1"></span>
+                    <span className="side side2"></span>
+                    <span className="side side3"></span>
+                    <span className="side side4"></span>
+                    <span className="shadow"></span>
+                  </div>
+                </div>
               </div>
             )}
           </div>

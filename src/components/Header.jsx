@@ -23,7 +23,7 @@ const Header = ({ user }) => {
             {/* <Connector className=" w-[60%] h-auto absolute -bottom-[.5vw] left-1/2 transform -translate-x-1/2 z-[2]" /> */}
           </div>
         </div>
-        <div className=" border">
+        <div className="">
           <div className=" coin relative w-[3vw] h-[3vw]">
             <Image
               src={"/coin.png"}
