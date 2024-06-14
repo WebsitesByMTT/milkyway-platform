@@ -13,57 +13,10 @@ const GameCard = ({ src, type }) => {
   };
 
   const closeModalHandler = () => {
+    setGameLoaded(false);
     setIsModalOpen(false);
   };
 
-  function getToken(cookieName) {
-    const cookies = document.cookie;
-
-    const cookieArray = cookies.split(";").map((cookie) => cookie.trim());
-    const cookieObject = {};
-    cookieArray.forEach((cookie) => {
-      const parts = cookie.split("=");
-      const key = decodeURIComponent(parts[0]);
-      const value = decodeURIComponent(parts.slice(1).join("="));
-      cookieObject[key] = value;
-    });
-
-    return cookieObject[cookieName];
-  }
-
-  useEffect(() => {
-    const handleMessage = (event) => {
-      const message = event.data;
-      console.log("message : ", message);
-
-      const iframe = document.getElementById("gameIframe");
-      if (message === "authToken") {
-        if (iframe.contentWindow) {
-          console.log("Sending to IFRAME ");
-
-          iframe.contentWindow.postMessage(
-            { type: "authToken", cookie: getToken("token") },
-            `${src}`
-          );
-        }
-      }
-
-      if (message === "onExit") {
-        router.push("/");
-      }
-
-      if (message === "OnEnter") {
-        setGameLoaded(true);
-        console.log("I FRAME LOADED");
-      }
-    };
-
-    window.addEventListener("message", handleMessage);
-
-    return () => {
-      window.removeEventListener("message", handleMessage);
-    };
-  }, []);
   return (
     <>
       <div
