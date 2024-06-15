@@ -10,7 +10,7 @@ export const getCookie = async () => {
 };
 
 export const deleteCookie = async () => {
-  cookies().delete("name");
+  cookies().delete("token");
 };
 
 export const getCurrentUser = async () => {

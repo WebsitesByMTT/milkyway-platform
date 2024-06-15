@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import Sidebar from "./Sidebar";
 import GamesGrid from "./GamesGrid";
 
 const Games = ({ data }) => {
