@@ -6,7 +6,7 @@ import GameCard from "./GameCard";
 import GameModal from "./ui/GameModal";
 
 const GamesGrid = ({ data }) => {
-  const { featured, otherGames } = data;
+  const { featured, otherGames } = data || {};
   const [currentGame, setCurrentGame] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameLoaded, setGameLoaded] = useState(false);

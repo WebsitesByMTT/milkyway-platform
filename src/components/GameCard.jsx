@@ -17,7 +17,7 @@ const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
         <FavButton id={src?._id} />
         <div className=" w-full h-full relative">
           <Image
-            src={src.gameThumbnailUrl}
+            src={src?.gameThumbnailUrl}
             fill
             className="h-full w-full z-[1] p-[1.5%] rounded-xl object-cover"
             alt="game-img"
