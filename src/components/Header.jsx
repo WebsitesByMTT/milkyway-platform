@@ -2,39 +2,45 @@ import Image from "next/image";
 import React from "react";
 import FullScreenButton from "./ui/FullScreenButton";
 import LogoutButton from "./ui/LogoutButton";
-import Connector from "./svgs/Connector";
-import AvatarBorder from "./svgs/AvatarBorder";
+import User from "./User";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { config } from "@/utils/config";
 
-const Header = ({ user }) => {
+async function getUser() {
+  const token = cookies().get("token")?.value;
+  try {
+    const response = await fetch(
+      `${config.server}/api/users/userData`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `userToken=${token}`,
+        },
+      },
+      { cache: "force-cache" }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    redirect("/logout");
+  }
+}
+
+const Header = async () => {
+  const user = await getUser();
   return (
     <header className="relative flex items-center justify-center">
-      <div className=" absolute top-[45%] left-[4%] flex gap-4">
-        <div className=" user">
-          <div className="avatar w-[4vw] h-[4vw] rounded-full relative flex items-center justify-center">
-            <AvatarBorder className=" w-full h-full  absolute top-0 left-0 z-[1]" />
-            <div className="relative  w-[90%] h-[90%] ">
-              <Image
-                src={"/avatar.png"}
-                alt={user?.username}
-                fill
-                className=" object-cover"
-              />
-            </div>
-            {/* <Connector className=" w-[60%] h-auto absolute -bottom-[.5vw] left-1/2 transform -translate-x-1/2 z-[2]" /> */}
-          </div>
-        </div>
-        <div className="">
-          <div className=" coin relative w-[3vw] h-[3vw]">
-            <Image
-              src={"/coin.png"}
-              alt="coin"
-              fill
-              className=" w-full h-full"
-            />
-          </div>
-        </div>
-      </div>
-
+      <User data={user} />
       <svg
         width="1920"
         height="110"

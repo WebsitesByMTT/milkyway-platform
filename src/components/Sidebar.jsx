@@ -7,7 +7,6 @@ const Sidebar = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  console.log("path : ", searchParams.get("category"));
   const [selectedOption, setSelectedOption] = useState(
     searchParams.get("category")
   );
@@ -288,8 +287,8 @@ const Sidebar = () => {
       ),
     },
     {
-      name: "favourite",
-      url: "/favourite",
+      name: "fav",
+      url: "/fav",
       icon: (
         <svg
           width="85"
