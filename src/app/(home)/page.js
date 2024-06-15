@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 async function getGames(category) {
+  "use server";
   const token = cookies().get("token")?.value;
 
   try {
@@ -24,7 +25,6 @@ async function getGames(category) {
       throw new Error(`HTTP error status: ${response.status}`);
     }
     const data = await response.json();
-
     return data;
   } catch (error) {
     console.log(error);

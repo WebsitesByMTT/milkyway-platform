@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import AvatarBorder from "././svgs/AvatarBorder";
 import Image from "next/image";
-import { getUser } from "@/utils/actions";
 import { useUser } from "./context/UserContext";
 
 const User = ({ data }) => {
@@ -11,7 +10,7 @@ const User = ({ data }) => {
 
   useEffect(() => {
     setUser(data);
-  }, []);
+  }, [data]);
 
   return (
     <div className=" absolute top-[45%] left-[4%] flex gap-4">

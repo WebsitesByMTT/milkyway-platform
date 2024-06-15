@@ -1,5 +1,10 @@
 "use client";
-import React, { useState, useOptimistic, useEffect } from "react";
+import React, {
+  useState,
+  useOptimistic,
+  useEffect,
+  startTransition,
+} from "react";
 import { addFavGame } from "@/utils/actions";
 import toast from "react-hot-toast";
 import { useUser } from "../context/UserContext";
@@ -18,7 +23,9 @@ const FavButton = ({ id }) => {
 
   useEffect(() => {
     if (user?.favourite.includes(id)) {
-      setOptimistic({ clicked: true }, "TOGGLE");
+      startTransition(() => {
+        setOptimistic({ clicked: true }, "TOGGLE");
+      });
     }
   }, [id, user]);
 
@@ -28,7 +35,10 @@ const FavButton = ({ id }) => {
     setLoading(true);
 
     const actionType = optimisticState.clicked ? "remove" : "Add";
-    setOptimistic({ clicked: !optimisticState.clicked }, "TOGGLE");
+
+    startTransition(() => {
+      setOptimistic({ clicked: !optimisticState.clicked }, "TOGGLE");
+    });
 
     try {
       const response = await addFavGame(id, actionType);
@@ -37,6 +47,7 @@ const FavButton = ({ id }) => {
         response.message === "Game removed from favourites"
       ) {
         toast.success(response.message);
+
         // Update the user context to reflect the change
         setUser((prevUser) => {
           if (!prevUser) return prevUser;
@@ -69,7 +80,9 @@ const FavButton = ({ id }) => {
       }
 
       // Revert optimistic update on failure
-      setOptimistic({ clicked: !optimisticState.clicked }, "TOGGLE");
+      startTransition(() => {
+        setOptimistic({ clicked: !optimisticState.clicked }, "TOGGLE");
+      });
     } finally {
       setLoading(false);
     }
