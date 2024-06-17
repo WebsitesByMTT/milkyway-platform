@@ -1,12 +1,17 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
-import { VolumeProvider } from "@/components/context/VolumeControlContext";
+import React from "react";
+import { cookies } from "next/headers";
+import { config } from "@/utils/config";
+import Games from "@/components/Games";
 import { UserProvider } from "@/components/context/UserContext";
-import AudioPlayer from "@/components/ui/AudioPlayer";
+import { VolumeProvider } from "@/components/context/VolumeControlContext";
 import Image from "next/image";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import AudioPlayer from "@/components/ui/AudioPlayer";
+import { fetchGames } from "@/utils/actions";
 
-export default async function RootLayout({ children }) {
+const Home = async () => {
+  const initialGames = await fetchGames();
   return (
     <UserProvider>
       <VolumeProvider>
@@ -22,14 +27,13 @@ export default async function RootLayout({ children }) {
             className="z-[-2] object-cover"
           />
           <Header />
-          <div className=" relative">
-            <Sidebar />
-            {children}
-          </div>
+          <Games initialGames={initialGames} />
           <Footer />
           <AudioPlayer />
         </main>
       </VolumeProvider>
     </UserProvider>
   );
-}
+};
+
+export default Home;

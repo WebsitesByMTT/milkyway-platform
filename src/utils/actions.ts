@@ -6,6 +6,63 @@ interface ApiResponse {
   message: string;
 }
 
+export async function fetchGames(category: string = "all") {
+  const token = await getCookie();
+
+  const res = await fetch(
+    `${config.server}/api/games/getGames?category=${category}`,
+    {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `userToken=${token}`,
+      },
+      next: { revalidate: 60 }, // Cache the response for 60 seconds
+    }
+  );
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(`Failed to fetch games: ${error.message}`);
+  }
+
+  return res.json();
+}
+
+export const getGameById = async (id: string) => {
+  const token = await getCookie();
+  console.log("Get Game By ID: ", id);
+
+  try {
+    const response = await fetch(`${config.server}/api/games/getGames/${id}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: `userToken=${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching game: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+  } catch (error: unknown) {
+    console.error(error);
+    if (error instanceof Error) {
+      return { message: error.message || "Failed to fetch game data" };
+    } else {
+      return { message: "An unknown error occurred" };
+    }
+  }
+};
+
 export const addFavGame = async (
   id: string,
   type: string
@@ -26,11 +83,6 @@ export const addFavGame = async (
 
     const data: ApiResponse = await response.json();
 
-    console.log(data);
-
-    if (!response.ok) {
-      return data; // Return the response data even if the response is not OK
-    }
     return data;
   } catch (error: unknown) {
     console.error(error);

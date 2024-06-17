@@ -1,10 +1,18 @@
 "use client";
 import Image from "next/image";
 import FavButton from "./ui/FavButton";
+import { getGameById } from "@/utils/actions";
 
 const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
-  const gameOpenHandler = () => {
-    setCurrentGame(src?.gameHostLink);
+  // {
+  //   "_id": "666acb358b3e0aa247f9cbcb",
+  //   "gameName": "Mysterious Night",
+  //   "gameThumbnailUrl": "https://res.cloudinary.com/dhl5hifpz/image/upload/v1718274073/casinoGames/v5867y6tulhpdaxlhbcn.png"
+  // }
+
+  const gameOpenHandler = async (id) => {
+    const url = await getGameById(id);
+    setCurrentGame(url);
     setIsModalOpen(true);
   };
 
@@ -12,7 +20,7 @@ const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
     <>
       <div
         className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
-        onClick={gameOpenHandler}
+        onClick={() => gameOpenHandler(src._id)}
       >
         <FavButton id={src?._id} />
         <div className=" w-full h-full relative">

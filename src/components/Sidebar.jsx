@@ -1,21 +1,12 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
-const Sidebar = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  const [selectedOption, setSelectedOption] = useState(
-    searchParams.get("category")
-  );
-
+const Sidebar = ({ onSelectCategory, selectedCategory }) => {
   const [open, setOpen] = useState(true);
-  const menu = [
+
+  const categories = [
     {
       name: "all",
-      url: "/",
       icon: (
         <svg
           width="85"
@@ -288,7 +279,6 @@ const Sidebar = () => {
     },
     {
       name: "fav",
-      url: "/fav",
       icon: (
         <svg
           width="85"
@@ -562,7 +552,6 @@ const Sidebar = () => {
     },
     {
       name: "fish",
-      url: "/fish",
       icon: (
         <svg
           width="85"
@@ -899,7 +888,6 @@ const Sidebar = () => {
     },
     {
       name: "slot",
-      url: "/slot",
       icon: (
         <svg
           width="85"
@@ -1172,7 +1160,6 @@ const Sidebar = () => {
     },
     {
       name: "others",
-      url: "/others",
       icon: (
         <svg
           width="85"
@@ -1445,7 +1432,6 @@ const Sidebar = () => {
     },
     {
       name: "link",
-      url: "/link",
       icon: (
         <svg
           width="85"
@@ -1718,21 +1704,6 @@ const Sidebar = () => {
     },
   ];
 
-  const handleCategory = (category) => {
-    setSelectedOption(category);
-    router.push(pathname + "?" + createQueryString("category", `${category}`));
-  };
-
-  const createQueryString = useCallback(
-    (name, value) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
-
   return (
     <div
       className={`absolute bottom-0 left-[1.5%] z-[10] w-[4.5%] py-[3%] flex justify-between items-center flex-col ${
@@ -1742,10 +1713,15 @@ const Sidebar = () => {
       {open && (
         <div className="p-[5%] bg-gradient-to-r from-[#53EFF1] via-[#3786FA] to-[#12C7F5] rounded-[5px]">
           <div className="flex gap-1 flex-col p-[4%] rounded-[5px] bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900">
-            {menu.map((ele, index) => {
+            {categories.map((category, index) => {
               return (
-                <div key={index} onClick={() => handleCategory(ele.name)}>
-                  {selectedOption === ele.name ? ele?.selectedIcon : ele.icon}
+                <div
+                  key={index}
+                  onClick={() => onSelectCategory(category.name)}
+                >
+                  {selectedCategory === category.name
+                    ? category?.selectedIcon
+                    : category.icon}
                 </div>
               );
             })}

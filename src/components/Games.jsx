@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Sidebar from "@/components/Sidebar";
 
 import {
   Carousel,
@@ -8,8 +9,18 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import GamesGrid from "./GamesGrid";
+import { fetchGames } from "@/utils/actions";
 
-const Games = ({ data }) => {
+const Games = ({ initialGames }) => {
+  const [games, setGames] = useState(initialGames);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  async function handleFetchGames(category) {
+    const data = await fetchGames(category);
+    setSelectedCategory(category);
+    setGames(data);
+  }
+
   useEffect(() => {
     const carousel = document.querySelector(".Carousel");
     let isScrolling = false;
@@ -41,10 +52,13 @@ const Games = ({ data }) => {
 
   return (
     <div className="Carousel relative">
-      {/* <Sidebar /> */}
+      <Sidebar
+        onSelectCategory={handleFetchGames}
+        selectedCategory={selectedCategory}
+      />
       <Carousel className="w-[100%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[52vw] sm:min-h-[37vw]">
-          <GamesGrid data={data} />
+          <GamesGrid data={games} />
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
         <CarouselNext className="CarouselNext w-[5%]" />
