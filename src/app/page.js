@@ -1,6 +1,4 @@
 import React from "react";
-import { cookies } from "next/headers";
-import { config } from "@/utils/config";
 import Games from "@/components/Games";
 import { UserProvider } from "@/components/context/UserContext";
 import { VolumeProvider } from "@/components/context/VolumeControlContext";

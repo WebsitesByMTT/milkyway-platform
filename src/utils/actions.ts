@@ -1,4 +1,5 @@
 "use server";
+import { redirect } from "next/navigation";
 import { config } from "./config";
 import { getCookie } from "./utils";
 
@@ -9,25 +10,30 @@ interface ApiResponse {
 export async function fetchGames(category: string = "all") {
   const token = await getCookie();
 
-  const res = await fetch(
-    `${config.server}/api/games/getGames?category=${category}`,
-    {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: `userToken=${token}`,
-      },
-      next: { revalidate: 60 }, // Cache the response for 60 seconds
+  try {
+    const res = await fetch(
+      `${config.server}/api/games/getGames?category=${category}`,
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `userToken=${token}`,
+        },
+        next: { revalidate: 60 }, // Cache the response for 60 seconds
+      }
+    );
+
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(`Failed to fetch games: ${error.message}`);
     }
-  );
 
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(`Failed to fetch games: ${error.message}`);
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    redirect("/logout");
   }
-
-  return res.json();
 }
 
 export const getGameById = async (id: string) => {
@@ -50,7 +56,7 @@ export const getGameById = async (id: string) => {
 
     const data = await response.json();
 
-    console.log(data);
+    console.log("GAme by id : ", data);
 
     return data;
   } catch (error: unknown) {
