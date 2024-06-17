@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { config } from "../../utils/config";
 import toast from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const router = useRouter();
@@ -47,11 +48,24 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast.dismiss();
-        toast.success("Login successful");
+        const token = data?.token;
+        if (token) {
+          const decodedToken = jwtDecode(token);
+          console.log(decodedToken); // Check the decoded token
 
-        Cookies.set("token", data?.token);
-        router.push("/");
+          if (decodedToken.designation === "player") {
+            toast.dismiss();
+            toast.success("Login successful");
+            Cookies.set("token", token);
+            router.push("/");
+          } else {
+            toast.dismiss();
+            toast.error("Access denied: not a player");
+          }
+        } else {
+          toast.dismiss();
+          toast.error("Invalid token received");
+        }
       } else {
         toast.dismiss();
         console.log(data.error);
@@ -64,7 +78,6 @@ const Login = () => {
 
     setLoading(false);
   };
-  
   return (
     <div className="relative w-full flex justify-evenly">
       <Image
