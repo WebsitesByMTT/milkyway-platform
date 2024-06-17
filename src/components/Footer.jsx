@@ -16322,13 +16322,13 @@ const Footer = () => {
               >
                 <div className="w-fit h-full">
                   <p
-                    className={`stroke ${ele.style} bg-gradient-to-b text-transparent bg-clip-text  w-full h-full text-center text-[2.2vw] uppercase font-[800]`}
+                    className={`stroke ${ele.style} bg-gradient-to-b text-transparent bg-clip-text  w-full h-full text-center text-[2.2vw] uppercase font-[500]`}
                   >
                     {ele.text}
                   </p>
                 </div>
                 <div className="w-[40%] h-full">
-                  <p className="bg-gradient-to-b from-[#D4DA8F] via-[#BC7300] via-[50.91%] to-[#FFECB6] text-transparent bg-clip-text w-full h-full text-center text-[2.2vw] uppercase font-[800]">
+                  <p className="bg-gradient-to-b from-[#D4DA8F] via-[#BC7300] via-[50.91%] to-[#FFECB6] text-transparent bg-clip-text w-full h-full text-center text-[2.2vw] uppercase font-[500]">
                     {ele.value}
                   </p>
                 </div>
