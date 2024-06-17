@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
 import FavButton from "./ui/FavButton";
+import { getGameById } from "@/utils/actions";
 
 const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
-  const gameOpenHandler = () => {
-    setCurrentGame(src?.gameHostLink);
+  const gameOpenHandler = async (id) => {
+    const url = await getGameById(id);
+    console.log("URL : ", url);
+    setCurrentGame(url.url);
     setIsModalOpen(true);
   };
 
@@ -12,7 +15,7 @@ const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
     <>
       <div
         className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
-        onClick={gameOpenHandler}
+        onClick={() => gameOpenHandler(src._id)}
       >
         <FavButton id={src?._id} />
         <div className=" w-full h-full relative">

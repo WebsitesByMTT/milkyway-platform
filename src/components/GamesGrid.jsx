@@ -16,9 +16,6 @@ const GamesGrid = ({ data }) => {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    console.log("Is Game Loade : ", gameLoaded);
-  }, [gameLoaded]);
 
   const chunkArray = (array, chunkSize) => {
     const chunks = [];
