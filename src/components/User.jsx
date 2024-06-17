@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import AvatarBorder from "././svgs/AvatarBorder";
 import Image from "next/image";
 import { useUser } from "./context/UserContext";
+import Connector from "../components/svgs/Connector";
 
 const User = ({ data }) => {
   const { user, setUser } = useUser();
@@ -13,29 +14,35 @@ const User = ({ data }) => {
   }, [data]);
 
   return (
-    <div className=" absolute top-[45%] left-[4%] flex gap-4">
-      <div className=" user">
+    <div className="absolute top-[1.2vw] left-[4%] flex gap-[1vw]">
+      <div className="user">
         <div className="avatar w-[4vw] h-[4vw] rounded-full relative flex items-center justify-center flex-col">
           <AvatarBorder className=" w-full h-full  absolute top-0 left-0 z-[1]" />
-          <div className="relative  w-[90%] h-[90%] ">
+          <div className="relative w-[90%] h-[90%] ">
             <Image
               src={"/avatar.png"}
               alt={data?.username}
               fill
-              className=" object-cover"
+              className="object-cover"
             />
           </div>
-          {/* <Connector className=" w-[60%] h-auto absolute -bottom-[.5vw] left-1/2 transform -translate-x-1/2 z-[2]" /> */}
+          <Connector
+            name={data?.username}
+            className="sm:w-[10vw] w-[12vw] h-auto absolute flex flex-col items-center justify-center -bottom-[5.3vw] sm:-bottom-[68%] left-1/2 transform -translate-x-1/2 z-[2]"
+          />
         </div>
-        <span className=" text-white">{data?.username}</span>
       </div>
-      <div className=" flex items-center gap-2">
-        <div className=" coin relative w-[3vw] h-[3vw]">
-          <Image src={"/coin.png"} alt="coin" fill className=" w-full h-full" />
+      <div className="relative p-[0.1vw] h-fit rounded-[2vw] bg-gradient-to-b from-[#184260] to-[#666666] flex items-center justify-center">
+        <div className="p-[0.15vw] h-fit rounded-[2vw] bg-[#00000091] flex items-center justify-center">
+          <div className=" flex items-center bg-[#00000091] border-2 border-black h-fit rounded-[2vw] min-w-[12vw] ">
+            <div className="absolute coin w-[3vw] h-[3vw] left-[-0.5vw] ">
+              <Image src={"/coin.png"} alt="coin" fill />
+            </div>
+            <span className="text-[1.5vw] ml-[2.5vw] bg-gradient-to-b from-[#D4DA8F] via-[#BC7300] via-[50.91%] to-[#FFECB6] text-transparent bg-clip-text font-[400]">
+              {parseFloat((data?.credits ?? 0).toFixed(1))}
+            </span>
+          </div>
         </div>
-        <span className="text-white">
-          {parseFloat((data?.credits ?? 0).toFixed(1))}
-        </span>
       </div>
     </div>
   );
