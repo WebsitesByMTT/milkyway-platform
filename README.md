@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Milkyway Project
+
+## Overview
+
+The Milkyway Project is a gaming platform built with NextJs 14.2.3. The project is structured to maintain clear separation of concerns, ensuring scalability and maintainability.
+
+## Project Structure
+
+The project maintains a specific folder structure:
+
+```
+/src
+  /app
+    /login
+      - page.js
+    /logout
+      - page.js
+    - error.js
+    - layout.js
+    - loading.js
+    - page.js
+  /components
+  /utils
+    - actions.ts
+    - config.ts
+    - utils.js
+  - middleware.ts
+```
+
 
 ## Getting Started
 
-First, run the development server:
+To get started with the Milkyway Project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Clone the repository:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```sh
+   git clone https://github.com/WebsitesByMTT/milkyway-platform
+   ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+2. **Navigate to the project directory:**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```sh
+   cd milkyway-platform
+   ```
 
-## Learn More
+3. **Install dependencies:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```sh
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the development server:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```sh
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. **Build the project for production:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```sh
+   npm run build
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. **Start the production server:**
+   ```sh
+   npm start
+   ```
+
+## Folder Structure and Code Details
+
+### src/app
+
+- **login/page.js**
+
+  - Handles user authentication.
+  - Collects and validates username and password.
+  - Sends a login request to the server and handles the response.
+  - Sets a token in cookies and redirects to the home page upon successful login.
+
+- **logout/page.js**
+
+  - Handles user logout.
+  - Deletes the user token and redirects to the login page.
+
+- **error.js**
+
+  - Displays a user-friendly error message.
+  - Includes functionality to log out the user and redirect to the login page.
+
+- **layout.js**
+
+  - Defines the overall layout of the application.
+  - Includes global styles, font settings, and common UI elements.
+  - Wraps around the main content of each page.
+
+- **loading.js**
+
+  - Manages the loading state of the application.
+  - Displays a loading spinner while content is being fetched.
+
+- **page.js**
+  - Renders the home page of the application.
+  - Uses various components such as `Header`, `Footer`, `Games`, and `AudioPlayer`.
+  - Fetches the initial list of games and provides context providers for user and volume control.
+
+### src/components
+
+- **Reusable UI Components**
+  - Contains components such as headers, footers, game cards, and context providers.
+  - Ensures consistent UI and reduces code duplication.
+
+### src/utils
+
+- **actions.ts**
+
+  - Contains server actions and utility functions.
+  - Interacts with the backend for tasks such as fetching games and handling user authentication.
+
+- **config.ts**
+
+  - Manages environment variables and settings.
+  - Centralizes configuration management.
+
+- **utils.js**
+  - Provides general utility functions used across the application.
+
+### src/middleware.ts
+
+- **Middleware Functions**
+  - Handles server-side logic and request processing.
+  - Used for tasks such as authentication, logging, and error handling.
+
+## Contributing
+
+We welcome contributions to the Milkyway Project. To contribute, follow these steps:
+
+1. **Fork the repository.**
+2. **Create a new branch:**
+   ```sh
+   git checkout -b feature-branch
+   ```
+3. **Make your changes and commit them:**
+   ```sh
+   git commit -m "Add new feature"
+   ```
+4. **Push to the branch:**
+   ```sh
+   git push origin feature-branch
+   ```
+5. **Create a pull request.**
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+---
+
+This README provides a comprehensive overview of the Milkyway Project, its structure, and how to get started with development. For detailed information about each component, please refer to the source files and comments within the code.
