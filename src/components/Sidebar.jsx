@@ -1202,9 +1202,9 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               width="43.9296"
               height="19.6284"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -1238,10 +1238,10 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="94"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#183E74" />
-              <stop offset="0.35" stop-color="#132538" />
-              <stop offset="0.497812" stop-color="#0A1522" />
-              <stop offset="1" stop-color="#113D5E" />
+              <stop stopColor="#183E74" />
+              <stop offset="0.35" stopColor="#132538" />
+              <stop offset="0.497812" stopColor="#0A1522" />
+              <stop offset="1" stopColor="#113D5E" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_874_10757"
@@ -1251,8 +1251,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="94"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#0C2333" />
-              <stop offset="1" stop-color="#06204A" />
+              <stop stopColor="#0C2333" />
+              <stop offset="1" stopColor="#06204A" />
             </linearGradient>
             <linearGradient
               id="paint2_linear_874_10757"
@@ -1262,9 +1262,9 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="85"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" />
-              <stop offset="0.507169" stop-color="#A8D4F8" />
-              <stop offset="1" stop-color="#4B97FF" />
+              <stop stopColor="white" />
+              <stop offset="0.507169" stopColor="#A8D4F8" />
+              <stop offset="1" stopColor="#4B97FF" />
             </linearGradient>
             <linearGradient
               id="paint3_linear_874_10757"
@@ -1274,9 +1274,9 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="44"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" />
-              <stop offset="0.507169" stop-color="#A8D4F8" />
-              <stop offset="1" stop-color="#4B97FF" />
+              <stop stopColor="white" />
+              <stop offset="0.507169" stopColor="#A8D4F8" />
+              <stop offset="1" stopColor="#4B97FF" />
             </linearGradient>
             <linearGradient
               id="paint4_linear_874_10757"
@@ -1286,9 +1286,9 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="50"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" />
-              <stop offset="0.507169" stop-color="#A8D4F8" />
-              <stop offset="1" stop-color="#4B97FF" />
+              <stop stopColor="white" />
+              <stop offset="0.507169" stopColor="#A8D4F8" />
+              <stop offset="1" stopColor="#4B97FF" />
             </linearGradient>
           </defs>
         </svg>
@@ -1323,7 +1323,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
             d="M46.2646 30.7195C45.5674 30.7195 44.925 31.0998 44.5923 31.7116L40.6554 38.9505C40.5037 39.2293 40.4242 39.5417 40.4242 39.8591C40.4242 40.1766 40.5037 40.4889 40.6554 40.7678L44.5923 48.0066C44.925 48.6185 45.5674 49 46.2646 49H53.9434C54.6406 49 55.283 48.6173 55.6157 48.0066L59.5539 40.769C59.7057 40.4898 59.7852 40.177 59.7852 39.8591C59.7852 39.5413 59.7057 39.2285 59.5539 38.9492L55.6157 31.7104C55.452 31.4099 55.2102 31.1592 54.9159 30.9846C54.6216 30.81 54.2856 30.718 53.9434 30.7183H46.2646V30.7195ZM54.579 45.5755C54.4444 45.8096 54.2505 46.004 54.0169 46.1393C53.7832 46.2745 53.518 46.3458 53.248 46.3458H46.9612C46.4128 46.3458 45.9045 46.0521 45.6302 45.5767L43.3534 40.6288C43.218 40.3954 43.1467 40.1302 43.1467 39.8603C43.1467 39.5905 43.218 39.3253 43.3534 39.0919L45.6302 34.144C45.9045 33.6686 46.4128 33.3761 46.9612 33.3761H53.248C53.7965 33.3761 54.3047 33.6686 54.579 34.1452L56.8558 39.0931C57.1301 39.5684 57.1301 40.1523 56.8558 40.6276L54.579 45.5755ZM39.1939 20.7431C39.0303 20.4425 38.7885 20.1915 38.4942 20.0167C38.1999 19.8419 37.864 19.7497 37.5217 19.7497H29.8404C29.498 19.7494 29.1619 19.8415 28.8676 20.0164C28.5733 20.1912 28.3316 20.4423 28.1681 20.7431L24.2312 27.9819C24.0795 28.2607 24 28.5731 24 28.8906C24 29.208 24.0795 29.5204 24.2312 29.7992L28.1681 37.0381C28.5009 37.6499 29.1432 38.0314 29.8404 38.0314H37.5217C38.2189 38.0314 38.8612 37.6487 39.1939 37.0381L43.1309 29.7992C43.2826 29.5204 43.3621 29.208 43.3621 28.8906C43.3621 28.5731 43.2826 28.2607 43.1309 27.9819L39.1939 20.7431ZM53.9434 28.2817C54.6406 28.2817 55.283 27.9002 55.6157 27.2884L59.5539 20.0495C59.7057 19.7703 59.7852 19.4575 59.7852 19.1397C59.7852 18.8218 59.7057 18.509 59.5539 18.2298L55.6157 10.9922C55.452 10.6917 55.2102 10.4409 54.9159 10.2663C54.6216 10.0917 54.2856 9.99971 53.9434 10H46.2646C45.5674 10 44.925 10.3803 44.5923 10.9922L40.6554 18.231C40.5037 18.5098 40.4242 18.8222 40.4242 19.1397C40.4242 19.4571 40.5037 19.7695 40.6554 20.0483L44.5923 27.2884C44.925 27.9002 45.5674 28.2817 46.2646 28.2817H53.9434Z"
             fill="url(#paint4_linear_870_10620)"
             stroke="url(#paint5_linear_870_10620)"
-            stroke-width="0.83"
+            strokeWidth="0.83"
           />
           <g filter="url(#filter0_d_870_10620)">
             <mask
@@ -1356,9 +1356,9 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               width="43.9296"
               height="19.6284"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -1392,10 +1392,10 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="94"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#F9EF14" />
-              <stop offset="0.497812" stop-color="#F5C115" />
-              <stop offset="0.605" stop-color="#EEA529" />
-              <stop offset="1" stop-color="#F2BA5A" />
+              <stop stopColor="#F9EF14" />
+              <stop offset="0.497812" stopColor="#F5C115" />
+              <stop offset="0.605" stopColor="#EEA529" />
+              <stop offset="1" stopColor="#F2BA5A" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_870_10620"
@@ -1405,8 +1405,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="94"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#F8F8F6" />
-              <stop offset="1" stop-color="#F0CC53" />
+              <stop stopColor="#F8F8F6" />
+              <stop offset="1" stopColor="#F0CC53" />
             </linearGradient>
             <linearGradient
               id="paint2_linear_870_10620"
@@ -1416,8 +1416,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="43"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#FAFAF8" />
-              <stop offset="1" stop-color="#F9F009" />
+              <stop stopColor="#FAFAF8" />
+              <stop offset="1" stopColor="#F9F009" />
             </linearGradient>
             <linearGradient
               id="paint3_linear_870_10620"
@@ -1427,8 +1427,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="43"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#BDAA4C" />
-              <stop offset="1" stop-color="#DB4620" />
+              <stop stopColor="#BDAA4C" />
+              <stop offset="1" stopColor="#DB4620" />
             </linearGradient>
             <linearGradient
               id="paint4_linear_870_10620"
@@ -1438,8 +1438,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="49"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#FAFAF8" />
-              <stop offset="1" stop-color="#F9F009" />
+              <stop stopColor="#FAFAF8" />
+              <stop offset="1" stopColor="#F9F009" />
             </linearGradient>
             <linearGradient
               id="paint5_linear_870_10620"
@@ -1449,8 +1449,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="49"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#BDAA4C" />
-              <stop offset="1" stop-color="#DB4620" />
+              <stop stopColor="#BDAA4C" />
+              <stop offset="1" stopColor="#DB4620" />
             </linearGradient>
             <linearGradient
               id="paint6_linear_870_10620"
@@ -1460,8 +1460,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="84"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#FAFAEE" />
-              <stop offset="1" stop-color="#F9F126" />
+              <stop stopColor="#FAFAEE" />
+              <stop offset="1" stopColor="#F9F126" />
             </linearGradient>
             <linearGradient
               id="paint7_linear_870_10620"
@@ -1471,8 +1471,8 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               y2="84"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#BDAA4C" />
-              <stop offset="1" stop-color="#DB4720" />
+              <stop stopColor="#BDAA4C" />
+              <stop offset="1" stopColor="#DB4720" />
             </linearGradient>
           </defs>
         </svg>
