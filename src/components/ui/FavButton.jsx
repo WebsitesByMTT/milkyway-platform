@@ -4,27 +4,24 @@ import React, {
   useOptimistic,
   useEffect,
   startTransition,
+  memo,
 } from "react";
 import { addFavGame } from "@/utils/actions";
 import toast from "react-hot-toast";
 import { useUser } from "../context/UserContext";
 
-const FavButton = ({ id }) => {
+const FavButton = React.memo(({ id }) => {
   const { user, setUser } = useUser();
   const [loading, setLoading] = useState(false);
 
-  // Initial optimistic state
-  const [optimisticState, setOptimistic] = useOptimistic(
-    { clicked: user?.favourite.includes(id) || false },
-    (state, action) => {
-      return { clicked: !state.clicked };
-    }
-  );
+  const [optimisticState, setOptimistic] = useState({
+    clicked: user?.favourite.includes(id) || false,
+  });
 
   useEffect(() => {
     if (user?.favourite.includes(id)) {
       startTransition(() => {
-        setOptimistic({ clicked: true }, "TOGGLE");
+        setOptimistic({ clicked: true });
       });
     }
   }, [id, user]);
@@ -37,7 +34,7 @@ const FavButton = ({ id }) => {
     const actionType = optimisticState.clicked ? "remove" : "Add";
 
     startTransition(() => {
-      setOptimistic({ clicked: !optimisticState.clicked }, "TOGGLE");
+      setOptimistic({ clicked: !optimisticState.clicked });
     });
 
     try {
@@ -48,7 +45,6 @@ const FavButton = ({ id }) => {
       ) {
         toast.success(response.message);
 
-        // Update the user context to reflect the change
         setUser((prevUser) => {
           if (!prevUser) return prevUser;
           const updatedFavourites =
@@ -79,9 +75,8 @@ const FavButton = ({ id }) => {
         toast.error("An unknown error occurred while updating favorites");
       }
 
-      // Revert optimistic update on failure
       startTransition(() => {
-        setOptimistic({ clicked: !optimisticState.clicked }, "TOGGLE");
+        setOptimistic({ clicked: !optimisticState.clicked });
       });
     } finally {
       setLoading(false);
@@ -475,6 +470,7 @@ const FavButton = ({ id }) => {
       )}
     </button>
   );
-};
+});
 
+FavButton.displayName = "FavButton";
 export default FavButton;
