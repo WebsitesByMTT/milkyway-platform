@@ -212,7 +212,44 @@ input:focus::placeholder {
   z-index: 1; 
 }
 
-.slider::-webkit-slider-thumb {
+/* .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 3vw;
+  height: 3vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  z-index: 9999;
+  position: relative;
+  background: url("/music.png") no-repeat center center;
+} */
+/*  */
+
+/* .slider::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  background: url("/music.png") no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+} */
+
+/* .slider::-webkit-slider-thumb {
+  
+}
+
+.slider::-moz-range-thumb {
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+} */
+#music::-webkit-slider-thumb, #music::-moz-range-thumb{
+  background: url("/music.png") no-repeat center center;
   -webkit-appearance: none;
   appearance: none;
   width: 4vw;
@@ -220,22 +257,15 @@ input:focus::placeholder {
   background-size: contain;
   cursor: pointer;
   border: none;
-  z-index: 9999;
   position: relative;
+  
 }
-#music::-webkit-slider-thumb{
-  background: url("/music.png") no-repeat center center;
-  border-radius: 100%;
-}
-#sound::-webkit-slider-thumb{
+#sound::-webkit-slider-thumb, #sound::-moz-range-thumb{
   background: url("/sound.png") no-repeat center center;
-  border-radius: 100%;
-}
-
-.slider::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
-  background: url("/music.png") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
   background-size: contain;
   cursor: pointer;
   border: none;
@@ -244,9 +274,6 @@ input:focus::placeholder {
 
 .modal-title {
   font-weight: 700;
-  /* font-size: 75.0257px;
-  line-height: 90px;
-  letter-spacing: 0.11em; */
   text-transform: uppercase;
 
   background: linear-gradient(
