@@ -94,7 +94,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
               ></iframe>
             )}
 
-            {/* {!gameLoaded && (
+            {!gameLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-black">
                 <div className="pyramid-loader">
                   <div className="wrapper">
@@ -106,7 +106,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
                   </div>
                 </div>
               </div>
-            )} */}
+            )}
           </div>
         </div>,
         document.getElementById("modal")

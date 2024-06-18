@@ -59,7 +59,7 @@ const Footer = () => {
       ModalContent = <Setting />;
 
       break;
-    case "PASSWORD":
+    case "MODIFY PASSWORD":
       ModalContent = <Password />;
       break;
 
