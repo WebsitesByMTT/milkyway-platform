@@ -34,7 +34,7 @@ const Setting = () => {
               id="progress"
               min="0"
               max="100"
-              className="absolute appearance-none w-[85%] ml-[0.3vw] z-[2] h-[50%] top-auto left-auto  rounded-[2vw] progress"
+              className="absolute appearance-none w-[92%] sm:w-[86%] ml-[0.3vw] z-[2] h-[50%] top-auto left-auto  rounded-[2vw] progress"
             ></progress>
           </div>
         </div>
@@ -58,7 +58,7 @@ const Setting = () => {
               id="progress"
               min="0"
               max="100"
-              className="absolute appearance-none w-[85%] ml-[0.3vw] z-[2] h-[50%] top-auto left-auto  rounded-[2vw] progress"
+              className="absolute appearance-none w-[92%] sm:w-[86%] ml-[0.3vw] z-[2] h-[50%] top-auto left-auto  rounded-[2vw] progress"
             ></progress>
           </div>
         </div>

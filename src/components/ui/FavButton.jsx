@@ -9,6 +9,7 @@ import React, {
 import { addFavGame } from "@/utils/actions";
 import toast from "react-hot-toast";
 import { useUser } from "../context/UserContext";
+import Notification from "./Notification";
 
 const FavButton = React.memo(({ id }) => {
   const { user, setUser } = useUser();
@@ -43,7 +44,9 @@ const FavButton = React.memo(({ id }) => {
         response.message === "Game added to favourites" ||
         response.message === "Game removed from favourites"
       ) {
-        toast.success(response.message);
+        toast.custom((t) => (
+          <Notification visible={t.visible} message={response?.message} />
+        ));
 
         setUser((prevUser) => {
           if (!prevUser) return prevUser;
@@ -61,18 +64,33 @@ const FavButton = React.memo(({ id }) => {
           icon: "ℹ️",
         });
       } else {
-        toast.error(
-          response.message || "An error occurred while updating favorites"
-        );
+        toast.custom((t) => (
+          <Notification
+            visible={t.visible}
+            message={
+              response.message || "An error occurred while updating favorites"
+            }
+          />
+        ));
       }
     } catch (err) {
       console.error(err);
       if (err instanceof Error) {
-        toast.error(
-          err.message || "An error occurred while updating favorites"
-        );
+        toast.custom((t) => (
+          <Notification
+            visible={t.visible}
+            message={
+              err.message || "An error occurred while updating favorites"
+            }
+          />
+        ));
       } else {
-        toast.error("An unknown error occurred while updating favorites");
+        toast.custom((t) => (
+          <Notification
+            visible={t.visible}
+            message={"An error occurred while updating favorites"}
+          />
+        ));
       }
 
       startTransition(() => {

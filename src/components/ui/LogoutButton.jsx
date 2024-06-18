@@ -3,17 +3,22 @@ import React from "react";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Notification from "./Notification";
 
 const LogoutButton = () => {
   const router = useRouter();
   const deleteCookieHandler = () => {
     try {
       Cookies.remove("token");
-      toast.success("Logout success");
+      toast.custom((t) => (
+        <Notification visible={t.visible} message={"Logout successful"} />
+      ));
       router.push("/login");
     } catch (error) {
       console.log(error.message);
-      toast.error("Failed to logout");
+      toast.custom((t) => (
+        <Notification visible={t.visible} message={"Failed to logout"} />
+      ));
     }
   };
 
