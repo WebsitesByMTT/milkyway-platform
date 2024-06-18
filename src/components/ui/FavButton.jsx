@@ -8,6 +8,7 @@ import React, {
 import { addFavGame } from "@/utils/actions";
 import toast from "react-hot-toast";
 import { useUser } from "../context/UserContext";
+import Notification from "./Notification";
 
 const FavButton = ({ id }) => {
   const { user, setUser } = useUser();
@@ -46,7 +47,9 @@ const FavButton = ({ id }) => {
         response.message === "Game added to favourites" ||
         response.message === "Game removed from favourites"
       ) {
-        toast.success(response.message);
+        toast.custom((t) => (
+          <Notification visible={t.visible} message={response?.message} />
+        ));
 
         // Update the user context to reflect the change
         setUser((prevUser) => {
@@ -65,18 +68,33 @@ const FavButton = ({ id }) => {
           icon: "ℹ️",
         });
       } else {
-        toast.error(
-          response.message || "An error occurred while updating favorites"
-        );
+        toast.custom((t) => (
+          <Notification
+            visible={t.visible}
+            message={
+              response.message || "An error occurred while updating favorites"
+            }
+          />
+        ));
       }
     } catch (err) {
       console.error(err);
       if (err instanceof Error) {
-        toast.error(
-          err.message || "An error occurred while updating favorites"
-        );
+        toast.custom((t) => (
+          <Notification
+            visible={t.visible}
+            message={
+              err.message || "An error occurred while updating favorites"
+            }
+          />
+        ));
       } else {
-        toast.error("An unknown error occurred while updating favorites");
+        toast.custom((t) => (
+          <Notification
+            visible={t.visible}
+            message={"An error occurred while updating favorites"}
+          />
+        ));
       }
 
       // Revert optimistic update on failure

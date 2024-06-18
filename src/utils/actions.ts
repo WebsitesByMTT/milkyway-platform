@@ -99,3 +99,41 @@ export const addFavGame = async (
     }
   }
 };
+
+// export const newPassword = async (formData: {
+//   oldPassword: string;
+//   newPassword: string;
+//   reEnterPassword: string;
+// }): Promise<ApiResponse> => {
+//   const token = await getCookie();
+//   console.log("formData : ", formData);
+
+//   try {
+//     const response = await fetch(
+//       `${config.server}/api/users/updateClientPassword`,
+//       {
+//         method: "POST",
+//         credentials: "include",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Cookie: `userToken=${token}`,
+//         },
+//         body: JSON.stringify({
+//           oldPassword: formData.oldPassword,
+//           newPassword: formData.newPassword,
+//           reEnterPassword: formData.reEnterPassword,
+//         }),
+//       }
+//     );
+
+//     const data: ApiResponse = await response.json();
+//     return data;
+//   } catch (error: unknown) {
+//     console.error(error);
+//     if (error instanceof Error) {
+//       return { message: error.message || "Failed to set new password" };
+//     } else {
+//       return { message: "An unknown error occurred" };
+//     }
+//   }
+// };
