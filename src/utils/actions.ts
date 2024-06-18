@@ -1,10 +1,19 @@
 "use server";
 import { redirect } from "next/navigation";
 import { config } from "./config";
-import { getCookie } from "./utils";
+import { getCookie, getCurrentUser } from "./utils";
 
 interface ApiResponse {
   message: string;
+}
+
+interface JwtPayload {
+  username: string;
+  designation: string;
+}
+
+function isJwtPayload(obj: any): obj is JwtPayload {
+  return typeof obj === "object" && "username" in obj;
 }
 
 export async function fetchGames(category: string = "all") {
@@ -100,40 +109,49 @@ export const addFavGame = async (
   }
 };
 
-// export const newPassword = async (formData: {
-//   oldPassword: string;
-//   newPassword: string;
-//   reEnterPassword: string;
-// }): Promise<ApiResponse> => {
-//   const token = await getCookie();
-//   console.log("formData : ", formData);
+export const updatePassword = async (formData: {
+  oldPassword: string;
+  changedPassword: string;
+  reEnterPassword: string;
+}): Promise<ApiResponse> => {
+  const token = await getCookie();
+  const user = await getCurrentUser();
+  console.log("formData : ", formData);
 
-//   try {
-//     const response = await fetch(
-//       `${config.server}/api/users/updateClientPassword`,
-//       {
-//         method: "POST",
-//         credentials: "include",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Cookie: `userToken=${token}`,
-//         },
-//         body: JSON.stringify({
-//           oldPassword: formData.oldPassword,
-//           newPassword: formData.newPassword,
-//           reEnterPassword: formData.reEnterPassword,
-//         }),
-//       }
-//     );
+  // Check if user is of type JwtPayload
+  if (!isJwtPayload(user)) {
+    throw new Error("Invalid user data");
+  }
 
-//     const data: ApiResponse = await response.json();
-//     return data;
-//   } catch (error: unknown) {
-//     console.error(error);
-//     if (error instanceof Error) {
-//       return { message: error.message || "Failed to set new password" };
-//     } else {
-//       return { message: "An unknown error occurred" };
-//     }
-//   }
-// };
+  try {
+    const response = await fetch(
+      `${config.server}/api/users/updateClientPassword/${user.username}`,
+      {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: `userToken=${token}`,
+        },
+        body: JSON.stringify({
+          changedPassword: formData.changedPassword,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      // Handle non-200 responses
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error: unknown) {
+    console.error(error);
+    if (error instanceof Error) {
+      return { message: error.message || "Failed to set new password" };
+    } else {
+      return { message: "An unknown error occurred" };
+    }
+  }
+};

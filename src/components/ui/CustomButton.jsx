@@ -36,7 +36,7 @@ const customButton = ({ text, type }) => {
           height="91.4286"
           rx="45.7143"
           stroke="url(#paint1_linear_954_9504)"
-          stroke-width="8.57143"
+          strokeWidth="8.57143"
         />
         <rect
           x="2.67857"
@@ -45,7 +45,7 @@ const customButton = ({ text, type }) => {
           height="114.643"
           rx="57.3214"
           stroke="url(#paint2_linear_954_9504)"
-          stroke-width="5.35714"
+          strokeWidth="5.35714"
         />
         <rect
           x="7.12883"
@@ -54,7 +54,7 @@ const customButton = ({ text, type }) => {
           height="107.742"
           rx="53.8712"
           stroke="url(#paint3_linear_954_9504)"
-          stroke-width="2.25765"
+          strokeWidth="2.25765"
         />
         <defs>
           <linearGradient
@@ -65,9 +65,9 @@ const customButton = ({ text, type }) => {
             y2="18"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#119EBF" />
-            <stop offset="0.496954" stop-color="#0D82B3" stop-opacity="0.84" />
-            <stop offset="1" stop-color="#17C5D8" />
+            <stop stopColor="#119EBF" />
+            <stop offset="0.496954" stopColor="#0D82B3" stop-opacity="0.84" />
+            <stop offset="1" stopColor="#17C5D8" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_954_9504"
@@ -77,10 +77,10 @@ const customButton = ({ text, type }) => {
             y2="110"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#CDD1D6" />
-            <stop offset="0.497138" stop-color="#7D7D7D" />
-            <stop offset="1" stop-color="#EFEFEF" />
-            <stop offset="1" stop-color="#4F4F4F" />
+            <stop stopColor="#CDD1D6" />
+            <stop offset="0.497138" stopColor="#7D7D7D" />
+            <stop offset="1" stopColor="#EFEFEF" />
+            <stop offset="1" stopColor="#4F4F4F" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_954_9504"
@@ -90,10 +90,10 @@ const customButton = ({ text, type }) => {
             y2="120"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#DBDBE3" />
-            <stop offset="0.497138" stop-color="#99D9E3" />
-            <stop offset="1" stop-color="#5C9BCE" />
-            <stop offset="1" stop-color="#EFEFEF" />
+            <stop stopColor="#DBDBE3" />
+            <stop offset="0.497138" stopColor="#99D9E3" />
+            <stop offset="1" stopColor="#5C9BCE" />
+            <stop offset="1" stopColor="#EFEFEF" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_954_9504"
@@ -103,8 +103,8 @@ const customButton = ({ text, type }) => {
             y2="115"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#51B4F1" />
-            <stop offset="1" stop-color="#4D5CBA" />
+            <stop stopColor="#51B4F1" />
+            <stop offset="1" stopColor="#4D5CBA" />
           </linearGradient>
         </defs>
       </svg>
