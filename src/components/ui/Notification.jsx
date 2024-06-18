@@ -34,15 +34,11 @@ const Notification = ({ visible, message }) => {
               y2="73"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#FF2929" stop-opacity="0" />
-              <stop
-                offset="0.0956767"
-                stop-color="#DD573E"
-                stop-opacity="0.3"
-              />
-              <stop offset="0.5" stop-color="#810101" />
-              <stop offset="0.900775" stop-color="#DD573E" stop-opacity="0.3" />
-              <stop offset="1" stop-color="#DD573E" stop-opacity="0" />
+              <stop stopColor="#FF2929" stop-opacity="0" />
+              <stop offset="0.0956767" stopColor="#DD573E" stop-opacity="0.3" />
+              <stop offset="0.5" stopColor="#810101" />
+              <stop offset="0.900775" stopColor="#DD573E" stop-opacity="0.3" />
+              <stop offset="1" stopColor="#DD573E" stop-opacity="0" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_722_10728"
@@ -52,16 +48,18 @@ const Notification = ({ visible, message }) => {
               y2="73"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#739730" stop-opacity="0" />
-              <stop offset="0.30276" stop-color="#739730" />
-              <stop offset="0.5" stop-color="#EBF758" />
-              <stop offset="0.698187" stop-color="#739730" />
-              <stop offset="1" stop-color="#739730" stop-opacity="0" />
+              <stop stopColor="#739730" stop-opacity="0" />
+              <stop offset="0.30276" stopColor="#739730" />
+              <stop offset="0.5" stopColor="#EBF758" />
+              <stop offset="0.698187" stopColor="#739730" />
+              <stop offset="1" stopColor="#739730" stop-opacity="0" />
             </linearGradient>
           </defs>
         </svg>
         <div className="absolute top-auto left-auto">
-          <p className="text-[4vw] text-white font-[600]">{message}</p>
+          <p className="text-[4vw] text-white font-[600] text-center">
+            {message}
+          </p>
         </div>
       </div>
     </div>

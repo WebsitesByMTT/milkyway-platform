@@ -26,7 +26,7 @@ const Connector = ({ name, className }) => {
             d="M46 6V24"
             stroke="url(#paint0_linear_741_11462)"
             strokeWidth="2"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
         </g>
         <g filter="url(#filter3_f_741_11462)">
@@ -44,7 +44,7 @@ const Connector = ({ name, className }) => {
             d="M6 6V24"
             stroke="url(#paint1_linear_741_11462)"
             strokeWidth="2"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
         </g>
         <defs>
