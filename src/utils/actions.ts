@@ -109,7 +109,6 @@ export const updatePassword = async (formData: {
 }): Promise<ApiResponse> => {
   const token = await getCookie();
   const user = await getCurrentUser();
-  console.log("formData : ", formData);
 
   // Check if user is of type JwtPayload
   if (!isJwtPayload(user)) {

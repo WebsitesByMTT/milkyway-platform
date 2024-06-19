@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef, useState } from "react";
-import Popup from "./Pop-Up";
 import Modal from "./ui/Modal";
 import Setting from "./Setting";
 import AudioPlayer from "./ui/AudioPlayer";
@@ -16322,13 +16321,13 @@ const Footer = () => {
               >
                 <div className="w-fit h-full">
                   <p
-                    className={`stroke ${ele.style} bg-gradient-to-b text-transparent bg-clip-text  w-full h-full text-center text-[2.2vw] uppercase font-[500]`}
+                    className={`stroke ${ele.style} bg-gradient-to-b text-transparent bg-clip-text  w-full h-full text-center text-[4vw] sm:text-[2.2vw] uppercase font-[600]`}
                   >
                     {ele.text}
                   </p>
                 </div>
                 <div className="w-[40%] h-full">
-                  <p className="bg-gradient-to-b from-[#D4DA8F] via-[#BC7300] via-[50.91%] to-[#FFECB6] text-transparent bg-clip-text w-full h-full text-center text-[2.2vw] uppercase font-[500]">
+                  <p className="stroke bg-gradient-to-b from-[#D4DA8F] via-[#BC7300] via-[50.91%] to-[#FFECB6] text-transparent bg-clip-text w-full h-full text-center text-[4vw] sm:text-[2.2vw] uppercase font-[600]">
                     {ele.value}
                   </p>
                 </div>

@@ -109,7 +109,7 @@ const Modal = ({
                 />
               </div>
               <div className=" w-[98.5%] h-[15%] mt-1 absolute top-0 left-0 flex items-center justify-center">
-                <h1 className="text-white modal-title text-[2.5vw]">
+                <h1 className="text-white modal-title sm:text-[2.5vw] text-[4.8vw]">
                   {modalType}
                 </h1>
               </div>
