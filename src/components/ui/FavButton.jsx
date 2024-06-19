@@ -44,6 +44,7 @@ const FavButton = React.memo(({ id }) => {
         response.message === "Game added to favourites" ||
         response.message === "Game removed from favourites"
       ) {
+        toast.remove();
         toast.custom((t) => (
           <Notification visible={t.visible} message={response?.message} />
         ));
@@ -60,10 +61,12 @@ const FavButton = React.memo(({ id }) => {
         response.message === "Game already selected" ||
         response.message === "Game not in favourites"
       ) {
-        toast(response.message, {
-          icon: "ℹ️",
-        });
+        toast.remove();
+        toast.custom((t) => (
+          <Notification visible={t.visible} message={response.message} />
+        ));
       } else {
+        toast.remove();
         toast.custom((t) => (
           <Notification
             visible={t.visible}
@@ -76,6 +79,7 @@ const FavButton = React.memo(({ id }) => {
     } catch (err) {
       console.error(err);
       if (err instanceof Error) {
+        toast.remove();
         toast.custom((t) => (
           <Notification
             visible={t.visible}
@@ -85,6 +89,7 @@ const FavButton = React.memo(({ id }) => {
           />
         ));
       } else {
+        toast.remove();
         toast.custom((t) => (
           <Notification
             visible={t.visible}
@@ -102,7 +107,7 @@ const FavButton = React.memo(({ id }) => {
   };
   return (
     <button
-      className="absolute right-[-6px] top-5 z-10 w-[25%]"
+      className="absolute right-[-6px] top-[2vw] z-10 w-[25%] h-fit"
       onClick={(event) => handleClick(event, id)}
     >
       {optimisticState.clicked ? (
@@ -113,7 +118,7 @@ const FavButton = React.memo(({ id }) => {
           height="73"
           viewBox="0 0 92 73"
           fill="none"
-          className="w-full"
+          className="w-full h-full"
         >
           <g filter="url(#filter0_d_285_2223)">
             <path
@@ -310,7 +315,7 @@ const FavButton = React.memo(({ id }) => {
           height="73"
           viewBox="0 0 92 73"
           fill="none"
-          className="w-full"
+          className="w-full h-full"
         >
           <g filter="url(#filter0_d_285_2222)">
             <path

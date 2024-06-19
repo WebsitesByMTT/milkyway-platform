@@ -109,7 +109,7 @@ const customButton = ({ text, type }) => {
         </defs>
       </svg>
       <button
-        className="text-white w-[100%] h-[100%] text-[2vw] absolute top-auto left-auto"
+        className="text-white w-[100%] h-[100%] text-[3.5vw] sm:text-[2vw] absolute top-auto left-auto"
         type={type}
       >
         {text}

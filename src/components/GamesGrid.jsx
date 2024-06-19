@@ -38,7 +38,7 @@ const GamesGrid = ({ data }) => {
             setIsModalOpen={setIsModalOpen}
           />
         )}
-        <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
+        <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%] min-h-[35vw]">
           {otherGames.slice(0, 6).map((game, index) => (
             <GameCard
               key={index}

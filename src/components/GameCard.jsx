@@ -4,6 +4,8 @@ import FavButton from "./ui/FavButton";
 import { getGameById } from "@/utils/actions";
 
 const GameCard = ({ src, type, setCurrentGame, setIsModalOpen }) => {
+
+  // TODO : error handling for inactive game
   const gameOpenHandler = async (id) => {
     const url = await getGameById(id);
     console.log("URL : ", url);
