@@ -37,6 +37,7 @@ const GameModal = ({ show, onClose, src, gameLoaded, setGameLoaded }) => {
     console.log("Current Src : ", src);
     const handleMessage = (event) => {
       const message = event.data;
+      console.log("Message : ", message);
 
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
