@@ -11,26 +11,21 @@ import { fetchGames } from "@/utils/actions";
 const Home = async () => {
   const initialGames = await fetchGames();
   return (
-    <UserProvider>
-      <VolumeProvider>
-        <main className="relative w-full overflow-hidden ">
-          <div className="wave-bg w-full h-full absolute top-0 left-0"></div>
-          <Image
-            src={"/bg1.png"}
-            fill
-            alt="bg"
-            priority={true}
-            quality={100}
-            objectPosition="center"
-            className="z-[-2] object-cover"
-          />
-          <Header />
-          <Games initialGames={initialGames} />
-          <Footer />
-          <AudioPlayer />
-        </main>
-      </VolumeProvider>
-    </UserProvider>
+    <main className="relative w-full overflow-hidden ">
+      <div className="wave-bg w-full h-full absolute top-0 left-0"></div>
+      <Image
+        src={"/bg1.png"}
+        fill
+        alt="bg"
+        priority={true}
+        quality={100}
+        objectPosition="center"
+        className="z-[-2] object-cover"
+      />
+      <Header />
+      <Games initialGames={initialGames} />
+      <Footer />
+    </main>
   );
 };
 

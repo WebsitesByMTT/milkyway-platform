@@ -3,19 +3,10 @@ import React, { useEffect, useState } from "react";
 import { CarouselItem } from "./ui/carousel";
 import FeaturedGameCard from "./FeaturedGameCard";
 import GameCard from "./GameCard";
-import GameModal from "./ui/GameModal";
+
 
 const GamesGrid = ({ data }) => {
   const { featured, otherGames } = data || {};
-  const [currentGame, setCurrentGame] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [gameLoaded, setGameLoaded] = useState(false);
-
-  const closeModalHandler = () => {
-    setGameLoaded(false);
-    setIsModalOpen(false);
-  };
-
 
   const chunkArray = (array, chunkSize) => {
     const chunks = [];
@@ -31,22 +22,10 @@ const GamesGrid = ({ data }) => {
   return (
     <>
       <CarouselItem className="flex justify-center m-auto w-[80%]">
-        {featured.length > 0 && (
-          <FeaturedGameCard
-            src={featured[0]}
-            setCurrentGame={setCurrentGame}
-            setIsModalOpen={setIsModalOpen}
-          />
-        )}
+        {featured.length > 0 && <FeaturedGameCard src={featured[0]} />}
         <div className="grid grid-cols-3 gap-[2vw] w-[65%] py-[3%]">
           {otherGames.slice(0, 6).map((game, index) => (
-            <GameCard
-              key={index}
-              src={game}
-              type={game.type}
-              setCurrentGame={setCurrentGame}
-              setIsModalOpen={setIsModalOpen}
-            />
+            <GameCard key={index} src={game} type={game.type} />
           ))}
         </div>
       </CarouselItem>
@@ -54,24 +33,11 @@ const GamesGrid = ({ data }) => {
         <CarouselItem key={chunkIndex}>
           <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
             {chunk.map((game, index) => (
-              <GameCard
-                key={index}
-                src={game}
-                type={game.type}
-                setCurrentGame={setCurrentGame}
-                setIsModalOpen={setIsModalOpen}
-              />
+              <GameCard key={index} src={game} type={game.type} />
             ))}
           </div>
         </CarouselItem>
       ))}
-      <GameModal
-        show={isModalOpen}
-        onClose={closeModalHandler}
-        src={currentGame}
-        gameLoaded={gameLoaded}
-        setGameLoaded={setGameLoaded}
-      />
     </>
   );
 };
