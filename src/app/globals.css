@@ -272,6 +272,18 @@ input:focus::placeholder {
   position: relative;
 }
 
+#gameLoader::-webkit-slider-thumb {
+  background: url("/gameLoaderIcon.png") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
+
 .modal-title {
   font-weight: 700;
   text-transform: uppercase;
@@ -452,4 +464,11 @@ input:focus::placeholder {
 
 .slideOut {
   animation: slidein 0.5s ease-in-out;
+}
+
+@media (max-width:640px) {
+  #gameLoader::-webkit-slider-thumb {
+    width: 11vw;
+    height: 11vw;
+  }
 }
