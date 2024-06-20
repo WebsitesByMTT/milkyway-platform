@@ -228,8 +228,8 @@ const Connector = ({ name, className }) => {
           </linearGradient>
         </defs>
       </svg>
-      <div className="-mt-[5%] w-[90%] py-[4%] sm:py-[2%] flex items-center justify-center h-fit border-[0.2vw] border-[#2AD7FD] rounded-[2vw] bg-gradient-to-r from-[#011E4F] to-[#0143AC]">
-        <span className="sm:text-[1.1vw] text-[2vw] bg-gradient-to-b from-[#fff] to-[#91FCB6] to-[60.5%] text-transparent bg-clip-text uppercase">
+      <div className="-mt-[5%] w-[100%] py-[4%] sm:py-[2%] flex px-8 sm:px-0 items-center justify-center h-fit border-[0.2vw] border-[#2AD7FD] rounded-[2vw] bg-gradient-to-r from-[#011E4F] to-[#0143AC]">
+        <span className="sm:text-[1.1vw] text-[3vw] bg-gradient-to-b from-[#fff] to-[#91FCB6] to-[60.5%] text-transparent bg-clip-text uppercase">
           {name}
         </span>
       </div>

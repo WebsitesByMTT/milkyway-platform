@@ -10,6 +10,7 @@ const LogoutButton = () => {
   const deleteCookieHandler = () => {
     try {
       Cookies.remove("token");
+       Cookies.remove("index");
       toast.custom((t) => (
         <Notification visible={t.visible} message={"Logout successful"} />
       ));
@@ -23,7 +24,10 @@ const LogoutButton = () => {
   };
 
   return (
-    <button className=" w-[4vw] h-[4vw]" onClick={deleteCookieHandler}>
+    <button
+      className="w-[10vw] h-[10vw] sm:w-[4vw] sm:h-[4vw]"
+      onClick={deleteCookieHandler}
+    >
       <svg
         width="80"
         height="80"

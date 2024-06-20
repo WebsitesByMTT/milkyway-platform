@@ -6,8 +6,8 @@ import Cookies from "js-cookie";
 import { config } from "../../utils/config";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
-import CustomButton from "@/components/ui/CustomButton"
-import Notification from "@/components/ui/Notification"
+import CustomButton from "@/components/ui/CustomButton";
+import Notification from "@/components/ui/Notification";
 
 const Login = () => {
   const router = useRouter();
@@ -41,13 +41,9 @@ const Login = () => {
     if (!validateForm()) return;
 
     setLoading(true);
-
     try {
       toast.custom((t) => (
-        <Notification
-          visible={t.visible}
-          message="Loggin In..."
-        />
+        <Notification visible={t.visible} message="Loggin In..." />
       ));
       const response = await fetch(`${config.server}/api/users/login`, {
         method: "POST",
@@ -66,17 +62,16 @@ const Login = () => {
           console.log(decodedToken); // Check the decoded token
 
           if (decodedToken.designation === "player") {
-            toast.dismiss();
+            toast.remove();
             toast.custom((t) => (
-              <Notification
-                visible={t.visible}
-                message="Login Successful"
-              />
+              <Notification visible={t.visible} message="Login Successful" />
             ));
             Cookies.set("token", token);
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            Cookies.set("index", randomNumber);
             router.push("/");
           } else {
-            toast.dismiss();
+            toast.remove();
             toast.custom((t) => (
               <Notification
                 visible={t.visible}
@@ -85,26 +80,20 @@ const Login = () => {
             ));
           }
         } else {
-          toast.dismiss();
+          toast.remove();
           toast.custom((t) => (
-            <Notification
-              visible={t.visible}
-              message="Invalid Token"
-            />
+            <Notification visible={t.visible} message="Invalid Token" />
           ));
         }
       } else {
-        toast.dismiss();
+        toast.remove();
         console.log(data.error);
         toast.custom((t) => (
-          <Notification
-            visible={t.visible}
-            message="Login failed"
-          />
+          <Notification visible={t.visible} message="Login failed" />
         ));
       }
     } catch (error) {
-      toast.dismiss();
+      toast.remove();
       toast.custom((t) => (
         <Notification
           visible={t.visible}
@@ -116,7 +105,7 @@ const Login = () => {
     setLoading(false);
   };
   return (
-    <div className="relative w-full flex justify-evenly">
+    <div className="relative w-full h-full sm:h-auto flex justify-evenly">
       <Image
         src="/login.png"
         alt="login-bg"
@@ -124,35 +113,35 @@ const Login = () => {
         priority={true}
         quality={100}
         objectPosition="center"
-        className=" object-cover"
+        className=" object-cover  w-full"
       />
       <form
         onSubmit={handleSubmit}
         className="z-[2] p-[3%] flex justify-center flex-col gap-[5vw] sm:gap-[3vw] w-[35%] h-[50%] m-auto"
         autoComplete="off"
       >
-        <div className="bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] h-[20%] p-[0.5%] rounded-[1vw]">
-          <div className="w-[100%] p-[4%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] rouned-[1vw] h-[100%] rounded-[1vw]">
+        <div className="bg-gradient-to-b from-[#fff] p-[1px] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff]  rounded-[1vw]">
+          <div className="w-[100%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] rouned-[1vw] h-[100% rounded-[1vw]">
             <input
               type="text"
               id="username"
               value={username}
               onChange={handleUsernameChange}
               placeholder="ACCOUNT"
-              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              className="placeholder-transparent md:placeholder:text-[2vw] placeholder:text-[.9rem] pb-2 pt-2 sm:pb-3 sm:pt-3 px-4 focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-full md:text-[2vw] text-[5vw]"
               autoComplete="new-username"
-            ></input>
+            />
           </div>
         </div>
-        <div className="bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] h-[20%] p-[0.5%] rounded-[1vw]">
-          <div className="w-[100%] p-[4%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] rouned-[1vw] h-[100%] rounded-[1vw]">
+        <div className="bg-gradient-to-b from-[#fff] p-[1px] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff]  rounded-[1vw]">
+          <div className="w-[100%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] rouned-[1vw] h-[100% rounded-[1vw]">
             <input
               type="password"
               id="password"
               value={password}
               onChange={handlePasswordChange}
               placeholder="PASSWORD"
-              className="placeholder-inherit focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              className="placeholder-transparent md:placeholder:text-[2vw] placeholder:text-[.9rem] pb-2 pt-2 sm:pb-3 sm:pt-3 px-4 focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-full md:text-[2vw] text-[5vw]"
               autoComplete="new-password"
             ></input>
           </div>
@@ -161,12 +150,12 @@ const Login = () => {
           <CustomButton type="submit" text="Login" />
         </div>
       </form>
-      <div className="relative w-[55%] sm:w-[45%] min-h-[40vw] h-[70vh] sm:h-[50vw]">
+      <div className="relative w-[35%] sm:w-[45%] min-h-[30vw] mr-[5%] sm:mr-0 sm:h-[50vw]">
         <Image
           src="/character.png"
           alt="login-character"
           fill
-          className="z-[2] object-cover"
+          className="z-[2] object-cover bottom-0"
         />
       </div>
     </div>

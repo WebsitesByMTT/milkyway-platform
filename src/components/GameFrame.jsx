@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "./context/VolumeControlContext";
 import { useRouter } from "next/navigation";
+import GameLoader from "@/components/ui/GameLoader"
 
 const GameFrame = ({ data }) => {
   const [iframeKey, setIframeKey] = useState(0);
   const [gameLoaded, setGameLoaded] = useState(false);
   const { playAudio, pauseAudio } = useVolumeControl();
+  const [loadingpercent, setLoadingPercent] = useState(0)
 
   const router = useRouter();
 
@@ -32,6 +34,34 @@ const GameFrame = ({ data }) => {
   }
 
   useEffect(() => {
+    if (loadingpercent !== 70) {
+      const intervalId = setInterval(() => {
+        if (loadingpercent < 100) {
+          setLoadingPercent(prevLoadingPercent => prevLoadingPercent + 1);
+        } else {
+          if (loadingpercent >= 100) {
+            clearInterval(intervalId);
+          }
+        }
+      }, 70);
+      return () => clearInterval(intervalId);
+    } else if (gameLoaded) {
+      const intervalId = setInterval(() => {
+        if (loadingpercent < 100) {
+          setLoadingPercent(prevLoadingPercent => prevLoadingPercent + 1);
+        } else {
+          if (loadingpercent >= 100) {
+            clearInterval(intervalId);
+          }
+        }
+      }, 70);
+      return () => clearInterval(intervalId);
+    }
+
+  }, [loadingpercent, gameLoaded]);
+
+
+  useEffect(() => {
     console.log("Current Src : ", data);
     const handleMessage = (event) => {
       const message = event.data;
@@ -52,6 +82,7 @@ const GameFrame = ({ data }) => {
         setGameLoaded(false);
         playAudio();
         router.push("/");
+        setLoadingPercent(0)
       }
 
       if (message === "OnEnter") {
@@ -70,18 +101,11 @@ const GameFrame = ({ data }) => {
 
   return (
     <div className=" w-full h-full relative">
-      {!gameLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black">
-          <div className="pyramid-loader">
-            <div className="wrapper">
-              <span className="side side1"></span>
-              <span className="side side2"></span>
-              <span className="side side3"></span>
-              <span className="side side4"></span>
-              <span className="shadow"></span>
-            </div>
-          </div>
-        </div>
+      {gameLoaded && loadingpercent >= 100 ? null : (
+        <GameLoader
+          loadingpercent={loadingpercent}
+          setLoadingPercent={setLoadingPercent}
+        />
       )}
       <iframe
         key={iframeKey}

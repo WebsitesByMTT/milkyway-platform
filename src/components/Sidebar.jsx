@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import KenoButton from "@/components/ui/KenoButton";
 
 const Sidebar = ({ onSelectCategory, selectedCategory }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState();
+  const [viewportWidth, setViewportWidth] = useState();
 
   const categories = [
     {
@@ -1751,6 +1752,27 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
       ),
     },
   ];
+
+  useEffect(() => {
+    if (window !== "undefined") {
+      setViewportWidth(window.innerWidth);
+      if (viewportWidth < 640 && open) {
+        setOpen(false);
+      } else if (viewportWidth >= 640) {
+        setOpen(true);
+      }
+
+      const handleResize = () => {
+        setViewportWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [viewportWidth]);
 
   return (
     <div

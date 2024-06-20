@@ -56,7 +56,7 @@ const Games = ({ initialGames }) => {
         onSelectCategory={handleFetchGames}
         selectedCategory={selectedCategory}
       />
-      <Carousel className="w-[100%] m-auto" opts={{ loop: true }}>
+      <Carousel className="sm:w-[100%] w-[95%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[52vw] sm:min-h-[37vw]">
           <GamesGrid data={games} />
         </CarouselContent>
