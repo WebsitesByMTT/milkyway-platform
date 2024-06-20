@@ -50,7 +50,7 @@ const User = ({ data }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-full w-full"
               >
-                <g clip-path="url(#clip0_1030_10484)">
+                <g clipPath="url(#clip0_1030_10484)">
                   <path
                     d="M114.244 214.607C168.848 214.607 213.114 170.193 213.114 115.405C213.114 60.6166 168.848 16.2021 114.244 16.2021C59.6386 16.2021 15.3726 60.6166 15.3726 115.405C15.3726 170.193 59.6386 214.607 114.244 214.607Z"
                     fill="black"
@@ -165,8 +165,8 @@ const User = ({ data }) => {
                     y2="30.0634"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#252D3B" />
-                    <stop offset="1" stop-color="#3C4E71" />
+                    <stop stopColor="#252D3B" />
+                    <stop offset="1" stopColor="#3C4E71" />
                   </linearGradient>
                   <linearGradient
                     id="paint1_linear_1030_10484"
@@ -176,9 +176,9 @@ const User = ({ data }) => {
                     y2="4.0557"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#4B32B1" />
-                    <stop offset="0.49" stop-color="#4B32B1" />
-                    <stop offset="1" stop-color="#7AB7FB" />
+                    <stop stopColor="#4B32B1" />
+                    <stop offset="0.49" stopColor="#4B32B1" />
+                    <stop offset="1" stopColor="#7AB7FB" />
                   </linearGradient>
                   <linearGradient
                     id="paint2_linear_1030_10484"
@@ -188,8 +188,8 @@ const User = ({ data }) => {
                     y2="48.4941"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#ED9506" />
-                    <stop offset="1" stop-color="#FFE707" />
+                    <stop stopColor="#ED9506" />
+                    <stop offset="1" stopColor="#FFE707" />
                   </linearGradient>
                   <linearGradient
                     id="paint3_linear_1030_10484"
@@ -199,8 +199,8 @@ const User = ({ data }) => {
                     y2="49.812"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#ED9506" />
-                    <stop offset="1" stop-color="#FFE707" />
+                    <stop stopColor="#ED9506" />
+                    <stop offset="1" stopColor="#FFE707" />
                   </linearGradient>
                   <clipPath id="clip0_1030_10484">
                     <rect width="229" height="229" fill="white" />
