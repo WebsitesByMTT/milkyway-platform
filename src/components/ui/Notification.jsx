@@ -1,10 +1,12 @@
 import React from "react";
 
-const Notification = ({ visible, message }) => {
+const Notification = ({ visible, message, className }) => {
   return (
-    <div className="z-[99] bg-black bg-opacity-50 flex items-center justify-center  fixed top-0 left-0 w-[100vh] h-[100vw] sm:w-screen sm:h-screen ">
+    <div
+      className={` w-[100vh] h-[100vw] sm:h-screen sm:w-screen z-[99] bg-black bg-opacity-50 flex items-center justify-center fixed top-0 left-0`}
+    >
       <div
-        className={`h-auto relative w-[70%] flex items-center justify-center ${
+        className={`${className} h-auto sm:w-[70%] w-[90vw] relative flex items-center justify-center ${
           visible ? "animate-enter" : "animate-leave"
         }`}
       >

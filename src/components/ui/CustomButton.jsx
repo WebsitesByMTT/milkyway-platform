@@ -4,65 +4,56 @@ const customButton = ({ text, type }) => {
   return (
     <div className="h-full w-full relative flex items-center justify-center">
       <svg
-        width="356"
-        height="120"
-        viewBox="0 0 356 120"
+        width="282"
+        height="112"
+        viewBox="0 0 282 112"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="h-full w-full"
       >
-        <rect x="18" y="18" width="320" height="84" rx="42" fill="#2D6BEB" />
+        <rect x="17" y="17" width="248" height="78" rx="7" fill="#2D6BEB" />
         <rect
-          x="18"
-          y="18"
-          width="320"
-          height="84"
-          rx="42"
-          fill="url(#paint0_linear_954_9504)"
+          x="17"
+          y="17"
+          width="248"
+          height="78"
+          rx="7"
+          fill="url(#paint0_linear_71_299)"
         />
         <rect
-          x="18"
-          y="18"
-          width="320"
-          height="84"
-          rx="42"
-          fill="black"
-          fill-opacity="0.1"
+          x="13"
+          y="13"
+          width="256"
+          height="86"
+          rx="11"
+          stroke="url(#paint1_linear_71_299)"
+          stroke-width="8"
         />
         <rect
-          x="15.2857"
-          y="14.2857"
-          width="325.429"
-          height="91.4286"
-          rx="45.7143"
-          stroke="url(#paint1_linear_954_9504)"
-          strokeWidth="8.57143"
+          x="2.5"
+          y="2.5"
+          width="277"
+          height="107"
+          rx="21.5"
+          stroke="url(#paint2_linear_71_299)"
+          stroke-width="5"
         />
         <rect
-          x="2.67857"
-          y="2.67857"
-          width="350.643"
-          height="114.643"
-          rx="57.3214"
-          stroke="url(#paint2_linear_954_9504)"
-          strokeWidth="5.35714"
-        />
-        <rect
-          x="7.12883"
-          y="6.12883"
-          width="341.742"
-          height="107.742"
-          rx="53.8712"
-          stroke="url(#paint3_linear_954_9504)"
-          strokeWidth="2.25765"
+          x="6.05357"
+          y="6.05357"
+          width="269.893"
+          height="99.8929"
+          rx="15.9464"
+          stroke="url(#paint3_linear_71_299)"
+          stroke-width="2.10714"
         />
         <defs>
           <linearGradient
-            id="paint0_linear_954_9504"
-            x1="178"
-            y1="102"
-            x2="178"
-            y2="18"
+            id="paint0_linear_71_299"
+            x1="141"
+            y1="95"
+            x2="141"
+            y2="17"
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#119EBF" />
@@ -70,11 +61,11 @@ const customButton = ({ text, type }) => {
             <stop offset="1" stopColor="#17C5D8" />
           </linearGradient>
           <linearGradient
-            id="paint1_linear_954_9504"
-            x1="178.63"
-            y1="10"
-            x2="178.63"
-            y2="110"
+            id="paint1_linear_71_299"
+            x1="141.498"
+            y1="9"
+            x2="141.498"
+            y2="103"
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#CDD1D6" />
@@ -83,11 +74,11 @@ const customButton = ({ text, type }) => {
             <stop offset="1" stopColor="#4F4F4F" />
           </linearGradient>
           <linearGradient
-            id="paint2_linear_954_9504"
-            x1="178.672"
+            id="paint2_linear_71_299"
+            x1="141.532"
             y1="0"
-            x2="178.672"
-            y2="120"
+            x2="141.532"
+            y2="112"
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#DBDBE3" />
@@ -96,11 +87,11 @@ const customButton = ({ text, type }) => {
             <stop offset="1" stopColor="#EFEFEF" />
           </linearGradient>
           <linearGradient
-            id="paint3_linear_954_9504"
-            x1="178"
+            id="paint3_linear_71_299"
+            x1="141"
             y1="5"
-            x2="178"
-            y2="115"
+            x2="141"
+            y2="107"
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#51B4F1" />
@@ -108,6 +99,7 @@ const customButton = ({ text, type }) => {
           </linearGradient>
         </defs>
       </svg>
+
       <button
         className="text-white w-[100%] h-[100%] text-[3.5vw] sm:text-[2vw] absolute top-auto left-auto"
         type={type}
