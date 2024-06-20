@@ -10,6 +10,15 @@
     font-family: "Barlow Condensed", sans-serif;
   }
 }
+.star {
+  box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 0.4);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 2px;
+  background-color: white;
+  z-index: 100;
+}
 
 ::selection {
   color: transparent;
@@ -272,7 +281,6 @@ input:focus::placeholder {
   position: relative;
 }
 
-
 @media screen and (max-width: 640px) {
   #music::-webkit-slider-thumb {
     width: 7vw;
@@ -480,9 +488,25 @@ input:focus::placeholder {
   animation: slidein 0.5s ease-in-out;
 }
 
-@media (max-width:640px) {
+@media (max-width: 640px) {
   #gameLoader::-webkit-slider-thumb {
     width: 11vw;
     height: 11vw;
+  }
+}
+
+.rotate {
+  animation: rotate 3s infinite ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(360deg) scale(0);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
   }
 }
