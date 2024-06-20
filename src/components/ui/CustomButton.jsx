@@ -56,9 +56,9 @@ const customButton = ({ text, type }) => {
             y2="17"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#119EBF" />
-            <stop offset="0.496954" stop-color="#0D82B3" stop-opacity="0.84" />
-            <stop offset="1" stop-color="#17C5D8" />
+            <stop stopColor="#119EBF" />
+            <stop offset="0.496954" stopColor="#0D82B3" stop-opacity="0.84" />
+            <stop offset="1" stopColor="#17C5D8" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_71_299"
@@ -68,10 +68,10 @@ const customButton = ({ text, type }) => {
             y2="103"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#CDD1D6" />
-            <stop offset="0.497138" stop-color="#7D7D7D" />
-            <stop offset="1" stop-color="#EFEFEF" />
-            <stop offset="1" stop-color="#4F4F4F" />
+            <stop stopColor="#CDD1D6" />
+            <stop offset="0.497138" stopColor="#7D7D7D" />
+            <stop offset="1" stopColor="#EFEFEF" />
+            <stop offset="1" stopColor="#4F4F4F" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_71_299"
@@ -81,10 +81,10 @@ const customButton = ({ text, type }) => {
             y2="112"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#DBDBE3" />
-            <stop offset="0.497138" stop-color="#99D9E3" />
-            <stop offset="1" stop-color="#5C9BCE" />
-            <stop offset="1" stop-color="#EFEFEF" />
+            <stop stopColor="#DBDBE3" />
+            <stop offset="0.497138" stopColor="#99D9E3" />
+            <stop offset="1" stopColor="#5C9BCE" />
+            <stop offset="1" stopColor="#EFEFEF" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_71_299"
@@ -94,8 +94,8 @@ const customButton = ({ text, type }) => {
             y2="107"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#51B4F1" />
-            <stop offset="1" stop-color="#4D5CBA" />
+            <stop stopColor="#51B4F1" />
+            <stop offset="1" stopColor="#4D5CBA" />
           </linearGradient>
         </defs>
       </svg>
