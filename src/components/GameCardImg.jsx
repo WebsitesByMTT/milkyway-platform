@@ -1,20 +1,20 @@
+"use client";
 import Image from "next/image";
-import FavButton from "./ui/FavButton";
-import Link from "next/link";
-import GameCardImg from "./GameCardImg";
+import React from "react";
+import useIntersectionObserver from "@/components/IntersectionObserver";
 
-const GameCard = ({ src, type }) => {
+const GameCardImg = ({ src, type }) => {
+  const [ref, isIntersecting] = useIntersectionObserver({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
-    <>
-      <Link
-        href={`/${src._id}`}
-        className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
-      >
-        <FavButton id={src?._id} />
-        <GameCardImg src={src?.gameThumbnailUrl} type={type} />
-        {/* <div className=" w-full h-full relative">
+    <div className=" w-full h-full relative" ref={ref}>
+      {isIntersecting ? (
+        <>
           <Image
-            src={src?.gameThumbnailUrl}
+            src={src}
             fill
             className="h-full w-full z-[1] p-[1.5%] rounded-xl object-cover"
             alt="game-img"
@@ -170,10 +170,10 @@ const GameCard = ({ src, type }) => {
               )}
             </div>
           ) : null}
-        </div> */}
-      </Link>
-    </>
+        </>
+      ) : null}
+    </div>
   );
 };
 
-export default GameCard;
+export default GameCardImg;

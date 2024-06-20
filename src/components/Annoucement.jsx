@@ -20,9 +20,9 @@ const Annoucement = () => {
             }}
           >
             <span
-              className={`text-[2.5vw] ${
+              className={`sm:text-[2.5vw] text-[4vw] ${
                 option === data ? "text-[#fff]" : "text-[#00FF39]"
-              } font-[800] text-stroke-3 leading-[2vw] z-[4] transition-all`}
+              } font-[800] text-stroke-3 sm:leading-[2vw] leading-[3vw] z-[4] transition-all`}
             >
               {data}:
             </span>
@@ -32,7 +32,7 @@ const Annoucement = () => {
       <div className="flex w-[75%] p-[0.4%] h-full bg-gradient-to-b from-[#5FFEFB] to-[#4057F7] rounded-[0.5vw]">
         <div
           style={{ backgroundImage: "url(/announcementbg.png)" }}
-          className="w-full h-full flex items-center justify-center rounded-[0.5vw] text-[2.5vw] text-white"
+          className="w-full h-full flex items-center justify-center rounded-[0.5vw] sm:text-[2.5vw] text-[3.8vw] text-white"
         >
           <div className="w-[90%] h-[90%] m-auto overflow-hidden">
             {option === "Announcement" && <Announce />}

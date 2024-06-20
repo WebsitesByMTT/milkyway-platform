@@ -89,7 +89,7 @@ const Password = () => {
               value={formData.oldPassword}
               onChange={handleChange}
               placeholder="Old Password"
-              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[3vw] sm:text-[2vw]"
               autoComplete="off"
             ></input>
           </div>
@@ -102,7 +102,7 @@ const Password = () => {
               value={formData.changedPassword}
               onChange={handleChange}
               placeholder="New Password"
-              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[3vw] sm:text-[2vw]"
               autoComplete="off"
             ></input>
           </div>
@@ -115,7 +115,7 @@ const Password = () => {
               value={formData.reEnterPassword}
               onChange={handleChange}
               placeholder="Re-Enter Password"
-              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[2vw]"
+              className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[3vw] sm:text-[2vw]"
               autoComplete="off"
             ></input>
           </div>

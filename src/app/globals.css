@@ -143,10 +143,10 @@ input:focus::placeholder {
   circle {
     fill: none;
     stroke: hsl(214, 97%, 59%);
-    strokewidth: 2;
+    stroke-width: 2;
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-    strokelinecap: round;
+    stroke-linecap: round;
     animation: dash4 1.5s ease-in-out infinite;
   }
 }
@@ -249,7 +249,7 @@ input:focus::placeholder {
   position: relative;
 } */
 #music::-webkit-slider-thumb {
-  background: url("/music.png") no-repeat center center;
+  background: url("/music.svg") no-repeat center center;
   -webkit-appearance: none;
   appearance: none;
   width: 4vw;
@@ -261,7 +261,7 @@ input:focus::placeholder {
 }
 
 #sound::-webkit-slider-thumb {
-  background: url("/sound.png") no-repeat center center;
+  background: url("/sound.svg") no-repeat center center;
   -webkit-appearance: none;
   appearance: none;
   width: 4vw;
@@ -270,6 +270,18 @@ input:focus::placeholder {
   cursor: pointer;
   border: none;
   position: relative;
+}
+
+
+@media screen and (max-width: 640px) {
+  #music::-webkit-slider-thumb {
+    width: 7vw;
+    height: 7vw;
+  }
+  #sound::-webkit-slider-thumb {
+    width: 7vw;
+    height: 7vw;
+  }
 }
 
 #gameLoader::-webkit-slider-thumb {
@@ -299,8 +311,7 @@ input:focus::placeholder {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font: transparent;
-  -webkit-text-strokewidth: 1px;
-  -webkit-text-stroke-color: #f86e02;
+  -webkit-text-stroke: 0.1vw #f86e02;
 }
 
 @property --blink-opacity {
@@ -447,6 +458,9 @@ input:focus::placeholder {
 
 .text-stroke-3 {
   -webkit-text-stroke: 0.15vw #ff0302;
+}
+.stroke {
+  -webkit-text-stroke: 0.1vw #000;
 }
 
 .slideIn {

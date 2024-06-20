@@ -1,34 +1,39 @@
 "use client";
-
 const FullScreenButton = () => {
   const fullScreenHandler = () => {
-    const doc: any = document;
     if (
       !document.fullscreenElement &&
-      !doc.webkitFullscreenElement &&
-      !doc.msFullscreenElement
+      !document.webkitFullscreenElement &&
+      !document.msFullscreenElement
     ) {
       if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
-      } else if (doc.documentElement.webkitRequestFullscreen) {
-        doc.documentElement.webkitRequestFullscreen();
-      } else if (doc.documentElement.msRequestFullscreen) {
-        doc.documentElement.msRequestFullscreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) {
+        document.documentElement.msRequestFullscreen();
       }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
-      } else if (doc.webkitExitFullscreen) {
-        doc.webkitExitFullscreen();
-      } else if (doc.msExitFullscreen) {
-        doc.msExitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
       }
     }
   };
+
   return (
-    <button className=" w-[10vw] h-[10vw] md:w-[4vw] md:h-[4vw]" onClick={fullScreenHandler}>
+    <button
+      id="fullScreen"
+      className="w-[10vw] h-[10vw] sm::w-[4vw] sm:h-[4vw]"
+      onClick={fullScreenHandler}
+    >
       <svg
         className="w-full h-full"
+        width="80"
+        height="80"
         viewBox="0 0 80 80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

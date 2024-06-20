@@ -6,8 +6,8 @@ import Cookies from "js-cookie";
 import { config } from "../../utils/config";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
-import CustomButton from "@/components/ui/CustomButton"
-import Notification from "@/components/ui/Notification"
+import CustomButton from "@/components/ui/CustomButton";
+import Notification from "@/components/ui/Notification";
 
 const Login = () => {
   const router = useRouter();
@@ -41,13 +41,9 @@ const Login = () => {
     if (!validateForm()) return;
 
     setLoading(true);
-
     try {
       toast.custom((t) => (
-        <Notification
-          visible={t.visible}
-          message="Loggin In..."
-        />
+        <Notification visible={t.visible} message="Loggin In..." />
       ));
       const response = await fetch(`${config.server}/api/users/login`, {
         method: "POST",
@@ -66,17 +62,16 @@ const Login = () => {
           console.log(decodedToken); // Check the decoded token
 
           if (decodedToken.designation === "player") {
-            toast.dismiss();
+            toast.remove();
             toast.custom((t) => (
-              <Notification
-                visible={t.visible}
-                message="Login Successful"
-              />
+              <Notification visible={t.visible} message="Login Successful" />
             ));
             Cookies.set("token", token);
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            Cookies.set("index", randomNumber);
             router.push("/");
           } else {
-            toast.dismiss();
+            toast.remove();
             toast.custom((t) => (
               <Notification
                 visible={t.visible}
@@ -85,26 +80,20 @@ const Login = () => {
             ));
           }
         } else {
-          toast.dismiss();
+          toast.remove();
           toast.custom((t) => (
-            <Notification
-              visible={t.visible}
-              message="Invalid Token"
-            />
+            <Notification visible={t.visible} message="Invalid Token" />
           ));
         }
       } else {
-        toast.dismiss();
+        toast.remove();
         console.log(data.error);
         toast.custom((t) => (
-          <Notification
-            visible={t.visible}
-            message="Login failed"
-          />
+          <Notification visible={t.visible} message="Login failed" />
         ));
       }
     } catch (error) {
-      toast.dismiss();
+      toast.remove();
       toast.custom((t) => (
         <Notification
           visible={t.visible}

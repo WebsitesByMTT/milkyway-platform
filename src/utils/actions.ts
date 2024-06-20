@@ -64,17 +64,10 @@ export const getGameById = async (id: string) => {
     }
 
     const data = await response.json();
-
-    console.log("GAme by id : ", data);
-
     return data;
   } catch (error: unknown) {
     console.error(error);
-    if (error instanceof Error) {
-      return { message: error.message || "Failed to fetch game data" };
-    } else {
-      return { message: "An unknown error occurred" };
-    }
+    redirect("/");
   }
 };
 
@@ -116,7 +109,6 @@ export const updatePassword = async (formData: {
 }): Promise<ApiResponse> => {
   const token = await getCookie();
   const user = await getCurrentUser();
-  console.log("formData : ", formData);
 
   // Check if user is of type JwtPayload
   if (!isJwtPayload(user)) {
