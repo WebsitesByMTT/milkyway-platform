@@ -27,7 +27,7 @@ const FullScreenButton = () => {
   return (
     <button
       id="fullScreen"
-      className="w-[10vw] h-[10vw] sm::w-[4vw] sm:h-[4vw]"
+      className="w-[10vw] h-[10vw] sm:w-[4vw] sm:h-[4vw]"
       onClick={fullScreenHandler}
     >
       <svg
