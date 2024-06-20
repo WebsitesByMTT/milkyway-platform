@@ -24,7 +24,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <button className=" w-[4vw] h-[4vw]" onClick={deleteCookieHandler}>
+    <button className="w-[10vw] h-[10vw] md:w-[4vw] md:h-[4vw]" onClick={deleteCookieHandler}>
       <svg
         width="80"
         height="80"

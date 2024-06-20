@@ -570,7 +570,7 @@ const Header = async () => {
         alt="logo"
       />
 
-      <div className=" absolute sm:top-[45%] top-[60%] right-[4%] flex gap-4">
+      <div className=" absolute sm:top-[45%] top-[35%] right-[4%] flex gap-4">
         <FullScreenButton />
         <LogoutButton />
       </div>
