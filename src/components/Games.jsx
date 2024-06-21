@@ -31,7 +31,6 @@ const Games = ({ initialGames }) => {
       }
     }
     setOpen(false);
-    setShowAlert(false);
   };
 
   const mobileSizeHandler = () => {
