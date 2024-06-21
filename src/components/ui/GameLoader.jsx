@@ -22,7 +22,7 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
         // Create a new div element
         const div = document.createElement("div");
         div.innerHTML = `
-            <div id="elements-container" class="h-[4vw] w-[4vw] absolute top-0 left-0 z-[99] animate-ping rotate">
+            <div id="elements-container" class="h-[4vw] w-[4vw] absolute top-0 left-0 z-[99] animate-ping rotatestar">
                 <svg
           width="148"
           height="148"

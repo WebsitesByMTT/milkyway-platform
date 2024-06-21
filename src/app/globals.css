@@ -495,11 +495,11 @@ input:focus::placeholder {
   }
 }
 
-.rotate {
-  animation: rotate 3s infinite ease-in-out;
+.rotatestar {
+  animation: rotatestar 3s infinite ease-in-out;
 }
 
-@keyframes rotate {
+@keyframes rotatestar {
   0% {
     transform: rotate(0deg) scale(1);
   }
