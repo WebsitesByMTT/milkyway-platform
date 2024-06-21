@@ -100,7 +100,7 @@ const GameFrame = ({ data }) => {
   }, [data, gameLoaded]);
 
   return (
-    <div className=" w-full h-full relative">
+    <div className="w-full h-full relative">
       {gameLoaded && loadingpercent >= 100 ? null : (
         <GameLoader
           loadingpercent={loadingpercent}
