@@ -27,7 +27,7 @@ const customButton = ({ text, type }) => {
           height="86"
           rx="11"
           stroke="url(#paint1_linear_71_299)"
-          stroke-width="8"
+          strokeWidth="8"
         />
         <rect
           x="2.5"
@@ -36,7 +36,7 @@ const customButton = ({ text, type }) => {
           height="107"
           rx="21.5"
           stroke="url(#paint2_linear_71_299)"
-          stroke-width="5"
+          strokeWidth="5"
         />
         <rect
           x="6.05357"
@@ -45,7 +45,7 @@ const customButton = ({ text, type }) => {
           height="99.8929"
           rx="15.9464"
           stroke="url(#paint3_linear_71_299)"
-          stroke-width="2.10714"
+          strokeWidth="2.10714"
         />
         <defs>
           <linearGradient
@@ -57,7 +57,7 @@ const customButton = ({ text, type }) => {
             gradientUnits="userSpaceOnUse"
           >
             <stop stopColor="#119EBF" />
-            <stop offset="0.496954" stopColor="#0D82B3" stop-opacity="0.84" />
+            <stop offset="0.496954" stopColor="#0D82B3" stopOpacity="0.84" />
             <stop offset="1" stopColor="#17C5D8" />
           </linearGradient>
           <linearGradient

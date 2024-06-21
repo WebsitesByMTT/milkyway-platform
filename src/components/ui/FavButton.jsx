@@ -107,7 +107,7 @@ const FavButton = React.memo(({ id }) => {
   };
   return (
     <button
-      className="absolute right-[-6px] top-[2vw] z-10 w-[25%] h-fit"
+      className="absolute right-[-6px] top-[1vw] z-10 w-[25%] h-fit"
       onClick={(event) => handleClick(event, id)}
     >
       {optimisticState.clicked ? (

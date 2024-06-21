@@ -40,7 +40,7 @@ const User = ({ data }) => {
       </div>
       <div className="relative p-[0.1vw] h-fit rounded-[2vw] bg-gradient-to-b from-[#184260] to-[#666666] flex items-center justify-center">
         <div className="p-[0.15vw] h-fit rounded-[2vw] bg-[#00000091] flex items-center justify-center">
-          <div className=" flex items-center bg-[#00000091] border-2 border-black h-fit rounded-[10vw] sm:rounded-[2vw] space-x-8 pr-[1vw] sm:space-x-16 sm:pr-4 ">
+          <div className=" flex items-center bg-[#00000091] border-2 border-black h-fit rounded-[10vw] sm:rounded-[2vw] space-x-[7vw] pr-[1vw] sm:space-x-[3vw] sm:pr-4 ">
             <div className="absolute coin sm:w-[3vw] w-[7vw] h-[7vw] sm:h-[3vw] left-[-0.5vw] ">
               <svg
                 width="229"
