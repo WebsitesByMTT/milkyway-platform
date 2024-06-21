@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect } from "react";
 
 const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
@@ -21,7 +22,7 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
         // Create a new div element
         const div = document.createElement("div");
         div.innerHTML = `
-            <div id="elements-container" class="h-[4vw] w-[4vw] absolute top-0 left-0 z-[99] animate-ping rotate">
+            <div id="elements-container" class="h-[4vw] w-[4vw] absolute top-0 left-0 z-[99] animate-ping rotatestar">
                 <svg
           width="148"
           height="148"
@@ -135,15 +136,15 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
     // Create stars and animate them
     createStars(200);
     animateStars();
-    createElements(10);
+    createElements(5);
   }, []);
 
   return (
     <div
-      style={{ backgroundImage: "url('./gameloader.png')" }}
-      className="object-contain bg-no-repeat absolute inset-0 flex items-center justify-center text-white bg-black"
+      className="relative h-full w-full flex items-center justify-center text-white bg-black"
       id="viewport-container"
     >
+      <Image src="/gameloader.png" fill objectFit="cover" alt="gameLoaderbg"/>
       <div id="stars"></div>
       <div className="flex items-center justify-center gap-[2vw] w-[70%] z-[1000]">
         <span className="inline-block bg-gradient-to-r from-[#F6F693]  via-[#EE9502] to-[#FCC20C] bg-clip-text text-transparent text-[3vh] sm:text-[1.8vw] font-semibold uppercase">
