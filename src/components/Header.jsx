@@ -539,28 +539,18 @@ const Header = async () => {
           </linearGradient>
         </defs>
       </svg>
-      <div className="flex absolute top-0  opacity-[0.8] left-auto h-[80%]">
-        <Image
-          src="/star-animation.gif"
-          className="w-auto"
-          height={400}
-          width={800}
-          alt="logo"
-        />
-        <Image
-          src="/star-animation.gif"
-          className="w-auto"
-          height={400}
-          width={800}
-          alt="logo"
-        />
-        <Image
-          src="/star-animation.gif"
-          className="w-auto"
-          height={400}
-          width={800}
-          alt="logo"
-        />
+      <div
+        className="flex absolute top-0 opacity-[0.8] left-auto h-[85%] items-center justify-center w-[30%]"
+      >
+        <div className="w-[30%] relative h-full">
+          <Image src="/star-animation.gif" className="w-full h-full" fill alt="logo" />
+        </div>
+        <div className="w-[30%] relative h-full">
+          <Image src="/star-animation.gif" className="w-auto" fill alt="logo" />
+        </div>
+        <div className="w-[30%] relative h-full">
+          <Image src="/star-animation.gif" className="w-auto" fill alt="logo" />
+        </div>
       </div>
       <Image
         src="/logo.png"
