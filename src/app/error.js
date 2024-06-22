@@ -2,7 +2,7 @@
 import React from "react";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
-import Notification from "../components/ui/Notification"
+import Notification from "../components/ui/Notification";
 import { useRouter } from "next/navigation";
 
 const Error = () => {
@@ -11,19 +11,13 @@ const Error = () => {
     try {
       Cookies.remove("token");
       toast.custom((t) => (
-        <Notification
-          visible={t.visible}
-          message="Logout Successfull"
-        />
+        <Notification visible={t.visible} message="Logout Successfull" />
       ));
       router.push("/login");
     } catch (error) {
       console.log(error.message);
       toast.custom((t) => (
-        <Notification
-          visible={t.visible}
-          message="Failed to logout"
-        />
+        <Notification visible={t.visible} message="Failed to logout" />
       ));
     }
   };

@@ -23,7 +23,7 @@ const GamesGrid = ({ data }) => {
     <>
       <CarouselItem className="flex justify-center m-auto w-[80%]">
         {featured.length > 0 && <FeaturedGameCard src={featured[0]} />}
-        <div className="grid grid-cols-3 gap-[2vw] min-h-[36vw] w-[65%] py-[3%]">
+        <div className="grid grid-cols-3 gap-[2vw] sm:min-h-[36vw] min-h-[66.5vw]  w-[65%] py-[3%]">
           {otherGames.slice(0, 6).map((game, index) => (
             <GameCard key={index} src={game} type={game.type} />
           ))}

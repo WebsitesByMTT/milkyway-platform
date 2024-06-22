@@ -19,6 +19,7 @@ const LogoutButton = () => {
       toast.custom((t) => (
         <Notification visible={t.visible} message={"Logout successful"} />
       ));
+      localStorage.setItem("showAlert", JSON.stringify(true));
       router.push("/login");
     } catch (error) {
       console.log(error.message);

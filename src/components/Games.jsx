@@ -10,11 +10,13 @@ import {
 } from "./ui/carousel";
 import GamesGrid from "./GamesGrid";
 import { fetchGames } from "@/utils/actions";
+import toast from "react-hot-toast";
 
 const Games = ({ initialGames }) => {
   const [games, setGames] = useState(initialGames);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [open, setOpen] = useState(false);
+  let showAlert;
 
   const fullScreenHandler = () => {
     if (
@@ -31,6 +33,7 @@ const Games = ({ initialGames }) => {
       }
     }
     setOpen(false);
+    localStorage.setItem("showAlert", JSON.stringify(false));
   };
 
   const mobileSizeHandler = () => {
@@ -39,7 +42,8 @@ const Games = ({ initialGames }) => {
         window.innerWidth <= 640 &&
         !document.fullscreenElement &&
         !document.webkitFullscreenElement &&
-        !document.msFullscreenElement
+        !document.msFullscreenElement &&
+        showAlert
       ) {
         setOpen(true);
       } else {
@@ -84,14 +88,11 @@ const Games = ({ initialGames }) => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", mobileSizeHandler);
-
-    return () => {
-      window.removeEventListener("resize", mobileSizeHandler);
-    };
-  }, []);
-
-  useEffect(() => {
+    toast.remove();
+    showAlert =
+      localStorage.getItem("showAlert") !== null
+        ? JSON.parse(localStorage.getItem("showAlert"))
+        : true;
     mobileSizeHandler();
   }, []);
 
@@ -102,7 +103,7 @@ const Games = ({ initialGames }) => {
         selectedCategory={selectedCategory}
       />
       <Carousel className="sm:w-[100%] w-[95%] m-auto" opts={{ loop: true }}>
-        <CarouselContent className="min-h-[52vw] sm:min-h-[37vw]">
+        <CarouselContent className="min-h-[66.5vw] sm:min-h-[37vw]">
           <GamesGrid data={games} />
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
@@ -174,7 +175,7 @@ const Games = ({ initialGames }) => {
             </svg>
             <div className="absolute top-auto left-auto">
               <p className="text-[4vw] text-white font-[600] text-center">
-                Go to full screen mode for better experienece.
+                Go to full screen mode for better experience.
               </p>
               <div className="flex w-[50%] items-center justify-between m-auto">
                 <button
@@ -187,6 +188,7 @@ const Games = ({ initialGames }) => {
                   className="text-[4vw] bg-gradient-to-b text-transparent bg-clip-text from-[#ff5039] to-[#ffc8a6] font-[600] text-center"
                   onClick={() => {
                     setOpen(false);
+                    localStorage.setItem("showAlert", JSON.stringify(false));
                   }}
                 >
                   No

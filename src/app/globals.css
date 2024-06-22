@@ -126,11 +126,30 @@ button {
 input:focus::placeholder {
   opacity: 0;
 }
-
+.progress {
+  background: transparent;
+}
 .progress::-webkit-progress-bar {
   background: transparent;
 }
 .progress::-webkit-progress-value {
+  background: linear-gradient(
+      180deg,
+      #25bbfd 0%,
+      rgba(34, 227, 252, 0.75) 28%,
+      rgba(50, 169, 250, 0.07) 72%,
+      #3ff6ff 100%
+    ),
+    #31a1fa;
+  border-radius: 2vw;
+}
+
+.progress::-moz-progress-value {
+  background: transparent;
+}
+
+.progress::-moz-progress-bar {
+  background: transparent;
   background: linear-gradient(
       180deg,
       #25bbfd 0%,
@@ -220,44 +239,18 @@ input:focus::placeholder {
   border: solid 0.2vw #25bbfd;
   z-index: 1;
 }
-
-/* .slider::-webkit-slider-thumb {
+#music::-webkit-slider-thumb {
+  background: url("/music.svg") no-repeat center center;
   -webkit-appearance: none;
   appearance: none;
-  width: 3vw;
-  height: 3vw;
-  background-size: contain;
-  cursor: pointer;
-  border: none;
-  z-index: 9999;
-  position: relative;
-  background: url("/music.png") no-repeat center center;
-} */
-/*  */
-
-/* .slider::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
-  background: url("/music.png") no-repeat center center;
-  background-size: contain;
-  cursor: pointer;
-  border: none;
-  position: relative;
-} */
-
-/* .slider::-webkit-slider-thumb {
-  
-}
-
-.slider::-moz-range-thumb {
   width: 4vw;
   height: 4vw;
   background-size: contain;
   cursor: pointer;
   border: none;
   position: relative;
-} */
-#music::-webkit-slider-thumb {
+}
+#music::-moz-range-thumb {
   background: url("/music.svg") no-repeat center center;
   -webkit-appearance: none;
   appearance: none;
@@ -280,20 +273,8 @@ input:focus::placeholder {
   border: none;
   position: relative;
 }
-
-@media screen and (max-width: 640px) {
-  #music::-webkit-slider-thumb {
-    width: 7vw;
-    height: 7vw;
-  }
-  #sound::-webkit-slider-thumb {
-    width: 7vw;
-    height: 7vw;
-  }
-}
-
-#gameLoader::-webkit-slider-thumb {
-  background: url("/gameLoaderIcon.png") no-repeat center center;
+#sound::-moz-range-thumb {
+  background: url("/sound.svg") no-repeat center center;
   -webkit-appearance: none;
   appearance: none;
   width: 4vw;
@@ -304,6 +285,54 @@ input:focus::placeholder {
   position: relative;
 }
 
+#gameLoader::-webkit-slider-thumb {
+  background: url("/favicon.png") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
+#gameLoader::-moz-range-thumb {
+  background: url("/favicon.png") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
+@media screen and (max-width: 640px) {
+  #music::-webkit-slider-thumb {
+    width: 7vw;
+    height: 7vw;
+  }
+  #sound::-webkit-slider-thumb {
+    width: 7vw;
+    height: 7vw;
+  }
+  #music::-moz-range-thumb {
+    width: 9vw;
+    height: 9vw;
+  }
+  #sound::-moz-range-thumb {
+    width: 9vw;
+    height: 9vw;
+  }
+  #gameLoader::-moz-range-thumb {
+    width: 12vw;
+    height: 12vw;
+  }
+  #gameLoader::-webkit-slider-thumb {
+    width: 8vw;
+    height: 8vw;
+  }
+}
 .modal-title {
   font-weight: 700;
   text-transform: uppercase;
@@ -354,7 +383,7 @@ input:focus::placeholder {
   --maincolor: var(--bg);
 }
 
-.wave-bg {
+/* .wave-bg {
   --stripes: repeating-linear-gradient(
     100deg,
     #fff 0%,
@@ -390,7 +419,7 @@ input:focus::placeholder {
     background-attachment: fixed;
     mix-blend-mode: difference;
   }
-}
+} */
 
 .pyramid-loader {
   position: relative;
@@ -509,4 +538,24 @@ input:focus::placeholder {
   100% {
     transform: rotate(0deg) scale(1);
   }
+}
+
+.gameLoaderBg {
+  background: radial-gradient(
+      66.22% 84.24% at 50.02% 112.89%,
+      #ff70ff 0%,
+      #a84aa8 34%,
+      #000 100%
+    ),
+    radial-gradient(
+      103.47% 74.35% at 67.89% -54.84%,
+      #00d1ff 0%,
+      #0073a7 27%,
+      #04628f 36%,
+      #0c4161 57%,
+      #122a3f 75%,
+      #161b2a 90%,
+      #171623 100%
+    );
+  background-blend-mode: color-dodge, normal;
 }
