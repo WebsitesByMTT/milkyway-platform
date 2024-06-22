@@ -1,11 +1,8 @@
 import React from "react";
 import Games from "@/components/Games";
-import { UserProvider } from "@/components/context/UserContext";
-import { VolumeProvider } from "@/components/context/VolumeControlContext";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AudioPlayer from "@/components/ui/AudioPlayer";
 import { fetchGames } from "@/utils/actions";
 
 const Home = async () => {
