@@ -141,10 +141,9 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
 
   return (
     <div
-      className="relative h-full w-full flex items-center justify-center text-white bg-black"
+      className=" gameLoaderBg relative h-full w-full flex items-center justify-center text-white"
       id="viewport-container"
     >
-      <Image src="/gameloader.png" fill objectFit="cover" alt="gameLoaderbg"/>
       <div id="stars"></div>
       <div className="flex items-center justify-center gap-[2vw] w-[70%] z-[1000]">
         <span className="inline-block bg-gradient-to-r from-[#F6F693]  via-[#EE9502] to-[#FCC20C] bg-clip-text text-transparent text-[3vh] sm:text-[1.8vw] font-semibold uppercase">
