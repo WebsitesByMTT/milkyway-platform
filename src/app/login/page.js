@@ -174,7 +174,7 @@ const Login = () => {
           src="/character.png"
           alt="login-character"
           fill
-          className="z-[2] object-contain bottom-0 m-auto"
+          className="z-[2] sm:object-contain bottom-0"
         />
       </div>
     </div>

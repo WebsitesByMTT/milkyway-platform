@@ -126,11 +126,30 @@ button {
 input:focus::placeholder {
   opacity: 0;
 }
-
+.progress {
+  background: transparent;
+}
 .progress::-webkit-progress-bar {
   background: transparent;
 }
 .progress::-webkit-progress-value {
+  background: linear-gradient(
+      180deg,
+      #25bbfd 0%,
+      rgba(34, 227, 252, 0.75) 28%,
+      rgba(50, 169, 250, 0.07) 72%,
+      #3ff6ff 100%
+    ),
+    #31a1fa;
+  border-radius: 2vw;
+}
+
+.progress::-moz-progress-value {
+  background: transparent;
+}
+
+.progress::-moz-progress-bar {
+  background: transparent;
   background: linear-gradient(
       180deg,
       #25bbfd 0%,
@@ -268,6 +287,17 @@ input:focus::placeholder {
   border: none;
   position: relative;
 }
+#music::-moz-range-thumb {
+  background: url("/music.svg") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
 
 #sound::-webkit-slider-thumb {
   background: url("/sound.svg") no-repeat center center;
@@ -280,16 +310,16 @@ input:focus::placeholder {
   border: none;
   position: relative;
 }
-
-@media screen and (max-width: 640px) {
-  #music::-webkit-slider-thumb {
-    width: 7vw;
-    height: 7vw;
-  }
-  #sound::-webkit-slider-thumb {
-    width: 7vw;
-    height: 7vw;
-  }
+#sound::-moz-range-thumb {
+  background: url("/sound.svg") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
 }
 
 #gameLoader::-webkit-slider-thumb {
@@ -303,7 +333,43 @@ input:focus::placeholder {
   border: none;
   position: relative;
 }
-
+#gameLoader::-moz-range-thumb {
+  background: url("/gameLoaderIcon.png") no-repeat center center;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 4vw;
+  height: 4vw;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  position: relative;
+}
+@media screen and (max-width: 640px) {
+  #music::-webkit-slider-thumb {
+    width: 7vw;
+    height: 7vw;
+  }
+  #sound::-webkit-slider-thumb {
+    width: 7vw;
+    height: 7vw;
+  }
+  #music::-moz-range-thumb {
+    width: 9vw;
+    height: 9vw;
+  }
+  #sound::-moz-range-thumb {
+    width: 9vw;
+    height: 9vw;
+  }
+  #gameLoader::-moz-range-thumb {
+    width: 12vw;
+    height: 12vw;
+  }
+  #gameLoader::-webkit-slider-thumb {
+    width: 8vw;
+    height: 8vw;
+  }
+}
 .modal-title {
   font-weight: 700;
   text-transform: uppercase;

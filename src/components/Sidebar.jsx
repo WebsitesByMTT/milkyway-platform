@@ -16,7 +16,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -131,7 +131,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-fit w-full"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -288,7 +288,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -403,7 +403,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-fit w-full"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -561,7 +561,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -676,7 +676,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-fit w-full"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -833,7 +833,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -974,7 +974,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-fit w-full"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -1170,7 +1170,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -1301,7 +1301,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -1488,7 +1488,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-fit"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -1603,7 +1603,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
           viewBox="0 0 85 94"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-fit w-full"
+          className="w-full h-full"
         >
           <rect
             x="0.5"
@@ -1776,8 +1776,10 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
 
   return (
     <div
-      className={`absolute bottom-0 left-[1.5%] z-[10] w-[4.5%] py-[3%] flex justify-between items-center flex-col ${
-        open ? "h-full" : " h-fit"
+      className={`absolute sm:bottom-0 left-[1.5%] z-[10] w-[4.5%] flex justify-between items-center flex-col ${
+        open
+          ? "sm:h-[36vw] sm:py-[2%] h-[60vw] sm:mt-0 bottom-0"
+          : " sm:py-[2%] h-fit bottom-0"
       } `}
     >
       {open && (
@@ -1788,6 +1790,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
                 <div
                   key={index}
                   onClick={() => onSelectCategory(category.name)}
+                  className="flex-1 h-[15%] w-full"
                 >
                   {selectedCategory === category.name
                     ? category?.selectedIcon
