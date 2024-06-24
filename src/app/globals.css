@@ -29,23 +29,33 @@ button {
 
 .click-effect {
   position: fixed;
-  top: -15px;
-  left: -15px;
-  height: 30px;
-  width: 30px;
+  top: -0.5vw;
+  left: -0.5vw;
+  height: 1vw;
+  width: 1vw;
   border-radius: 50%;
-  border: 1px solid #ffffff40;
+  border: 0.001vw solid #ffffff40;
   pointer-events: none;
   animation: mouse-effect 0.3s forwards ease-out;
   z-index: 1000;
+}
+@media screen and(max-width:640px) {
+  .click-effect {
+  top: -1.5vw;
+  left: -1.5vw;
+  height: 3vw;
+  width: 3vw;
+}
 }
 
 @keyframes mouse-effect {
   0% {
     transform: scale(0.5);
+    opacity: 1;
   }
   100% {
     transform: scale(2);
+    opacity: 0.5;
   }
 }
 
@@ -350,7 +360,7 @@ input:focus::placeholder {
   font: transparent;
   -webkit-text-stroke: 0.1vw #f86e02;
 }
-
+/* 
 @property --blink-opacity {
   syntax: "<number>";
   inherits: false;
@@ -374,13 +384,10 @@ input:focus::placeholder {
   to {
     background-position: 350% 50%, 350% 50%;
   }
-}
+} */
 
 :root {
   font-family: Barlow Condensed, sans-serif;
-  --stripe-color: #fff;
-  --bg: var(--stripe-color);
-  --maincolor: var(--bg);
 }
 
 /* .wave-bg {
@@ -409,26 +416,17 @@ input:focus::placeholder {
   filter: blur(5px) invert(20%);
 
   mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: var(--stripes), var(--rainbow);
-    background-size: 200%, 100%;
-    animation: smoothBg 60s linear infinite;
-    background-attachment: fixed;
-    mix-blend-mode: difference;
-  }
-} */
-
-.pyramid-loader {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  display: block;
-  transform-style: preserve-3d;
-  transform: rotateX(-20deg);
 }
+.wave-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--stripes), var(--rainbow);
+  background-size: 200%, 100%;
+  animation: smoothBg 60s linear infinite;
+  background-attachment: fixed;
+  mix-blend-mode: difference;
+} */
 
 .wrapper {
   position: relative;
@@ -442,55 +440,6 @@ input:focus::placeholder {
   100% {
     transform: rotateY(360deg);
   }
-}
-
-.pyramid-loader .wrapper .side {
-  width: 70px;
-  height: 70px;
-  /* you can choose any gradient or color you want */
-  /* background: radial-gradient( #2F2585 10%, #F028FD 70%, #2BDEAC 120%); */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform-origin: center top;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-.pyramid-loader .wrapper .side1 {
-  transform: rotateZ(-30deg) rotateY(90deg);
-  background: conic-gradient(#2bdeac, #f028fd, #d8cce6, #2f2585);
-}
-
-.pyramid-loader .wrapper .side2 {
-  transform: rotateZ(30deg) rotateY(90deg);
-  background: conic-gradient(#2f2585, #d8cce6, #f028fd, #2bdeac);
-}
-
-.pyramid-loader .wrapper .side3 {
-  transform: rotateX(30deg);
-  background: conic-gradient(#2f2585, #d8cce6, #f028fd, #2bdeac);
-}
-
-.pyramid-loader .wrapper .side4 {
-  transform: rotateX(-30deg);
-  background: conic-gradient(#2bdeac, #f028fd, #d8cce6, #2f2585);
-}
-
-.pyramid-loader .wrapper .shadow {
-  width: 60px;
-  height: 60px;
-  background: #8b5ad5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: rotateX(90deg) translateZ(-40px);
-  filter: blur(12px);
 }
 
 .text-stroke-3 {
@@ -558,4 +507,28 @@ input:focus::placeholder {
       #171623 100%
     );
   background-blend-mode: color-dodge, normal;
+}
+.aurora-borealis {
+    background: linear-gradient(#05051f, #05051f, #97f7f3, #05051f, #05051f, #05051f, #76f6bd, #aaebc9, #05051f, #05051f, #69c1ff, #cb304f, #05051f, #05051f, #05051f, #05051f, #4a5b8f, #419f91, #05051f, #05051f, #3a4aa1, #db3b69, #05051f);
+    background-size: 1800% 1800%;
+    -webkit-animation: Aurora 180s ease;
+    -moz-animation: Aurora 180s ease;
+    animation: Aurora 180s ease;
+animation-iteration-count: 1;
+}
+
+@-webkit-keyframes Aurora {
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
+}
+@-moz-keyframes Aurora {
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
+}
+@keyframes Aurora { 
+    0%{background-position:18% 0%}
+    50%{background-position:83% 100%}
+    100%{background-position:18% 0%}
 }
