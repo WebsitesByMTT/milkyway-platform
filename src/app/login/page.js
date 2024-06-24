@@ -8,12 +8,16 @@ import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 import CustomButton from "@/components/ui/CustomButton";
 import Notification from "@/components/ui/Notification";
+import Modal from "@/components/ui/Modal";
+import ForgotPassword from "@/components/ui/ForgotPassword";
 
 const Login = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [modalType, setModalType] = useState("");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -21,6 +25,11 @@ const Login = () => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleModalOpen = (type) => {
+    setModalType(type);
+    setOpen(true);
   };
 
   const validateForm = () => {
@@ -168,7 +177,21 @@ const Login = () => {
         <div className="sm:h-[5vw] h-[10vw] w-auto">
           <CustomButton type="submit" text="Login" />
         </div>
+        <p
+          onClick={() => handleModalOpen("Note")}
+          className="uppercase sm:text-[2vw] text-[4vw] sm:text-left text-center bg-clip-text text-transparent bg-gradient-to-b from-[#F7C53B] via-[#C08C3A] to-[#DBC731]"
+        >
+          Forgot password?
+        </p>
       </form>
+      <Modal
+        isOpen={open}
+        setOpen={setOpen}
+        modalType={modalType}
+        setModalType={setModalType}
+      >
+        <ForgotPassword />
+      </Modal>
       <div className="relative w-full sm:w-[45%]  min-h-screen sm:min-h-[20vw] sm:mr-0 sm:h-[50vw] m-auto">
         <Image
           src="/character.png"

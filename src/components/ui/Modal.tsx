@@ -44,7 +44,11 @@ const Modal = ({
   return isOnClient
     ? ReactDOM.createPortal(
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00000096] z-[999]">
-          <div className="w-[65%] h-auto relative animate-popup ">
+          <div
+            className={`w-[65%] h-auto relative animate-popup ${
+              modalType === "Note" ? "-rotate-90 sm:rotate-0 w-[90vw] sm:w-[65%]" : ""
+            }`}
+          >
             <svg
               width="1393"
               height="771"
