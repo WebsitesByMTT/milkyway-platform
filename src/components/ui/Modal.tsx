@@ -46,7 +46,9 @@ const Modal = ({
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#00000096] z-[999]">
           <div
             className={`w-[65%] h-auto relative animate-popup ${
-              modalType === "Note" ? "-rotate-90 sm:rotate-0 w-[90vw] sm:w-[65%]" : ""
+              modalType === "Note"
+                ? "-rotate-90 sm:rotate-0 w-[90vw] sm:w-[65%]"
+                : ""
             }`}
           >
             <svg
@@ -117,8 +119,7 @@ const Modal = ({
                   {modalType}
                 </h1>
               </div>
-
-              <div className=" h-full  w-[98.5%]  ">{children}</div>
+              <div className=" h-[85%]  w-[98.5%]  ">{children}</div>
             </div>
             <button
               className="absolute right-[-5%] top-[-2%] h-[12%] w-[10%]"

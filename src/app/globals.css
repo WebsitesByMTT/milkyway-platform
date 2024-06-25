@@ -173,15 +173,15 @@ input:focus::placeholder {
 
 .spin-loader {
   svg {
-    width: 3.25em;
+    width: 6vw;
     transform-origin: center;
     animation: rotate4 2s linear infinite;
   }
 
   circle {
     fill: none;
-    stroke: hsl(214, 97%, 59%);
-    stroke-width: 2;
+    stroke: url(#gradient);
+    stroke-width: 4;
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;
@@ -208,32 +208,6 @@ input:focus::placeholder {
 
   100% {
     stroke-dashoffset: -125px;
-  }
-}
-
-.spinner {
-  background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
-  width: 100px;
-  height: 100px;
-  animation: spinning82341 1.7s linear infinite;
-  text-align: center;
-  border-radius: 50px;
-  filter: blur(1px);
-  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255),
-    0px 5px 20px 0px rgb(0, 225, 255);
-}
-
-.spinner1 {
-  background-color: rgb(36, 36, 36);
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  filter: blur(10px);
-}
-
-@keyframes spinning82341 {
-  to {
-    transform: rotate(360deg);
   }
 }
 
@@ -507,28 +481,4 @@ input:focus::placeholder {
       #171623 100%
     );
   background-blend-mode: color-dodge, normal;
-}
-.aurora-borealis {
-    background: linear-gradient(#05051f, #05051f, #97f7f3, #05051f, #05051f, #05051f, #76f6bd, #aaebc9, #05051f, #05051f, #69c1ff, #cb304f, #05051f, #05051f, #05051f, #05051f, #4a5b8f, #419f91, #05051f, #05051f, #3a4aa1, #db3b69, #05051f);
-    background-size: 1800% 1800%;
-    -webkit-animation: Aurora 180s ease;
-    -moz-animation: Aurora 180s ease;
-    animation: Aurora 180s ease;
-animation-iteration-count: 1;
-}
-
-@-webkit-keyframes Aurora {
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
-}
-@-moz-keyframes Aurora {
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
-}
-@keyframes Aurora { 
-    0%{background-position:18% 0%}
-    50%{background-position:83% 100%}
-    100%{background-position:18% 0%}
 }

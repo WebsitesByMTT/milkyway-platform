@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
+import Loader from "@/components/ui/Loader";
 
 import {
   Carousel,
@@ -15,8 +16,17 @@ import toast from "react-hot-toast";
 const Games = ({ initialGames }) => {
   const [games, setGames] = useState(initialGames);
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState();
+  const [open, setOpen] = useState();
   let showAlert;
+
+  async function handleFetchGames(category) {
+    setLoading(true);
+    const data = await fetchGames(category);
+    setSelectedCategory(category);
+    setGames(data);
+    setLoading(false);
+  }
 
   const fullScreenHandler = () => {
     if (
@@ -38,25 +48,19 @@ const Games = ({ initialGames }) => {
 
   const mobileSizeHandler = () => {
     if (window !== undefined) {
-      if (
-        window.innerWidth <= 640 &&
-        !document.fullscreenElement &&
-        !document.webkitFullscreenElement &&
-        !document.msFullscreenElement &&
-        showAlert
-      ) {
+      const isMobile = window.innerWidth < 640;
+      const isPortrait = window.innerWidth < window.innerHeight;
+      const isFullscreen =
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement;
+      if (isMobile && isPortrait && !isFullscreen && showAlert) {
         setOpen(true);
       } else {
         setOpen(false);
       }
     }
   };
-
-  async function handleFetchGames(category) {
-    const data = await fetchGames(category);
-    setSelectedCategory(category);
-    setGames(data);
-  }
 
   useEffect(() => {
     const carousel = document.querySelector(".Carousel");
@@ -89,11 +93,16 @@ const Games = ({ initialGames }) => {
 
   useEffect(() => {
     toast.remove();
-    showAlert =
-      localStorage.getItem("showAlert") !== null
-        ? JSON.parse(localStorage.getItem("showAlert"))
-        : true;
-    mobileSizeHandler();
+    const isPortrait = window.innerWidth < window.innerHeight;
+    if (isPortrait) {
+      showAlert =
+        localStorage.getItem("showAlert") !== null
+          ? JSON.parse(localStorage.getItem("showAlert"))
+          : true;
+      mobileSizeHandler();
+    } else {
+      setOpen(false);
+    }
   }, []);
 
   return (
@@ -197,6 +206,13 @@ const Games = ({ initialGames }) => {
             </div>
           </div>
         </div>
+      )}
+      {loading ? (
+        <div className="fixed top-0 left-0 h-full w-full bg-[#0000003b]">
+          <Loader />
+        </div>
+      ) : (
+        <></>
       )}
     </div>
   );

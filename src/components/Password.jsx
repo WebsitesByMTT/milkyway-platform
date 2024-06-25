@@ -76,13 +76,13 @@ const Password = () => {
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center">
+    <div className="h-full w-full flex items-center justify-center mt-[1.5vw]">
       <form
         onSubmit={handleSubmit}
-        className="z-[2] p-[2%] flex items-center  justify-center flex-col gap-[2vw] sm:gap-[3vw] w-[60%] h-[70%] m-auto"
+        className="z-[2] p-[2%] h-[75%] flex items-center  justify-center flex-col gap-[2vw] sm:gap-[3vw] w-[60%]  py-[2vw] m-auto"
       >
         <div className="w-full bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] h-[20%] p-[0.5%] rounded-[0.5vw]">
-          <div className="w-[100%] p-[1%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] rounded-[0.5vw] h-[100%]">
+          <div className="w-[100%] px-[1%] sm:p-[1%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] rounded-[0.5vw] h-[100%]">
             <input
               type="text"
               name="oldPassword"
@@ -95,7 +95,7 @@ const Password = () => {
           </div>
         </div>
         <div className="w-full bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] h-[20%] p-[0.5%] rounded-[0.5vw]">
-          <div className="w-[100%] p-[1%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] h-[100%] rounded-[0.5vw]">
+          <div className="w-[100%] px-[1vw] sm:p-[1vw] bg-gradient-to-b from-[#0e052d] to-[#2b3953] h-[100%] rounded-[0.5vw]">
             <input
               type="text"
               name="changedPassword"
@@ -108,7 +108,7 @@ const Password = () => {
           </div>
         </div>
         <div className="w-full bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] h-[20%] p-[0.5%] rounded-[0.5vw]">
-          <div className="w-[100%] p-[1%] bg-gradient-to-b from-[#0e052d] to-[#2b3953] h-[100%] rounded-[0.5vw]">
+          <div className="w-[100%] px-[1vw] sm:p-[1vw] bg-gradient-to-b from-[#0e052d] to-[#2b3953] h-[100%] rounded-[0.5vw]">
             <input
               type="text"
               name="reEnterPassword"

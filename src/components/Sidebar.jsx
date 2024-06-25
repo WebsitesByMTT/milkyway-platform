@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import KenoButton from "@/components/ui/KenoButton";
 
 const Sidebar = ({ onSelectCategory, selectedCategory }) => {
   const [open, setOpen] = useState();
