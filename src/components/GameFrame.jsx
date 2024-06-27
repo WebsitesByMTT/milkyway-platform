@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "./context/VolumeControlContext";
 import { useRouter } from "next/navigation";
-import GameLoader from "@/components/ui/GameLoader"
+import GameLoader from "@/components/ui/GameLoader";
 
 const GameFrame = ({ data }) => {
   const [iframeKey, setIframeKey] = useState(0);
   const [gameLoaded, setGameLoaded] = useState(false);
   const { playAudio, pauseAudio } = useVolumeControl();
-  const [loadingpercent, setLoadingPercent] = useState(0)
+  const [loadingpercent, setLoadingPercent] = useState(0);
 
   const router = useRouter();
 
@@ -37,7 +37,7 @@ const GameFrame = ({ data }) => {
     if (loadingpercent !== 70) {
       const intervalId = setInterval(() => {
         if (loadingpercent < 100) {
-          setLoadingPercent(prevLoadingPercent => prevLoadingPercent + 1);
+          setLoadingPercent((prevLoadingPercent) => prevLoadingPercent + 1);
         } else {
           if (loadingpercent >= 100) {
             clearInterval(intervalId);
@@ -48,7 +48,7 @@ const GameFrame = ({ data }) => {
     } else if (gameLoaded) {
       const intervalId = setInterval(() => {
         if (loadingpercent < 100) {
-          setLoadingPercent(prevLoadingPercent => prevLoadingPercent + 1);
+          setLoadingPercent((prevLoadingPercent) => prevLoadingPercent + 1);
         } else {
           if (loadingpercent >= 100) {
             clearInterval(intervalId);
@@ -57,9 +57,7 @@ const GameFrame = ({ data }) => {
       }, 70);
       return () => clearInterval(intervalId);
     }
-
   }, [loadingpercent, gameLoaded]);
-
 
   useEffect(() => {
     console.log("Current Src : ", data);
@@ -82,7 +80,7 @@ const GameFrame = ({ data }) => {
         setGameLoaded(false);
         playAudio();
         router.push("/");
-        setLoadingPercent(0)
+        setLoadingPercent(0);
       }
 
       if (message === "OnEnter") {
@@ -101,12 +99,12 @@ const GameFrame = ({ data }) => {
 
   return (
     <div className="w-full h-full relative">
-      {gameLoaded && loadingpercent >= 100 ? null : (
+      {/* {gameLoaded && loadingpercent >= 100 ? null : (
         <GameLoader
           loadingpercent={loadingpercent}
           setLoadingPercent={setLoadingPercent}
         />
-      )}
+      )} */}
       <iframe
         key={iframeKey}
         src={data}
