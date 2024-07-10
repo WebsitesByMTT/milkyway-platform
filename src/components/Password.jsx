@@ -6,36 +6,22 @@ import toast from "react-hot-toast";
 import Notification from "./ui/Notification.jsx";
 
 const Password = () => {
-  const [formData, setFormData] = useState({
-    oldPassword: "",
-    changedPassword: "",
-    reEnterPassword: "",
-  });
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const [existingPassword, setExistingPassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [reEnterPassword, setReEnterPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validation checks
-    if (
-      !formData.oldPassword ||
-      !formData.changedPassword ||
-      !formData.reEnterPassword
-    ) {
+    if (existingPassword === "" || password === "" || reEnterPassword === "") {
       toast.custom((t) => (
         <Notification visible={t.visible} message="All fields are required" />
       ));
       return;
     }
 
-    if (formData.changedPassword !== formData.reEnterPassword) {
+    if (password !== reEnterPassword) {
       toast.custom((t) => (
         <Notification visible={t.visible} message="Passwords do not match" />
       ));
@@ -43,7 +29,7 @@ const Password = () => {
     }
 
     try {
-      const response = await updatePassword(formData);
+      const response = await updatePassword({ existingPassword, password });
       if (response.message) {
         toast.custom((t) => (
           <Notification
@@ -68,11 +54,9 @@ const Password = () => {
       ));
     }
 
-    setFormData({
-      oldPassword: "",
-      changedPassword: "",
-      reEnterPassword: "",
-    });
+    setExistingPassword("");
+    setPassword("");
+    setReEnterPassword("");
   };
 
   return (
@@ -86,8 +70,8 @@ const Password = () => {
             <input
               type="text"
               name="oldPassword"
-              value={formData.oldPassword}
-              onChange={handleChange}
+              value={existingPassword}
+              onChange={(e) => setExistingPassword(e.target.value)}
               placeholder="Old Password"
               className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[3vw] sm:text-[2vw]"
               autoComplete="off"
@@ -99,8 +83,8 @@ const Password = () => {
             <input
               type="text"
               name="changedPassword"
-              value={formData.changedPassword}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="New Password"
               className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[3vw] sm:text-[2vw]"
               autoComplete="off"
@@ -112,8 +96,8 @@ const Password = () => {
             <input
               type="text"
               name="reEnterPassword"
-              value={formData.reEnterPassword}
-              onChange={handleChange}
+              value={reEnterPassword}
+              onChange={(e) => setReEnterPassword(e.target.value)}
               placeholder="Re-Enter Password"
               className="placeholder-transparent focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-[100%] h-[100%] text-[3vw] sm:text-[2vw]"
               autoComplete="off"

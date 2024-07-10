@@ -16,11 +16,11 @@ const FavButton = React.memo(({ id }) => {
   const [loading, setLoading] = useState(false);
 
   const [optimisticState, setOptimistic] = useState({
-    clicked: user?.favourite.includes(id) || false,
+    clicked: user?.favouriteGames?.includes(id) || false,
   });
 
   useEffect(() => {
-    if (user?.favourite.includes(id)) {
+    if (user?.favouriteGames?.includes(id)) {
       startTransition(() => {
         setOptimistic({ clicked: true });
       });
@@ -32,7 +32,7 @@ const FavButton = React.memo(({ id }) => {
     event.preventDefault();
     setLoading(true);
 
-    const actionType = optimisticState.clicked ? "remove" : "Add";
+    const actionType = optimisticState.clicked ? "remove" : "add";
 
     startTransition(() => {
       setOptimistic({ clicked: !optimisticState.clicked });
@@ -52,10 +52,10 @@ const FavButton = React.memo(({ id }) => {
         setUser((prevUser) => {
           if (!prevUser) return prevUser;
           const updatedFavourites =
-            actionType === "Add"
-              ? [...prevUser.favourite, id]
-              : prevUser.favourite.filter((favId) => favId !== id);
-          return { ...prevUser, favourite: updatedFavourites };
+            actionType === "add"
+              ? [...prevUser.favouriteGames, id]
+              : prevUser.favouriteGames?.filter((favId) => favId !== id);
+          return { ...prevUser, favouriteGames: updatedFavourites };
         });
       } else if (
         response.message === "Game already selected" ||
