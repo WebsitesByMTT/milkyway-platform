@@ -4,14 +4,15 @@ import Link from "next/link";
 import GameCardImg from "./GameCardImg";
 
 const GameCard = ({ src, type }) => {
+  console.log("src", src);
   return (
     <>
       <Link
-        href={`/${src._id}`}
+        href={`/${src.slug}`}
         className="w-full h-[27vw] sm:h-[14.5vw] gamecard relative z-[2]"
       >
         <FavButton id={src?._id} />
-        <GameCardImg src={src?.gameThumbnailUrl} type={type} />
+        <GameCardImg src={src?.thumbnail} type={type} />
       </Link>
     </>
   );
