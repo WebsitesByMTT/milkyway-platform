@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { use } from "react";
 import FullScreenButton from "./ui/FullScreenButton";
 import LogoutButton from "./ui/LogoutButton";
 import User from "./User";
@@ -12,7 +12,7 @@ async function getUser() {
   const token = cookies().get("token")?.value;
   try {
     const response = await fetch(
-      `${config.server}/api/users/userData`,
+      `${config.server}/api/users`,
       {
         method: "GET",
         credentials: "include",
@@ -39,6 +39,7 @@ async function getUser() {
 
 const Header = async () => {
   const user = await getUser();
+  console.log("Curr : ", user);
   return (
     <header className="relative flex items-center justify-center">
       <User data={user} />
@@ -539,11 +540,14 @@ const Header = async () => {
           </linearGradient>
         </defs>
       </svg>
-      <div
-        className="flex absolute top-0 opacity-[0.8] left-auto h-[85%] items-center justify-center w-[30%]"
-      >
+      <div className="flex absolute top-0 opacity-[0.8] left-auto h-[85%] items-center justify-center w-[30%]">
         <div className="w-[30%] relative h-full">
-          <Image src="/star-animation.gif" className="w-full h-full" fill alt="logo" />
+          <Image
+            src="/star-animation.gif"
+            className="w-full h-full"
+            fill
+            alt="logo"
+          />
         </div>
         <div className="w-[30%] relative h-full">
           <Image src="/star-animation.gif" className="w-auto" fill alt="logo" />

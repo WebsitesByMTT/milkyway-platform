@@ -4,7 +4,7 @@ import { config as _config } from "./utils/config";
 export default function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isPublicPath = path === "/login";
-  const token = request.cookies.get("token")?.value || "";
+  const token = request.cookies.get("token");
 
   if (isPublicPath && token) {
     const response = NextResponse.redirect(new URL("/", request.url));
@@ -13,6 +13,7 @@ export default function middleware(request: NextRequest) {
 
   if (!isPublicPath && !token) {
     return NextResponse.redirect(new URL("/login", request.nextUrl));
+    
   }
 
   return NextResponse.next();

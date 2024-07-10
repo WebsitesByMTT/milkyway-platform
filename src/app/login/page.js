@@ -10,6 +10,7 @@ import CustomButton from "@/components/ui/CustomButton";
 import Notification from "@/components/ui/Notification";
 import Modal from "@/components/ui/Modal";
 import ForgotPassword from "@/components/ui/ForgotPassword";
+import { getCookie } from "@/utils/utils";
 
 const Login = () => {
   const router = useRouter();
@@ -49,7 +50,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
     setLoading(true);
     try {
       toast.custom((t) => (
@@ -75,7 +75,7 @@ const Login = () => {
           const decodedToken = jwtDecode(token);
           console.log(decodedToken); // Check the decoded token
 
-          if (decodedToken.designation === "player") {
+          if (decodedToken.role === "player") {
             toast.remove();
             toast.custom((t) => (
               <Notification
