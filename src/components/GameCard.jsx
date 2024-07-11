@@ -4,7 +4,6 @@ import Link from "next/link";
 import GameCardImg from "./GameCardImg";
 
 const GameCard = ({ src, type }) => {
-  console.log("src", src);
   return (
     <>
       <Link
