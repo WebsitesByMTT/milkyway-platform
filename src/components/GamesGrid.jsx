@@ -1,12 +1,24 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { CarouselItem } from "./ui/carousel";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  CarouselItem,
+  Carousel,
+  CarouselContent,
+  CarouselPrevious,
+  CarouselNext,
+} from "./ui/carousel";
 import FeaturedGameCard from "./FeaturedGameCard";
 import GameCard from "./GameCard";
+import Autoplay from "embla-carousel-autoplay";
 
 
 const GamesGrid = ({ data }) => {
   const { featured, others } = data || {};
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleSlideChange = (selectedIndex) => {
+    setCurrentSlide(selectedIndex);
+  };
 
   const chunkArray = (array, chunkSize) => {
     const chunks = [];
@@ -22,7 +34,41 @@ const GamesGrid = ({ data }) => {
   return (
     <>
       <CarouselItem className="flex justify-center m-auto w-[80%]">
-        {featured?.length > 0 && <FeaturedGameCard src={featured[0]} />}
+        {featured?.length > 0 && (
+          <div className="w-[20%] h-auto py-[3%]">
+            <div className="w-[90%] h-full rounded-[6%] p-[2%] bg-[#B18423] shadow-lg ">
+              <div className="bg-[#DC6E0E] rounded-[6%] w-full h-full p-[3%]">
+                <Carousel
+                  plugins={[
+                    Autoplay({
+                      delay: 2000,
+                    }),
+                  ]}
+                  className="h-full "
+                  onSlideChange={handleSlideChange}
+                >
+                  <CarouselContent className="  h-full">
+                    {featured?.map((game, index) => (
+                      <CarouselItem key={index}>
+                        <FeaturedGameCard src={game} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+                <div className="flex items-center justify-center">
+                  {featured.map((_, index) => (
+                    <span
+                      key={index}
+                      className={` inline-block mr-2 w-2 h-2 rounded-full transition-all ${
+                        index === currentSlide ? "bg-[#295fcf]" : "bg-white"
+                      }`}
+                    ></span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="grid grid-cols-3 gap-[2vw] sm:min-h-[36vw] min-h-[66.5vw]  w-[65%] py-[3%]">
           {others?.slice(0, 6).map((game, index) => (
             <GameCard key={index} src={game} type={game.type} />
