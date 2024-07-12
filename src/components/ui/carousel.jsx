@@ -1,8 +1,9 @@
 "use client";
 import * as React from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+
+import { cn } from "../../lib/utils";
+import { Button } from "./button";
 
 const CarouselContext = React.createContext(null);
 
@@ -25,6 +26,7 @@ const Carousel = React.forwardRef(
       plugins,
       className,
       children,
+      onSlideChange,
       ...props
     },
     ref
@@ -39,14 +41,21 @@ const Carousel = React.forwardRef(
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
 
-    const onSelect = React.useCallback((api) => {
-      if (!api) {
-        return;
-      }
+    const onSelect = React.useCallback(
+      (api) => {
+        if (!api) {
+          return;
+        }
 
-      setCanScrollPrev(api.canScrollPrev());
-      setCanScrollNext(api.canScrollNext());
-    }, []);
+        const selectedIndex = api.selectedScrollSnap();
+        setCanScrollPrev(api.canScrollPrev());
+        setCanScrollNext(api.canScrollNext());
+        if (onSlideChange) {
+          onSlideChange(selectedIndex);
+        }
+      },
+      [onSlideChange]
+    );
 
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev();
@@ -58,10 +67,10 @@ const Carousel = React.forwardRef(
 
     const handleKeyDown = React.useCallback(
       (event) => {
-        if (event.key === "ChevronLeft") {
+        if (event.key === "ArrowLeft") {
           event.preventDefault();
           scrollPrev();
-        } else if (event.key === "ChevronRight") {
+        } else if (event.key === "ArrowRight") {
           event.preventDefault();
           scrollNext();
         }
@@ -95,7 +104,7 @@ const Carousel = React.forwardRef(
       <CarouselContext.Provider
         value={{
           carouselRef,
-          api: api,
+          api,
           opts,
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
@@ -125,7 +134,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="overflow-hidden">
+    <div ref={carouselRef} className="overflow-hidden h-full">
       <div
         ref={ref}
         className={cn(
@@ -160,7 +169,7 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
 CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef(
-  ({ className, variant = "none", size = "icon", ...props }, ref) => {
+  ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
     return (
@@ -169,9 +178,9 @@ const CarouselPrevious = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-20 w-20 rounded-full",
+          "absolute  h-8 w-8 rounded-full",
           orientation === "horizontal"
-            ? "left-0 top-1/2 -translate-y-1/2"
+            ? "-left-12 top-1/2 -translate-y-1/2"
             : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
           className
         )}
@@ -180,18 +189,17 @@ const CarouselPrevious = React.forwardRef(
         {...props}
       >
         <svg
+          className="h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="block h-full w-full text-white"
         >
-          <path d="m15 18-6-6 6-6" />
+          <path d="m12 19-7-7 7-7" />
+          <path d="M19 12H5" />
         </svg>
         <span className="sr-only">Previous slide</span>
       </Button>
@@ -201,7 +209,7 @@ const CarouselPrevious = React.forwardRef(
 CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef(
-  ({ className, variant = "none", size = "icon", ...props }, ref) => {
+  ({ className, variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
 
     return (
@@ -210,9 +218,9 @@ const CarouselNext = React.forwardRef(
         variant={variant}
         size={size}
         className={cn(
-          "absolute h-20 w-20 rounded-full",
+          "absolute h-8 w-8 rounded-full",
           orientation === "horizontal"
-            ? "right-[0] top-1/2 -translate-y-1/2"
+            ? "-right-12 top-1/2 -translate-y-1/2"
             : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
           className
         )}
@@ -221,18 +229,20 @@ const CarouselNext = React.forwardRef(
         {...props}
       >
         <svg
+          className="h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="block h-full w-full text-white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-right"
         >
-          <path d="m9 18 6-6-6-6" />
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
         </svg>
         <span className="sr-only">Next slide</span>
       </Button>
