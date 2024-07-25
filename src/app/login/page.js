@@ -110,12 +110,11 @@ const Login = () => {
         }
       } else {
         toast.remove();
-        console.log(data.error);
         toast.custom((t) => (
           <Notification
             className="-rotate-90 sm:rotate-0"
             visible={t.visible}
-            message="Login failed"
+            message={data.message || data.error || "Login failed"}
           />
         ));
       }
