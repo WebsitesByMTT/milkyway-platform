@@ -39,7 +39,6 @@ async function getUser() {
 
 const Header = async () => {
   const user = await getUser();
-  console.log("Curr : ", user);
   return (
     <header className="relative flex items-center justify-center">
       <User data={user} />

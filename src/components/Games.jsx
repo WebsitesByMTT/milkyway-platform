@@ -113,7 +113,7 @@ const Games = ({ initialGames }) => {
       />
       <Carousel className="sm:w-[100%] w-[95%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[66.5vw] sm:min-h-[37vw]">
-          <GamesGrid data={games} />
+          <GamesGrid data={games} category={selectedCategory} />
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
         <CarouselNext className="CarouselNext w-[5%]" />
