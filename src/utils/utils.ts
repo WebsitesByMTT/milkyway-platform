@@ -18,3 +18,4 @@ export const getCurrentUser = async () => {
   const user = jwt.decode(token as string);
   return user;
 };
+

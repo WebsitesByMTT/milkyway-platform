@@ -20,10 +20,21 @@ const Games = ({ initialGames }) => {
   const [open, setOpen] = useState();
   let showAlert;
 
+  useEffect(()=>{
+    if (typeof window !== 'undefined') {
+      const savedCategory = sessionStorage.getItem("selected");
+      if (savedCategory) {
+        setSelectedCategory(savedCategory)
+      }
+    }
+  },[selectedCategory])
+
+   
   async function handleFetchGames(category) {
     setLoading(true);
     const data = await fetchGames(category);
     setSelectedCategory(category);
+    sessionStorage.setItem("selected",category)
     setGames(data);
     setLoading(false);
   }
