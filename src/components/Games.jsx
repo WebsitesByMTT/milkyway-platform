@@ -12,33 +12,31 @@ import {
 import GamesGrid from "./GamesGrid";
 import { fetchGames } from "@/utils/actions";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const Games = ({ initialGames }) => {
   const [games, setGames] = useState(initialGames);
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [loading, setLoading] = useState();
   const [open, setOpen] = useState();
   let showAlert;
 
-  useEffect(()=>{
-    if (typeof window !== 'undefined') {
-      const savedCategory = sessionStorage.getItem("selected");
-      if (savedCategory) {
-        setSelectedCategory(savedCategory)
-      }
-    }
-  },[selectedCategory])
-
-   
-  async function handleFetchGames(category) {
+  const handleFetchGames = async (category) => {
     setLoading(true);
     const data = await fetchGames(category);
     setSelectedCategory(category);
-    sessionStorage.setItem("selected",category)
     setGames(data);
     setLoading(false);
-  }
+  };
 
+  useEffect(() => {
+    let Category = Cookies.get("selected")
+      setSelectedCategory(Category)
+  }, [selectedCategory]);
+
+
+ 
+  
   const fullScreenHandler = () => {
     if (
       !document.fullscreenElement &&

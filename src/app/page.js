@@ -4,9 +4,12 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { fetchGames } from "@/utils/actions";
+import { getCategory } from "@/utils/utils";
 
 const Home = async () => {
-  const initialGames = await fetchGames();
+  const Category = await getCategory()
+  const initialGames = await fetchGames(Category);
+   
   return (
     <main className="relative w-full overflow-hidden ">
       <div className="wave-bg w-full h-full absolute top-0 left-0"></div>

@@ -1,4 +1,5 @@
 "use client";
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 
 const Sidebar = ({ onSelectCategory, selectedCategory }) => {
@@ -1773,6 +1774,10 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
     }
   }, [viewportWidth]);
 
+  const handelSelectCategory=(categories)=>{
+    Cookies.set("selected",categories)
+    onSelectCategory(categories)
+  }
   return (
     <div
       className={`absolute sm:bottom-0 left-[1.5%] z-[10] w-[4.5%] flex justify-between items-center flex-col ${
@@ -1788,7 +1793,7 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
               return (
                 <div
                   key={index}
-                  onClick={() => onSelectCategory(category.name)}
+                  onClick={() =>handelSelectCategory(category.name)}
                   className="flex-1 h-[15%] w-full"
                 >
                   {selectedCategory === category.name

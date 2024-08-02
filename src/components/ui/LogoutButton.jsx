@@ -16,6 +16,7 @@ const LogoutButton = () => {
     try {
       Cookies.remove("token");
       Cookies.remove("index");
+      Cookies.remove("selected")
       toast.custom((t) => (
         <Notification visible={t.visible} message={"Logout successful"} />
       ));

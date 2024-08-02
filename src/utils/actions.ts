@@ -1,7 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { config } from "./config";
-import { getCookie, getCurrentUser } from "./utils";
+import { getCategory, getCookie, getCurrentUser } from "./utils";
 
 interface ApiResponse {
   message: string;
@@ -17,7 +17,7 @@ function isJwtPayload(obj: any): obj is JwtPayload {
   return typeof obj === "object" && "username" && "id" in obj;
 }
 
-export async function fetchGames(category: string = "all") {
+export async function fetchGames(category: string) {
   const token = await getCookie();
   const platform = "milkyway";
   try {

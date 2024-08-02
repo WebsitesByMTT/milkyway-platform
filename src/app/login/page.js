@@ -85,6 +85,7 @@ const Login = () => {
               />
             ));
             Cookies.set("token", token);
+            Cookies.set("selected","all")
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             Cookies.set("index", randomNumber);
             router.push("/");
