@@ -11,6 +11,7 @@ const FeaturedGameCard = ({ src }) => {
             src={src?.thumbnail}
             fill
             className=" w-full h-full object-cover rounded-[6%]"
+            alt={src.slug}
           />
         </div>
       </div>
