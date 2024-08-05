@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { config } from "./config";
 import { getCookie, getCurrentUser } from "./utils";
+import { revalidatePath } from "next/cache";
 
 interface ApiResponse {
   message: string;
@@ -30,7 +31,8 @@ export async function fetchGames(category: string = "all") {
           "Content-Type": "application/json",
           Cookie: `userToken=${token}`,
         },
-      }
+      },
+      
     );
     if (!res.ok) {
       const error = await res.json();
@@ -108,6 +110,9 @@ console.log(type);
     } else {
       return { message: "An unknown error occurred" };
     }
+  }
+  finally{
+    revalidatePath("/")
   }
 };
 
