@@ -16,14 +16,17 @@ const FavButton = React.memo(({ id }) => {
   const [loading, setLoading] = useState(false);
 
   const [optimisticState, setOptimistic] = useState({
-    clicked: user?.favouriteGames?.includes(id) || false,
+    clicked:false,
   });
 
   useEffect(() => {
+    console.log("Effect running, id:", id, "user:", user);
     if (user?.favouriteGames?.includes(id)) {
       startTransition(() => {
         setOptimistic({ clicked: true });
       });
+    } else {
+      setOptimistic({ clicked: false });
     }
   }, [id, user]);
 
@@ -32,14 +35,18 @@ const FavButton = React.memo(({ id }) => {
     event.preventDefault();
     setLoading(true);
 
-    const actionType = optimisticState.clicked ? "remove" : "add";
-
+    const newClickedState = !optimisticState.clicked;
     startTransition(() => {
-      setOptimistic({ clicked: !optimisticState.clicked });
+      setOptimistic({ clicked: newClickedState });
     });
 
+    const actionType = optimisticState.clicked ? "remove" : "add";
+    console.log(actionType);
+    
     try {
       const response = await addFavGame(id, actionType);
+      console.log(response);
+      
       if (
         response.message === "Game added to favourites" ||
         response.message === "Game removed from favourites"
@@ -110,7 +117,7 @@ const FavButton = React.memo(({ id }) => {
       className="absolute right-[-6px] top-[2vw] z-10 w-[25%] h-[25%]"
       onClick={(event) => handleClick(event, id)}
     >
-      {optimisticState.clicked ? (
+      {optimisticState?.clicked ? (
         <svg
           id="heartSVG"
           xmlns="http://www.w3.org/2000/svg"

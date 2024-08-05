@@ -20,7 +20,7 @@ const GameCardImg = ({ src, type }) => {
             alt="game-img"
           />
           {type ? (
-            <div className="absolute top-0 left-0 z-50 w-[30%] flex items-center justify-center">
+            <div className="absolute top-0 left-0 z-50 w-[25%] flex items-center justify-center">
               {type === "new" ? (
                 <svg
                   width="132"

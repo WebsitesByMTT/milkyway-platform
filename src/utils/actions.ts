@@ -75,6 +75,9 @@ export const addFavGame = async (
 ): Promise<ApiResponse> => {
   const token = await getCookie();
   const user = await getCurrentUser();
+console.log(id);
+console.log(type);
+
 
   if (!isJwtPayload(user)) {
     throw new Error("Invalid user data");
@@ -95,7 +98,8 @@ export const addFavGame = async (
     );
 
     const data: ApiResponse = await response.json();
-
+      console.log(data);
+      
     return data;
   } catch (error: unknown) {
     console.error(error);
