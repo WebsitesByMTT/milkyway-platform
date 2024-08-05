@@ -35,40 +35,33 @@ const GamesGrid = ({ data, category }) => {
     arrayToUse?.slice(category === "all" ? 6 : 8),
     8
   );
-  
+
   return (
     <>
       <CarouselItem className="flex justify-center m-auto w-[80%]">
         {featured?.length > 0 && category === "all" && (
           <div className="w-[20%] h-auto py-[3%]">
-            <div className="w-[90%] h-full rounded-[6%] p-[2%] bg-[#B18423] shadow-lg ">
-              <div className="bg-[#DC6E0E] rounded-[6%] w-full h-full p-[3%]">
-                <Carousel
-                  plugins={[
-                    Autoplay({
-                      delay: 2000,
-                    }),
-                  ]}
-                  className="h-full "
-                  onSlideChange={handleSlideChange}
-                >
-                  <CarouselContent className="h-full">
-                    {featured?.map((game, index) => (
-                      <CarouselItem key={index}>
-                        <FeaturedGameCard src={game} />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
-                <div className="flex items-center justify-center">
-                  {featured.map((_, index) => (
-                    <span
-                      key={index}
-                      className={` inline-block mr-2 w-2 h-2 rounded-full transition-all ${
-                        index === currentSlide ? "bg-[#295fcf]" : "bg-white"
-                      }`}
-                    ></span>
-                  ))}
+            <div className="w-[90%] h-full rounded-[0.95vw] p-[0.2vw] bg-gradient-to-b from-[#B18423] via-[#F7E10D] to-[#ECDB3F] shadow-lg ">
+              <div className="bg-[#DC6E0E] rounded-[0.9vw] w-full h-full p-[0.4vw]">
+                <div className="bg-gradient-to-b p-[0.8vw] rounded-[0.95vw] from-[#EFC54C] shadow-lg via-[#F98F08] to-[#943E00] w-full h-full">
+                  <Carousel
+                    plugins={[
+                      Autoplay({
+                        delay: 2000,
+                        stopOnInteraction: false,
+                      }),
+                    ]}
+                    className="h-full rounded-[1vw] overflow-hidden"
+                    onSlideChange={handleSlideChange}
+                  >
+                    <CarouselContent className="h-full rounded-[1vw]">
+                      {featured?.map((game, index) => (
+                        <CarouselItem key={index}>
+                          <FeaturedGameCard src={game} />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                  </Carousel>
                 </div>
               </div>
             </div>
