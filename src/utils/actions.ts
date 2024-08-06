@@ -23,7 +23,7 @@ export async function fetchGames(category: string = "all") {
   const platform = "milkyway";
   try {
     const res = await fetch(
-      `${config.server}/api/games?platform=${platform}&category=${category}`,
+      `${config.server}/api/games?platform=${platform}&category=${category}`, 
       {
         method: "GET",
         credentials: "include",
@@ -111,9 +111,7 @@ console.log(type);
       return { message: "An unknown error occurred" };
     }
   }
-  finally{
-    revalidatePath("/")
-  }
+  
 };
 
 export const updatePassword = async (formData: {
