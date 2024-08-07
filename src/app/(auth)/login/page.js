@@ -65,6 +65,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
+        credentials: 'include' // Include credentials in the request
       });
 
       const data = await response.json();
@@ -84,7 +85,7 @@ const Login = () => {
                 message="Login Successful"
               />
             ));
-            Cookies.set("token", token);
+            Cookies.set("token", token, { domain: config.domain });
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             Cookies.set("index", randomNumber);
             router.push("/");
