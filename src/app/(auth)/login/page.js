@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { config } from "../../../utils/config";
 import toast from "react-hot-toast";
@@ -10,7 +10,6 @@ import CustomButton from "@/components/ui/CustomButton";
 import Notification from "@/components/ui/Notification";
 import Modal from "@/components/ui/Modal";
 import ForgotPassword from "@/components/ui/ForgotPassword";
-import { getCookie } from "@/utils/utils";
 
 const Login = () => {
   const router = useRouter();
