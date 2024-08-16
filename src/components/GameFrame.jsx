@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "./context/VolumeControlContext";
 import { useRouter } from "next/navigation";
 import GameLoader from "@/components/ui/GameLoader";
+import { config } from "@/utils/config";
 
 const GameFrame = ({ data }) => {
   const [iframeKey, setIframeKey] = useState(0);
@@ -72,7 +73,7 @@ const GameFrame = ({ data }) => {
             {
               type: "authToken",
               cookie: getToken("token"),
-              socketURL: "https://dev.casinoparadize.com",
+              socketURL: config.server,
             },
             `${data}`
           );
