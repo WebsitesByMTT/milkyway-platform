@@ -68,9 +68,12 @@ const GameFrame = ({ data }) => {
       if (message === "authToken") {
         if (iframe.contentWindow) {
           console.log("Sending to IFRAME....................... ");
-
           iframe.contentWindow.postMessage(
-            { type: "authToken", cookie: getToken("token") },
+            {
+              type: "authToken",
+              cookie: getToken("token"),
+              socketURL: "https://dev.casinoparadize.com",
+            },
             `${data}`
           );
         }
