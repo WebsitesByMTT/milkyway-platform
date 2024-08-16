@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { config } from "../../../utils/config";
 import toast from "react-hot-toast";
@@ -10,7 +10,6 @@ import CustomButton from "@/components/ui/CustomButton";
 import Notification from "@/components/ui/Notification";
 import Modal from "@/components/ui/Modal";
 import ForgotPassword from "@/components/ui/ForgotPassword";
-import { getCookie } from "@/utils/utils";
 
 const Login = () => {
   const router = useRouter();
@@ -65,6 +64,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
+        credentials: 'include' // Include credentials in the request
       });
 
       const data = await response.json();
@@ -84,7 +84,7 @@ const Login = () => {
                 message="Login Successful"
               />
             ));
-            Cookies.set("token", token);
+            Cookies.set("token", token, { domain: config.domain });
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             Cookies.set("index", randomNumber);
             router.push("/");
