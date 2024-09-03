@@ -61,14 +61,12 @@ const GameFrame = ({ data }) => {
   }, [loadingpercent, gameLoaded]);
 
   useEffect(() => {
-    console.log("Current Src : ", data);
     const handleMessage = (event) => {
       const message = event.data;
 
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
         if (iframe.contentWindow) {
-          console.log("Sending to IFRAME....................... ");
           iframe.contentWindow.postMessage(
             {
               type: "authToken",
@@ -88,7 +86,6 @@ const GameFrame = ({ data }) => {
       }
 
       if (message === "OnEnter") {
-        console.log("OnEnter message received.........................");
         setGameLoaded(true);
         pauseAudio();
       }

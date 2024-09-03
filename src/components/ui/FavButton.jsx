@@ -20,7 +20,6 @@ const FavButton = React.memo(({ id }) => {
   });
 
   useEffect(() => {
-    console.log("Effect running, id:", id, "user:", user);
     if (user?.favouriteGames?.includes(id)) {
       startTransition(() => {
         setOptimistic({ clicked: true });
@@ -41,11 +40,9 @@ const FavButton = React.memo(({ id }) => {
     });
 
     const actionType = optimisticState.clicked ? "remove" : "add";
-    console.log(actionType);
     
     try {
       const response = await addFavGame(id, actionType);
-      console.log(response);
       
       if (
         response.message === "Game added to favourites" ||

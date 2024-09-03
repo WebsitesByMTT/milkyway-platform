@@ -32,7 +32,6 @@ async function getUser() {
 
     return data;
   } catch (error) {
-    console.log(error);
     redirect("/logout");
   }
 }

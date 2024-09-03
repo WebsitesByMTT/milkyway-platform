@@ -73,7 +73,6 @@ const Login = () => {
         const token = data?.token;
         if (token) {
           const decodedToken = jwtDecode(token);
-          console.log(decodedToken); // Check the decoded token
 
           if (decodedToken.role === "player") {
             toast.remove();
@@ -84,7 +83,7 @@ const Login = () => {
                 message="Login Successful"
               />
             ));
-            Cookies.set("token", token, { domain: config.domain });
+            Cookies.set("token", token);
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             Cookies.set("index", randomNumber);
             router.push("/");
