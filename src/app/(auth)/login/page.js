@@ -12,6 +12,7 @@ import Modal from "@/components/ui/Modal";
 import ForgotPassword from "@/components/ui/ForgotPassword";
 
 const Login = () => {
+  console.log("TESTING DEV ENV");
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -64,7 +65,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        credentials: 'include' // Include credentials in the request
+        credentials: "include", // Include credentials in the request
       });
 
       const data = await response.json();
@@ -73,7 +74,7 @@ const Login = () => {
         const token = data?.token;
         if (token) {
           const decodedToken = jwtDecode(token);
-           // Check the decoded token
+          // Check the decoded token
 
           if (decodedToken.role === "player") {
             toast.remove();

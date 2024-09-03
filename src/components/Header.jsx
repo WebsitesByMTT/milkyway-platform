@@ -10,6 +10,7 @@ import { config } from "@/utils/config";
 async function getUser() {
   "use server";
   const token = cookies().get("token")?.value;
+  
   try {
     const response = await fetch(
       `${config.server}/api/users`,
