@@ -46,7 +46,7 @@ const Carousel = React.forwardRef(
 
     const handleTouchStart = (event) => {
       startY.current = event.touches[0].clientY;
-      console.log(event);
+      
     };
 
     const handleTouchMove = (event) => {

@@ -15,7 +15,7 @@ const Error = () => {
       ));
       router.push("/login");
     } catch (error) {
-      console.log(error.message);
+      
       toast.custom((t) => (
         <Notification visible={t.visible} message="Failed to logout" />
       ));
