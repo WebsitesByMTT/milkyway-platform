@@ -39,6 +39,7 @@ export async function fetchGames(category: string = "all") {
     const data = await res.json();
     return data;
   } catch (error) {
+    console.error(error);
     redirect("/logout");
   }
 }
