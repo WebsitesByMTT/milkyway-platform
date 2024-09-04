@@ -39,7 +39,7 @@ export async function fetchGames(category: string = "all") {
     const data = await res.json();
     return data;
   } catch (error) {
-
+    console.error(error);
     redirect("/logout");
   }
 }
@@ -76,9 +76,6 @@ export const addFavGame = async (
   const token = await getCookie();
   const user = await getCurrentUser();
 
-
-
-
   if (!isJwtPayload(user)) {
     throw new Error("Invalid user data");
   }
@@ -98,7 +95,6 @@ export const addFavGame = async (
     );
 
     const data: ApiResponse = await response.json();
-
 
     return data;
   } catch (error: unknown) {

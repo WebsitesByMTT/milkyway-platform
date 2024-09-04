@@ -55,7 +55,7 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(72.8602 73.559) rotate(180) scale(68.6323 3.75039)"
             >
-              <stop stop-color="white" />
+              <stop stopColor="white" />
               <stop offset="1" stop-opacity="0" />
             </radialGradient>
             <radialGradient
@@ -66,7 +66,7 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(73.6409 72.7834) rotate(-90) scale(68.6323 3.75041)"
             >
-              <stop stop-color="white" />
+              <stop stopColor="white" />
               <stop offset="1" stop-opacity="0" />
             </radialGradient>
             <radialGradient
@@ -77,17 +77,17 @@ const GameLoader = ({ loadingpercent, setLoadingPercent }) => {
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(73.0853 74.2755) rotate(-179.771) scale(37.9079 38.2833)"
             >
-              <stop offset="0.09" stop-color="white" />
-              <stop offset="0.1" stop-color="#EBEBEB" />
-              <stop offset="0.13" stop-color="#BBBBBB" />
-              <stop offset="0.17" stop-color="#8E8E8E" stop-opacity="0" />
-              <stop offset="0.2" stop-color="#686868" stop-opacity="0" />
-              <stop offset="0.23" stop-color="#484848" stop-opacity="0" />
-              <stop offset="0.27" stop-color="#2E2E2E" stop-opacity="0" />
-              <stop offset="0.31" stop-color="#1A1A1A" stop-opacity="0" />
-              <stop offset="0.36" stop-color="#0C0C0C" stop-opacity="0" />
-              <stop offset="0.42" stop-color="#030303" stop-opacity="0" />
-              <stop offset="0.52" stop-color="#010101" stop-opacity="0" />
+              <stop offset="0.09" stopColor="white" />
+              <stop offset="0.1" stopColor="#EBEBEB" />
+              <stop offset="0.13" stopColor="#BBBBBB" />
+              <stop offset="0.17" stopColor="#8E8E8E" stop-opacity="0" />
+              <stop offset="0.2" stopColor="#686868" stop-opacity="0" />
+              <stop offset="0.23" stopColor="#484848" stop-opacity="0" />
+              <stop offset="0.27" stopColor="#2E2E2E" stop-opacity="0" />
+              <stop offset="0.31" stopColor="#1A1A1A" stop-opacity="0" />
+              <stop offset="0.36" stopColor="#0C0C0C" stop-opacity="0" />
+              <stop offset="0.42" stopColor="#030303" stop-opacity="0" />
+              <stop offset="0.52" stopColor="#010101" stop-opacity="0" />
               <stop offset="1" stop-opacity="0" />
             </radialGradient>
           </defs>
