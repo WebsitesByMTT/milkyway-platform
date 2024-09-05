@@ -63,7 +63,7 @@ const GameFrame = ({ data }) => {
   useEffect(() => {
     const handleMessage = (event) => {
       const message = event.data;
-
+      const env = config.nodeEnv === "development";
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
         if (iframe.contentWindow) {
@@ -72,7 +72,7 @@ const GameFrame = ({ data }) => {
               type: "authToken",
               cookie: getToken("token"),
               socketURL: config.server,
-              console: config.nodeEnv,
+              console: env,
             },
             `${data}`
           );
