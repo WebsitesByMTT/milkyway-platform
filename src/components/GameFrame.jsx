@@ -64,6 +64,7 @@ const GameFrame = ({ data }) => {
     const handleMessage = (event) => {
       const message = event.data;
       const env = config.nodeEnv === "development";
+      console.log(env, "ENV TYPE");
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
         if (iframe.contentWindow) {
