@@ -1,8 +1,8 @@
-# Milkyway Project
+# El Dorado Spin Project
 
 ## Overview
 
-The Milkyway Project is a gaming platform built with NextJs 14.2.3. The project is structured to maintain clear separation of concerns, ensuring scalability and maintainability.
+The El Dorado Spin Project is a gaming platform built with NextJs 14.2.3. The project is structured to maintain clear separation of concerns, ensuring scalability and maintainability.
 
 ## Project Structure
 
@@ -27,10 +27,9 @@ The project maintains a specific folder structure:
   - middleware.ts
 ```
 
-
 ## Getting Started
 
-To get started with the Milkyway Project, follow these steps:
+To get started with the El Dorado Spin Project, follow these steps:
 
 1. **Clone the repository:**
 
@@ -133,7 +132,7 @@ To get started with the Milkyway Project, follow these steps:
 
 ## Contributing
 
-We welcome contributions to the Milkyway Project. To contribute, follow these steps:
+We welcome contributions to the El Dorado Spin Project. To contribute, follow these steps:
 
 1. **Fork the repository.**
 2. **Create a new branch:**
@@ -156,4 +155,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-This README provides a comprehensive overview of the Milkyway Project, its structure, and how to get started with development. For detailed information about each component, please refer to the source files and comments within the code.
+This README provides a comprehensive overview of the El Dorado Spin Project, its structure, and how to get started with development. For detailed information about each component, please refer to the source files and comments within the code.

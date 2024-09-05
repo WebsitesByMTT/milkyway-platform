@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "./context/VolumeControlContext";
 import { useRouter } from "next/navigation";
 import GameLoader from "@/components/ui/GameLoader";
+import { config } from "@/utils/config";
 
 const GameFrame = ({ data }) => {
   const [iframeKey, setIframeKey] = useState(0);
@@ -60,17 +61,19 @@ const GameFrame = ({ data }) => {
   }, [loadingpercent, gameLoaded]);
 
   useEffect(() => {
-    console.log("Current Src : ", data);
     const handleMessage = (event) => {
       const message = event.data;
 
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
         if (iframe.contentWindow) {
-          console.log("Sending to IFRAME....................... ");
-
           iframe.contentWindow.postMessage(
-            { type: "authToken", cookie: getToken("token") },
+            {
+              type: "authToken",
+              cookie: getToken("token"),
+              socketURL: config.server,
+              console: config.nodeEnv,
+            },
             `${data}`
           );
         }
@@ -84,7 +87,6 @@ const GameFrame = ({ data }) => {
       }
 
       if (message === "OnEnter") {
-        console.log("OnEnter message received.........................");
         setGameLoaded(true);
         pauseAudio();
       }
