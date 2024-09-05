@@ -72,6 +72,7 @@ const GameFrame = ({ data }) => {
               type: "authToken",
               cookie: getToken("token"),
               socketURL: config.server,
+              console: config.nodeEnv,
             },
             `${data}`
           );
