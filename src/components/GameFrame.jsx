@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "./context/VolumeControlContext";
 import { useRouter } from "next/navigation";
-import GameLoader from "@/components/ui/GameLoader";
 import { config } from "@/utils/config";
+import toast from "react-hot-toast";
+import Notification from "./ui/Notification";
 
 const GameFrame = ({ data }) => {
   const [iframeKey, setIframeKey] = useState(0);
@@ -14,7 +15,16 @@ const GameFrame = ({ data }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (data) {
+    if (data?.message) {
+      toast.custom((t) => (
+        <Notification visible={t.visible} message={data.message} />
+      ));
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+      return;
+    }
+    if (data?.url) {
       setIframeKey((prevKey) => prevKey + 1);
     }
   }, [data]);
@@ -74,7 +84,7 @@ const GameFrame = ({ data }) => {
               socketURL: config.server,
               console: config.nodeEnv === "development" ? true : false,
             },
-            `${data}`
+            `${data.url}`
           );
         }
       }
@@ -109,7 +119,7 @@ const GameFrame = ({ data }) => {
       )} */}
       <iframe
         key={iframeKey}
-        src={data}
+        src={data.url}
         width="100%"
         height="100%"
         className={`rounded-lg transition-opacity duration-300`}

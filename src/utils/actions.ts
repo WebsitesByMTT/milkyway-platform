@@ -56,11 +56,6 @@ export const getGameById = async (id: string) => {
         Cookie: `userToken=${token}`,
       },
     });
-
-    if (!response.ok) {
-      throw new Error(`Error fetching game: ${response.statusText}`);
-    }
-
     const data = await response.json();
     return data;
   } catch (error: unknown) {
