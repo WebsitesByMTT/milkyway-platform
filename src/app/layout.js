@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
                     bottom: 0,
                   }}
                   toastOptions={{
-                    duration: 0.8,
+                    duration: 3,
                   }}
                 />
                 <AudioPlayer />
