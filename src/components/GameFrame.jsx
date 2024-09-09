@@ -82,13 +82,14 @@ const GameFrame = ({ data }) => {
               type: "authToken",
               cookie: getToken("token"),
               socketURL: config.server,
-              console: config.nodeEnv === "development" ? true : false,
+              console: config.nodeEnv === "production" ? false : true,
+              loaderUrl: config.loaderUrl,
             },
             `${data.url}`
           );
         }
       }
-
+      console.log("DATASS", config.nodeEnv, config.loaderUrl);
       if (message === "onExit") {
         setGameLoaded(false);
         playAudio();
@@ -101,7 +102,6 @@ const GameFrame = ({ data }) => {
         pauseAudio();
       }
     };
-
     window.addEventListener("message", handleMessage);
 
     return () => {
