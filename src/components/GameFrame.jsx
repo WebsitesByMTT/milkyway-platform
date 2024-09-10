@@ -20,12 +20,14 @@ const GameFrame = ({ data }) => {
         <Notification visible={t.visible} message={data.message} />
       ));
       setTimeout(() => {
+        playAudio();
         router.push("/");
       }, 1500);
       return;
     }
     if (data?.url) {
       setIframeKey((prevKey) => prevKey + 1);
+      pauseAudio();
     }
   }, [data]);
 
@@ -89,7 +91,7 @@ const GameFrame = ({ data }) => {
           );
         }
       }
-      console.log("DATASS", config.nodeEnv, config.loaderUrl);
+      console.log("DATA", config.nodeEnv, config.loaderUrl);
       if (message === "onExit") {
         setGameLoaded(false);
         playAudio();
@@ -99,7 +101,6 @@ const GameFrame = ({ data }) => {
 
       if (message === "OnEnter") {
         setGameLoaded(true);
-        pauseAudio();
       }
     };
     window.addEventListener("message", handleMessage);
@@ -108,6 +109,33 @@ const GameFrame = ({ data }) => {
       window.removeEventListener("message", handleMessage);
     };
   }, [data, gameLoaded]);
+
+  // useEffect(() => {
+  //   // Add event listeners
+  //   window.addEventListener("beforeunload", (e) => {
+  //     console.log("Reload button", e);
+  //   });
+  //   window.addEventListener("popstate", (e) => {
+  //     alert("BACK BUTTON CLICKED");
+  //     const iframe = document.getElementById("gameIframe");
+  //     if (iframe && iframe.contentWindow) {
+  //       iframe.contentWindow.postMessage({
+  //         message: "clicked",
+  //       });
+  //       console.log("Message receieved");
+  //     }
+  //     return;
+  //   });
+
+  //   return () => {
+  //     window.removeEventListener("beforeunload", (e) => {
+  //       console.log("Reload button", e);
+  //     });
+  //     window.removeEventListener("popstate", (e) => {
+  //       console.log("Clicking back button", e.isTrusted);
+  //     });
+  //   };
+  // }, []);
 
   return (
     <div className="w-full h-full relative">
