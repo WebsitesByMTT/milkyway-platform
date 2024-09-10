@@ -110,32 +110,28 @@ const GameFrame = ({ data }) => {
     };
   }, [data, gameLoaded]);
 
-  // useEffect(() => {
-  //   // Add event listeners
-  //   window.addEventListener("beforeunload", (e) => {
-  //     console.log("Reload button", e);
-  //   });
-  //   window.addEventListener("popstate", (e) => {
-  //     alert("BACK BUTTON CLICKED");
-  //     const iframe = document.getElementById("gameIframe");
-  //     if (iframe && iframe.contentWindow) {
-  //       iframe.contentWindow.postMessage({
-  //         message: "clicked",
-  //       });
-  //       console.log("Message receieved");
-  //     }
-  //     return;
-  //   });
+  useEffect(() => {
+    window.addEventListener("beforeunload", (e) => {
+      const iframe = document.getElementById("gameIframe");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage({
+          message: "EXIT",
+        });
+        console.log("Message receieved");
+      }
+      return false;
+    });
 
-  //   return () => {
-  //     window.removeEventListener("beforeunload", (e) => {
-  //       console.log("Reload button", e);
-  //     });
-  //     window.removeEventListener("popstate", (e) => {
-  //       console.log("Clicking back button", e.isTrusted);
-  //     });
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener(
+        "beforeunload",
+        (e) => {
+          console.log("Reload button", e);
+        },
+        false
+      );
+    };
+  }, []);
 
   return (
     <div className="w-full h-full relative">
