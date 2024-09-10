@@ -110,37 +110,16 @@ const GameFrame = ({ data }) => {
     };
   }, [data, gameLoaded]);
 
-  useEffect(() => {
-    window.addEventListener("beforeunload", (e) => {
-      const iframe = document.getElementById("gameIframe");
-      if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.postMessage({
-          message: "EXIT",
-        });
-        console.log("Message receieved");
-      }
-      return false;
-    });
-
-    return () => {
-      window.removeEventListener(
-        "beforeunload",
-        (e) => {
-          console.log("Reload button", e);
-        },
-        false
-      );
-    };
-  }, []);
-
   return (
     <div className="w-full h-full relative">
-      {/* {gameLoaded && loadingpercent >= 100 ? null : (
-        <GameLoader
-          loadingpercent={loadingpercent}
-          setLoadingPercent={setLoadingPercent}
+      {!gameLoaded && data.url && (
+        <iframe
+          src={config.loaderUrl}
+          width="100%"
+          height="100%"
+          id="gameLoader"
         />
-      )} */}
+      )}
       <iframe
         key={iframeKey}
         src={data.url}
