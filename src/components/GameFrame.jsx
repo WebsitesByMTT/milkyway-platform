@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { useVolumeControl } from "./context/VolumeControlContext";
 import { useRouter } from "next/navigation";
-import GameLoader from "@/components/ui/GameLoader";
 import { config } from "@/utils/config";
+import toast from "react-hot-toast";
+import Notification from "./ui/Notification";
 
 const GameFrame = ({ data }) => {
   const [iframeKey, setIframeKey] = useState(0);
@@ -14,8 +15,19 @@ const GameFrame = ({ data }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (data) {
+    if (data?.message) {
+      toast.custom((t) => (
+        <Notification visible={t.visible} message={data.message} />
+      ));
+      setTimeout(() => {
+        playAudio();
+        router.push("/");
+      }, 1500);
+      return;
+    }
+    if (data?.url) {
       setIframeKey((prevKey) => prevKey + 1);
+      pauseAudio();
     }
   }, [data]);
 
@@ -61,25 +73,25 @@ const GameFrame = ({ data }) => {
   }, [loadingpercent, gameLoaded]);
 
   useEffect(() => {
-    console.log("Current Src : ", data);
     const handleMessage = (event) => {
       const message = event.data;
 
       const iframe = document.getElementById("gameIframe");
       if (message === "authToken") {
         if (iframe.contentWindow) {
-          console.log("Sending to IFRAME....................... ");
           iframe.contentWindow.postMessage(
             {
               type: "authToken",
               cookie: getToken("token"),
               socketURL: config.server,
+              console: config.nodeEnv === "production" ? false : true,
+              loaderUrl: config.loaderUrl,
             },
-            `${data}`
+            `${data.url}`
           );
         }
       }
-
+      
       if (message === "onExit") {
         setGameLoaded(false);
         playAudio();
@@ -88,12 +100,9 @@ const GameFrame = ({ data }) => {
       }
 
       if (message === "OnEnter") {
-        console.log("OnEnter message received.........................");
         setGameLoaded(true);
-        pauseAudio();
       }
     };
-
     window.addEventListener("message", handleMessage);
 
     return () => {
@@ -103,15 +112,17 @@ const GameFrame = ({ data }) => {
 
   return (
     <div className="w-full h-full relative">
-      {/* {gameLoaded && loadingpercent >= 100 ? null : (
-        <GameLoader
-          loadingpercent={loadingpercent}
-          setLoadingPercent={setLoadingPercent}
+      {!gameLoaded && data.url && (
+        <iframe
+          src={config.loaderUrl}
+          width="100%"
+          height="100%"
+          id="gameLoader"
         />
-      )} */}
+      )}
       <iframe
         key={iframeKey}
-        src={data}
+        src={data.url}
         width="100%"
         height="100%"
         className={`rounded-lg transition-opacity duration-300`}

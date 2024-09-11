@@ -18,7 +18,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [modalType, setModalType] = useState("");
-
+  console.log("TESTING DEV FINAL");
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -64,7 +64,7 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        credentials: 'include' // Include credentials in the request
+        credentials: "include", // Include credentials in the request
       });
 
       const data = await response.json();
@@ -73,7 +73,6 @@ const Login = () => {
         const token = data?.token;
         if (token) {
           const decodedToken = jwtDecode(token);
-          console.log(decodedToken); // Check the decoded token
 
           if (decodedToken.role === "player") {
             toast.remove();

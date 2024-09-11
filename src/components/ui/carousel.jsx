@@ -46,7 +46,6 @@ const Carousel = React.forwardRef(
 
     const handleTouchStart = (event) => {
       startY.current = event.touches[0].clientY;
-      console.log(event);
     };
 
     const handleTouchMove = (event) => {
@@ -206,8 +205,8 @@ const CarouselPrevious = React.forwardRef(
               y2="23.999"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#2C69CD" />
-              <stop offset="1" stop-color="#285FBA" />
+              <stop stopColor="#2C69CD" />
+              <stop offset="1" stopColor="#285FBA" />
             </linearGradient>
           </defs>
         </svg>
@@ -244,7 +243,6 @@ const CarouselNext = React.forwardRef(
           viewBox="0 0 30 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-
         >
           <path
             d="M4.92085 0.500163C6.07633 0.490327 7.18768 0.925024 8.01655 1.70772L27.6133 20.9045C27.6133 20.9046 27.6133 20.9046 27.6134 20.9046C28.4371 21.7118 28.8979 22.8042 28.8979 23.941C28.8979 25.0778 28.4371 26.1702 27.6134 26.9774C27.6133 26.9775 27.6133 26.9775 27.6133 26.9775L8.01342 46.1774C7.18905 46.9847 6.06896 47.44 4.89895 47.44C3.72899 47.44 2.60896 46.9847 1.7846 46.1775C0.960831 45.3703 0.5 44.2779 0.5 43.141C0.5 42.0042 0.96083 40.9117 1.7846 40.1045L17.9202 24.2982L18.2849 23.941L17.9202 23.5838L1.78774 7.78057C0.989298 6.96918 0.54937 5.88547 0.55933 4.76273C0.569302 3.63859 1.02952 2.56115 1.84423 1.76307C2.65928 0.964658 3.76394 0.510011 4.92085 0.500163Z"
@@ -260,8 +258,8 @@ const CarouselNext = React.forwardRef(
               y2="24"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#2C69CD" />
-              <stop offset="1" stop-color="#22509B" />
+              <stop stopColor="#2C69CD" />
+              <stop offset="1" stopColor="#22509B" />
             </linearGradient>
           </defs>
         </svg>

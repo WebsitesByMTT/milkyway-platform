@@ -14,7 +14,7 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata = {
-  title: "Milkyway",
+  title: "El Dorado Spin",
   description: "Gaming platform",
 };
 
@@ -26,10 +26,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${barlowCondensed.className}`}>
         <div className="relative w-screen h-screen cursor-custom">
-          <div
-            
-            className="absolute top-1/2 left-1/2 rotate-90 sm:rotate-0 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-[100vh] h-[100vw] sm:w-screen sm:h-screen"
-          >
+          <div className="absolute top-1/2 left-1/2 rotate-90 sm:rotate-0 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-[100vh] h-[100vw] sm:w-screen sm:h-screen">
             <UserProvider>
               <VolumeProvider>
                 <MouseClickEffect />
@@ -43,7 +40,7 @@ export default function RootLayout({ children }) {
                     bottom: 0,
                   }}
                   toastOptions={{
-                    duration: 0.8,
+                    duration: 3,
                   }}
                 />
                 <AudioPlayer />
