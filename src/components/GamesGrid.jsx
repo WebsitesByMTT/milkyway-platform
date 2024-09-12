@@ -10,10 +10,12 @@ import {
 import FeaturedGameCard from "./FeaturedGameCard";
 import GameCard from "./GameCard";
 import Autoplay from "embla-carousel-autoplay";
+import { config } from "@/utils/config";
 
 const GamesGrid = ({ data, category }) => {
   const { featured, others } = data || {};
   const [currentSlide, setCurrentSlide] = useState(0);
+
 
   const handleSlideChange = (selectedIndex) => {
     setCurrentSlide(selectedIndex);

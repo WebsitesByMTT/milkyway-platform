@@ -20,12 +20,14 @@ const GameFrame = ({ data }) => {
         <Notification visible={t.visible} message={data.message} />
       ));
       setTimeout(() => {
+        playAudio();
         router.push("/");
       }, 1500);
       return;
     }
     if (data?.url) {
       setIframeKey((prevKey) => prevKey + 1);
+      pauseAudio();
     }
   }, [data]);
 
@@ -82,13 +84,14 @@ const GameFrame = ({ data }) => {
               type: "authToken",
               cookie: getToken("token"),
               socketURL: config.server,
-              console: config.nodeEnv === "development" ? true : false,
+              console: config.nodeEnv === "production" ? false : true,
+              loaderUrl: config.loaderUrl,
             },
             `${data.url}`
           );
         }
       }
-
+      
       if (message === "onExit") {
         setGameLoaded(false);
         playAudio();
@@ -98,10 +101,8 @@ const GameFrame = ({ data }) => {
 
       if (message === "OnEnter") {
         setGameLoaded(true);
-        pauseAudio();
       }
     };
-
     window.addEventListener("message", handleMessage);
 
     return () => {
@@ -111,12 +112,14 @@ const GameFrame = ({ data }) => {
 
   return (
     <div className="w-full h-full relative">
-      {/* {gameLoaded && loadingpercent >= 100 ? null : (
-        <GameLoader
-          loadingpercent={loadingpercent}
-          setLoadingPercent={setLoadingPercent}
+      {!gameLoaded && data.url && (
+        <iframe
+          src={config.loaderUrl}
+          width="100%"
+          height="100%"
+          id="gameLoader"
         />
-      )} */}
+      )}
       <iframe
         key={iframeKey}
         src={data.url}
