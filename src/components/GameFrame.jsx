@@ -91,7 +91,6 @@ const GameFrame = ({ data }) => {
           );
         }
       }
-      console.log("DATA", config.nodeEnv, config.loaderUrl);
       if (message === "onExit") {
         setGameLoaded(false);
         playAudio();
