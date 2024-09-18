@@ -1,21 +1,13 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import {
-  CarouselItem,
-  Carousel,
-  CarouselContent,
-  CarouselPrevious,
-  CarouselNext,
-} from "./ui/carousel";
+import React, { useState } from "react";
+import { CarouselItem, Carousel, CarouselContent } from "./ui/carousel";
 import FeaturedGameCard from "./FeaturedGameCard";
 import GameCard from "./GameCard";
 import Autoplay from "embla-carousel-autoplay";
-import { config } from "@/utils/config";
 
 const GamesGrid = ({ data, category }) => {
   const { featured, others } = data || {};
   const [currentSlide, setCurrentSlide] = useState(0);
-
 
   const handleSlideChange = (selectedIndex) => {
     setCurrentSlide(selectedIndex);
@@ -29,12 +21,11 @@ const GamesGrid = ({ data, category }) => {
     return chunks;
   };
 
-  let mergedArray = data?.featured?.concat(data?.others);
+  let mergedArray = data?.others?.concat(data?.featured);
 
   // Create chunks for the slides after the first one
-  const arrayToUse = category === "all" ? others : mergedArray;
   const remainingChunks = chunkArray(
-    arrayToUse?.slice(category === "all" ? 6 : 8),
+    mergedArray?.slice(category === "all" ? 6 : 8),
     8
   );
 
@@ -71,7 +62,7 @@ const GamesGrid = ({ data, category }) => {
         )}
         {category === "all" ? (
           <div className="grid grid-cols-3 gap-[2vw] sm:min-h-[36vw] min-h-[66.5vw]  w-[65%] py-[3%]">
-            {others?.slice(0, 6).map((game, index) => (
+            {mergedArray?.slice(0, 6).map((game, index) => (
               <GameCard key={index} src={game} type={game.type} />
             ))}
           </div>

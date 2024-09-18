@@ -18,7 +18,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [modalType, setModalType] = useState("");
-  console.log("TESTING DEV FINAL");
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
