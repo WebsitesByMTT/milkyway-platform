@@ -7,7 +7,6 @@ import Autoplay from "embla-carousel-autoplay";
 
 const GamesGrid = ({ data, category }) => {
   const { featured, others } = data || {};
-  console.log(data);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (selectedIndex) => {
