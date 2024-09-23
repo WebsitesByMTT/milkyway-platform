@@ -7,6 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 const GamesGrid = ({ data, category }) => {
   const { featured, others } = data || {};
+  console.log(data);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (selectedIndex) => {
@@ -21,7 +22,7 @@ const GamesGrid = ({ data, category }) => {
     return chunks;
   };
 
-  let mergedArray = data?.others?.concat(data?.featured);
+  let mergedArray = data?.others;
 
   // Create chunks for the slides after the first one
   const remainingChunks = chunkArray(
