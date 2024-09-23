@@ -21,7 +21,7 @@ const GamesGrid = ({ data, category }) => {
     return chunks;
   };
 
-  let mergedArray = data?.others?.concat(data?.featured);
+  let mergedArray = data?.others;
 
   // Create chunks for the slides after the first one
   const remainingChunks = chunkArray(
