@@ -1,13 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CarouselItem, Carousel, CarouselContent } from "./ui/carousel";
 import FeaturedGameCard from "./FeaturedGameCard";
 import GameCard from "./GameCard";
 import Autoplay from "embla-carousel-autoplay";
+import Modal from "./ui/Modal";
+import Maintenance from "./ui/Maintenance";
 
-const GamesGrid = ({ data, category }) => {
+const GamesGrid = ({ data, category, handleFetchGames }) => {
+  const [open, setOpen] = useState(false);
+  const [reload, setReload] = useState(false);
+  
+  useEffect(() => {
+    if (data?.isUnderMaintenance === true) {
+      setOpen(true);
+    }
+  }, [data]);
+
   const { featured, others } = data || {};
-  console.log(data);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleSlideChange = (selectedIndex) => {
@@ -29,6 +39,10 @@ const GamesGrid = ({ data, category }) => {
     mergedArray?.slice(category === "all" ? 6 : 8),
     8
   );
+  useEffect(() => {
+    setOpen(false);
+    handleFetchGames();
+  }, [reload]);
 
   return (
     <>
@@ -84,6 +98,14 @@ const GamesGrid = ({ data, category }) => {
           </div>
         </CarouselItem>
       ))}
+      <Modal
+        isOpen={open}
+        setOpen={setOpen}
+        modalType="Maintenance"
+        disableClose={true}
+      >
+        <Maintenance data={data} reload={reload} setReload={setReload} />
+      </Modal>
     </>
   );
 };

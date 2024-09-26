@@ -69,6 +69,17 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
+        console.log(data);
+        if (data?.isUnderMaintenance) {
+          toast.remove();
+          return toast.custom((t) => (
+            <Notification
+              className="-rotate-90 sm:rotate-0"
+              visible={t.visible}
+              message={data.message}
+            />
+          ));
+        }
         const token = data?.token;
         if (token) {
           const decodedToken = jwtDecode(token);

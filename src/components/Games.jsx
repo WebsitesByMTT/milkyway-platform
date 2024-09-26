@@ -23,6 +23,7 @@ const Games = ({ initialGames }) => {
   async function handleFetchGames(category) {
     setLoading(true);
     const data = await fetchGames(category);
+    console.log(data);
     setSelectedCategory(category);
     setGames(data);
     setLoading(false);
@@ -107,13 +108,19 @@ const Games = ({ initialGames }) => {
 
   return (
     <div className="Carousel relative">
-      <Sidebar
-        onSelectCategory={handleFetchGames}
-        selectedCategory={selectedCategory}
-      />
+      {!games?.isUnderMaintenance && (
+        <Sidebar
+          onSelectCategory={handleFetchGames}
+          selectedCategory={selectedCategory}
+        />
+      )}
       <Carousel className="sm:w-[100%] w-[95%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[66.5vw] sm:min-h-[37vw]">
-          <GamesGrid data={games} category={selectedCategory} />
+          <GamesGrid
+            data={games}
+            category={selectedCategory}
+            handleFetchGames={handleFetchGames}
+          />
         </CarouselContent>
         <CarouselPrevious className="CarouselPrevious w-[5%]" />
         <CarouselNext className="CarouselNext w-[5%]" />
