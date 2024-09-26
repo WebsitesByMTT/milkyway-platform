@@ -23,7 +23,6 @@ const Games = ({ initialGames }) => {
   async function handleFetchGames(category) {
     setLoading(true);
     const data = await fetchGames(category);
-    console.log(data);
     setSelectedCategory(category);
     setGames(data);
     setLoading(false);

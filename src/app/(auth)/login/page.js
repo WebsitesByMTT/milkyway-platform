@@ -69,7 +69,6 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data);
         if (data?.isUnderMaintenance) {
           toast.remove();
           return toast.custom((t) => (
