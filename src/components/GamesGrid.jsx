@@ -43,13 +43,14 @@ const GamesGrid = ({ data, category, handleFetchGames }) => {
     setOpen(false);
     handleFetchGames();
   }, [reload]);
-
+ 
   return (
     <>
       <CarouselItem className="flex justify-center m-auto w-[80%]">
         {featured?.length > 0 && category === "all" && (
           <div className="w-[20%] h-auto py-[3%]">
             <div className="w-[90%] h-full rounded-[0.95vw] p-[0.2vw] bg-gradient-to-b from-[#B18423] via-[#F7E10D] to-[#ECDB3F] shadow-lg ">
+         
               <div className="bg-[#DC6E0E] rounded-[0.9vw] w-full h-full p-[0.4vw]">
                 <div className="bg-gradient-to-b p-[0.8vw] rounded-[0.95vw] from-[#EFC54C] shadow-lg via-[#F98F08] to-[#943E00] w-full h-full">
                   <Carousel

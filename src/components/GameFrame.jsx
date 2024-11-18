@@ -128,6 +128,7 @@ const GameFrame = ({ data }) => {
         className={`rounded-lg transition-opacity duration-300`}
         id="gameIframe"
       ></iframe>
+    
     </div>
   );
 };
