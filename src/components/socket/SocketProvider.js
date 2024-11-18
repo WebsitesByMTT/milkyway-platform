@@ -27,11 +27,11 @@ export const SocketProvider = ({ token, children }) => {
         if (token) {
             let platformId = sessionStorage.getItem("platformId");
             if (!platformId) {
-                platformId = crypto?.randomUUID(); 
+                platformId = crypto?.randomUUID();
                 sessionStorage.setItem("platformId", platformId);
             }
             const socketInstance = io(`${config.server}`, {
-                auth: { token, origin: config.platform ,platformId},
+                auth: { token, origin: config.platform, platformId },
             });
             setSocket(socketInstance);
 
@@ -43,7 +43,6 @@ export const SocketProvider = ({ token, children }) => {
                 switch (data?.type) {
                     case 'CREDIT':
                         dispatch(UpdateCredits(data?.data?.credits));
-                        console.log(data)
                         break;
                     default:
                 }
