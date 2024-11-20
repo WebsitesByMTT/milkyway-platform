@@ -5,9 +5,6 @@ import { Toaster } from "react-hot-toast";
 import AudioPlayer from "@/components/ui/AudioPlayer";
 import { VolumeProvider } from "@/components/context/VolumeControlContext";
 import { UserProvider } from "@/components/context/UserContext";
-import StoreProvider from "@/components/redux/provider";
-import { getCookie } from "@/utils/utils";
-import SocketProvider from '../components/socket/SocketProvider'
 
 const barlowCondensed = Barlow_Condensed({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,7 +18,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const token = await getCookie();
   return (
     <html lang="en">
       <head>
@@ -33,11 +29,9 @@ export default async function RootLayout({ children }) {
             <UserProvider>
               <VolumeProvider>
                 <MouseClickEffect />
-                <StoreProvider>
-                  <SocketProvider token={token}>
+               
                      {children}
-                  </SocketProvider>
-                </StoreProvider>
+               
                 <Toaster
                   containerClassName="m-0 flex items-center justify-center"
                   containerStyle={{
