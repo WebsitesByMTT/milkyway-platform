@@ -13,7 +13,7 @@ import GamesGrid from "./GamesGrid";
 import { fetchGames } from "@/utils/actions";
 import toast from "react-hot-toast";
 
-const Games = ({ initialGames }) => {
+const Games = ({ favgame,initialGames }) => {
   const [games, setGames] = useState(initialGames);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState();
@@ -117,6 +117,7 @@ const Games = ({ initialGames }) => {
       <Carousel className="sm:w-[100%] w-[95%] m-auto" opts={{ loop: true }}>
         <CarouselContent className="min-h-[66.5vw] sm:min-h-[37vw]">
           <GamesGrid
+            favgame={favgame}
             data={games}
             category={selectedCategory}
             handleFetchGames={handleFetchGames}

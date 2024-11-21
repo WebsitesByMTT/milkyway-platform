@@ -4,18 +4,13 @@ import React, { useEffect, useState } from "react";
 import AvatarBorder from "././svgs/AvatarBorder";
 import Logo from "././svgs/Logo";
 import Image from "next/image";
-import { useUser } from "./context/UserContext";
 import Connector from "../components/svgs/Connector";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 
 const User = ({ data }) => {
-  const { user, setUser } = useUser();
   const [avatar, setAvatar] = useState("");
 
-  useEffect(() => {
-    setUser(data);
-  }, [data]);
   useEffect(() => {
     const avatarIndex = Cookies.get("index");
     setAvatar(avatarIndex);

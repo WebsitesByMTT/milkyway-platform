@@ -1,120 +1,38 @@
-"use client";
-import React, {
-  useState,
-  useOptimistic,
-  useEffect,
-  startTransition,
-  memo,
-} from "react";
-import { addFavGame } from "@/utils/actions";
-import toast from "react-hot-toast";
-import { useUser } from "../context/UserContext";
-import Notification from "./Notification";
+import { addFavGame} from '@/utils/actions'
+import toast from 'react-hot-toast'
+import Notification from './Notification'
+import { useState } from 'react'
 
-const FavButton = React.memo(({ id }) => {
-  const { user, setUser } = useUser();
-  const [loading, setLoading] = useState(false);
-
-  const [optimisticState, setOptimistic] = useState({
-    clicked:false,
-  });
-
-  useEffect(() => {
-    if (user?.favouriteGames?.includes(id)) {
-      startTransition(() => {
-        setOptimistic({ clicked: true });
-      });
-    } else {
-      setOptimistic({ clicked: false });
-    }
-  }, [id, user]);
-
-  const handleClick = async (event, id) => {
+const FavButton = ({favgame,id}) => {
+  const [gamefav,setGamefav]=useState([])
+  const isFav =gamefav?.length>0?gamefav?.includes(id):favgame?.some((item) => item?._id === id) //games which is in fav
+  const handleClick = async (event, id, type) => {
     event.stopPropagation();
     event.preventDefault();
-    setLoading(true);
 
-    const newClickedState = !optimisticState.clicked;
-    startTransition(() => {
-      setOptimistic({ clicked: newClickedState });
-    });
-
-    const actionType = optimisticState.clicked ? "remove" : "add";
-    
     try {
-      const response = await addFavGame(id, actionType);
-      
-      if (
-        response.message === "Game added to favourites" ||
-        response.message === "Game removed from favourites"
-      ) {
-        toast.remove();
+      const response = await addFavGame(id, type)
+      if (response?.data) {
+        setGamefav(response?.data?.favouriteGames)
         toast.custom((t) => (
           <Notification visible={t.visible} message={response?.message} />
         ));
-
-        setUser((prevUser) => {
-          if (!prevUser) return prevUser;
-          const updatedFavourites =
-            actionType === "add"
-              ? [...prevUser.favouriteGames, id]
-              : prevUser.favouriteGames?.filter((favId) => favId !== id);
-          return { ...prevUser, favouriteGames: updatedFavourites };
-        });
-      } else if (
-        response.message === "Game already selected" ||
-        response.message === "Game not in favourites"
-      ) {
-        toast.remove();
-        toast.custom((t) => (
-          <Notification visible={t.visible} message={response.message} />
-        ));
-      } else {
-        toast.remove();
-        toast.custom((t) => (
-          <Notification
-            visible={t.visible}
-            message={
-              response.message || "An error occurred while updating favorites"
-            }
-          />
-        ));
+         
+        setTimeout(()=>{
+          toast.remove();  
+        },2000)
       }
-    } catch (err) {
-      console.error(err);
-      if (err instanceof Error) {
-        toast.remove();
-        toast.custom((t) => (
-          <Notification
-            visible={t.visible}
-            message={
-              err.message || "An error occurred while updating favorites"
-            }
-          />
-        ));
-      } else {
-        toast.remove();
-        toast.custom((t) => (
-          <Notification
-            visible={t.visible}
-            message={"An error occurred while updating favorites"}
-          />
-        ));
-      }
+    } catch (error) {
 
-      startTransition(() => {
-        setOptimistic({ clicked: !optimisticState.clicked });
-      });
-    } finally {
-      setLoading(false);
     }
-  };
+  }
+
   return (
     <button
       className="absolute right-[-6px] top-[2vw] z-10 w-[25%] h-[25%]"
-      onClick={(event) => handleClick(event, id)}
+      onClick={(event) => handleClick(event, id, isFav ? 'remove' : 'add')}
     >
-      {optimisticState?.clicked ? (
+      {gamefav===id||isFav ? (
         <svg
           id="heartSVG"
           xmlns="http://www.w3.org/2000/svg"
@@ -496,8 +414,7 @@ const FavButton = React.memo(({ id }) => {
         </svg>
       )}
     </button>
-  );
-});
+  )
+}
 
-FavButton.displayName = "FavButton";
-export default FavButton;
+export default FavButton

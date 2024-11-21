@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { config } from "./config";
 import { getCookie, getCurrentUser } from "./utils";
-import { revalidatePath } from "next/cache";
+
 
 interface ApiResponse {
   message: string;
@@ -20,10 +20,9 @@ function isJwtPayload(obj: any): obj is JwtPayload {
 
 export async function fetchGames(category: string = "all") {
   const token = await getCookie();
-  const platform = "milkyway";
   try {
     const res = await fetch(
-      `${config.server}/api/games?platform=${platform}&category=${category}`, 
+      `${config.server}/api/games?platform=${config.platform}&category=${category}`, 
       {
         method: "GET",
         credentials: "include",

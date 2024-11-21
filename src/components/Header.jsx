@@ -3,46 +3,15 @@ import React, { use } from "react";
 import FullScreenButton from "./ui/FullScreenButton";
 import LogoutButton from "./ui/LogoutButton";
 import User from "./User";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { config } from "@/utils/config";
-
-async function getUser() {
-  "use server";
-  const token = cookies().get("token")?.value;
-
-  try {
-    const response = await fetch(
-      `${config.server}/api/users`,
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-          Cookie: `userToken=${token}`,
-        },
-      },
-      { cache: "force-cache" }
-    );
-
-    if (!response.ok) {
-      throw new Error(`HTTP error status: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    redirect("/logout");
-  }
-}
+import { getCookie } from "@/utils/utils";
+import { jwtDecode } from "jwt-decode";
 
 const Header = async () => {
-  const user = await getUser();
-
+  const token=await getCookie()
+  const decodedToken=await jwtDecode(token)
   return (
     <header className="relative flex items-center justify-center">
-      <User data={user} />
+      <User data={decodedToken} />
       <svg
         width="1920"
         height="110"
