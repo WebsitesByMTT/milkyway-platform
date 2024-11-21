@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { config } from "./config";
 import { getCookie, getCurrentUser } from "./utils";
+import { revalidatePath } from "next/cache";
 
 interface ApiResponse {
   message: string;
@@ -22,7 +23,7 @@ export async function fetchGames(category: string = "all") {
   const platform = "milkyway";
   try {
     const res = await fetch(
-      `${config.server}/api/games?platform=${platform}&category=${category}`,
+      `${config.server}/api/games?platform=${platform}&category=${category}`, 
       {
         method: "GET",
         credentials: "include",
@@ -30,7 +31,8 @@ export async function fetchGames(category: string = "all") {
           "Content-Type": "application/json",
           Cookie: `userToken=${token}`,
         },
-      }
+      },
+      
     );
     if (!res.ok) {
       const error = await res.json();
@@ -100,6 +102,7 @@ export const addFavGame = async (
       return { message: "An unknown error occurred" };
     }
   }
+  
 };
 
 export const updatePassword = async (formData: {

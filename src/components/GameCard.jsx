@@ -13,6 +13,7 @@ const GameCard = ({ src, type }) => {
         <FavButton id={src?._id} />
         <GameCardImg src={src?.thumbnail} type={type} />
       </Link>
+    
     </>
   );
 };

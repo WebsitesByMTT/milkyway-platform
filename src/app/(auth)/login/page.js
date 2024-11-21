@@ -163,8 +163,8 @@ const Login = () => {
               value={username}
               onChange={handleUsernameChange}
               placeholder="ACCOUNT"
-              className="placeholder-transparent sm:placeholder:text-[2vw] placeholder:text-[4vw] py-[3vw] sm:pb-[1vw] sm:pt-[1vw] px-[2vw] focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-full sm:text-[2vw] text-[4vw]"
-              autoComplete="new-username"
+              className=" caret-blue-500 placeholder-transparent sm:placeholder:text-[2vw] placeholder:text-[4vw] py-[3vw] sm:pb-[1vw] sm:pt-[1vw] px-[2vw] focus:outline-none bg-gradient-to-b from-[#fff] from-[0%] via-[#a8d4f8] via-[50.72%] to-[#4b97ff] bg-clip-text text-transparent w-full sm:text-[2vw] text-[4vw]"
+              autoComplete="off"
             />
           </div>
         </div>

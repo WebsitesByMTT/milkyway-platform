@@ -2,7 +2,6 @@ import { Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import MouseClickEffect from "@/components/MouseClickEffect";
 import { Toaster } from "react-hot-toast";
-import Notification from "@/components/ui/Notification";
 import AudioPlayer from "@/components/ui/AudioPlayer";
 import { VolumeProvider } from "@/components/context/VolumeControlContext";
 import { UserProvider } from "@/components/context/UserContext";
@@ -18,7 +17,7 @@ export const metadata = {
   description: "Gaming platform",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
@@ -30,7 +29,9 @@ export default function RootLayout({ children }) {
             <UserProvider>
               <VolumeProvider>
                 <MouseClickEffect />
-                {children}
+               
+                     {children}
+               
                 <Toaster
                   containerClassName="m-0 flex items-center justify-center"
                   containerStyle={{

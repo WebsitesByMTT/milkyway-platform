@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useUser } from "./context/UserContext";
 import Connector from "../components/svgs/Connector";
 import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
 const User = ({ data }) => {
   const { user, setUser } = useUser();
@@ -19,6 +20,8 @@ const User = ({ data }) => {
     const avatarIndex = Cookies.get("index");
     setAvatar(avatarIndex);
   }, []);
+  
+  const credit=useSelector((state)=>state.users.credit)
 
   return (
     <div className="absolute top-[1.2vw] left-[4%] flex gap-[5vw] sm:gap-[1vw]">
@@ -46,7 +49,7 @@ const User = ({ data }) => {
               <Logo className="h-full w-full" />
             </div>
             <span className="text-[4vw] sm:text-[1.5vw] ml-[2.5vw] bg-gradient-to-b from-[#D4DA8F] via-[#BC7300] via-[50.91%] to-[#FFECB6] text-transparent bg-clip-text font-[400]">
-              {parseFloat((data?.credits ?? 0).toFixed(1))}
+              {parseFloat((credit?? 0).toFixed(1))}
             </span>
           </div>
         </div>

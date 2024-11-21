@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(home)/layout.js", "src/app/(home)/page.js", "src/utils/actions.ts", "src/components/ui/FullScreenButton.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(home)/layout.js", "src/app/(home)/page.js", "src/utils/actions.ts", "src/components/ui/FullScreenButton.jsx", "src/components/redux/provider.js", "src/components/redux/store.js", "src/components/socket/SocketProvider.js"],
   "exclude": ["node_modules"]
 }

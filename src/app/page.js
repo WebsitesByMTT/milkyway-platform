@@ -4,25 +4,33 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { fetchGames } from "@/utils/actions";
+import StoreProvider from "@/components/redux/provider";
+import SocketProvider from "@/components/socket/SocketProvider";
+import { getCookie } from "@/utils/utils";
 
 const Home = async () => {
   const initialGames = await fetchGames();
+  const token = await getCookie();
   return (
-    <main className="relative w-full overflow-hidden ">
-      <div className="wave-bg w-full h-full absolute top-0 left-0"></div>
-      <Image
-        src={"/bg1.png"}
-        fill
-        alt="bg"
-        priority={true}
-        quality={100}
-        objectPosition="center"
-        className="z-[-2] object-cover"
-      />
-      <Header />
-      <Games initialGames={initialGames} />
-      <Footer />
-    </main>
+    <StoreProvider>
+      <SocketProvider token={token}>
+        <main className="relative w-full overflow-hidden ">
+          <div className="wave-bg w-full h-full absolute top-0 left-0"></div>
+          <Image
+            src={"/bg1.png"}
+            fill
+            alt="bg"
+            priority={true}
+            quality={100}
+            objectPosition="center"
+            className="z-[-2] object-cover"
+          />
+          <Header />
+          <Games initialGames={initialGames} />
+          <Footer />
+        </main>
+      </SocketProvider>
+    </StoreProvider>
   );
 };
 
