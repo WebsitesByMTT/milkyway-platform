@@ -92,10 +92,10 @@ const Login = () => {
                 message="Login Successful"
               />
             ));
-            // Cookies.set("token", token);
-            router.push("/");
+            Cookies.set("token", token);
             const randomNumber = Math.floor(Math.random() * 10) + 1;
             Cookies.set("index", randomNumber);
+            router.push("/");
           } else {
             toast.remove();
             toast.custom((t) => (

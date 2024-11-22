@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 const Logout = async () => {
   async function deleteToken() {
     "use server";
-    cookies().delete('userToken');
+    cookies().delete('token');
     redirect("/login");
   }
   return <DeleteUser deleteToken={deleteToken} />;
