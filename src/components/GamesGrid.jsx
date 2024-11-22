@@ -7,7 +7,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Modal from "./ui/Modal";
 import Maintenance from "./ui/Maintenance";
 
-const GamesGrid = ({ data, category, handleFetchGames }) => {
+const GamesGrid = ({ favgame,data, category, handleFetchGames }) => {
   const [open, setOpen] = useState(false);
   const [reload, setReload] = useState(false);
   
@@ -79,13 +79,13 @@ const GamesGrid = ({ data, category, handleFetchGames }) => {
         {category === "all" ? (
           <div className="grid grid-cols-3 gap-[2vw] sm:min-h-[36vw] min-h-[66.5vw]  w-[65%] py-[3%]">
             {mergedArray?.slice(0, 6).map((game, index) => (
-              <GameCard key={index} src={game} type={game.type} />
+              <GameCard favgame={favgame} key={index} src={game} type={game.type} />
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-[2vw] w-[85%] sm:min-h-[36vw] min-h-[66.5vw] py-[3%]">
             {mergedArray?.slice(0, 8).map((game, index) => (
-              <GameCard key={index} src={game} type={game.type} />
+              <GameCard favgame={favgame} key={index} src={game} type={game.type} />
             ))}
           </div>
         )}
@@ -94,7 +94,7 @@ const GamesGrid = ({ data, category, handleFetchGames }) => {
         <CarouselItem key={chunkIndex}>
           <div className="grid grid-cols-4 gap-[2vw] w-[85%] py-[3%] m-auto">
             {chunk?.map((game, index) => (
-              <GameCard key={index} src={game} type={game.type} />
+              <GameCard favgame={favgame} key={index} src={game} type={game.type} />
             ))}
           </div>
         </CarouselItem>

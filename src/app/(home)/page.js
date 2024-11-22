@@ -10,6 +10,7 @@ import { getCookie } from "@/utils/utils";
 
 const Home = async () => {
   const initialGames = await fetchGames();
+  const favGames = await fetchGames('fav');
   const token = await getCookie();
   return (
     <StoreProvider>
@@ -26,7 +27,7 @@ const Home = async () => {
             className="z-[-2] object-cover"
           />
           <Header />
-          <Games initialGames={initialGames} />
+          <Games favgame={favGames?.others} initialGames={initialGames} />
           <Footer />
         </main>
       </SocketProvider>
