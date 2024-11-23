@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useVolumeControl } from "../context/VolumeControlContext";
+import { useVolumeControl } from "../../lib/context/VolumeControl";
 
 const AudioPlayer = () => {
   const { volume, audioRef, playAudio, pauseAudio } = useVolumeControl();

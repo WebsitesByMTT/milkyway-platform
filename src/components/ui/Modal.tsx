@@ -8,8 +8,8 @@ interface ModalProps {
   isOpen: boolean;
   setOpen: (isOpen: boolean) => void;
   modalType: string;
-  setModalType: (type: string) => void;
-  disableClose: boolean;
+  setModalType?: (type: string) => void; // Optional
+  disableClose?: boolean;
 }
 
 const Modal = ({
@@ -27,7 +27,7 @@ const Modal = ({
   }, []);
 
   const handleClick = () => {
-    setModalType("");
+    if (setModalType) setModalType("");
     setOpen(false);
   };
 

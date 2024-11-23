@@ -1,13 +1,12 @@
+import { getCookie } from "@/src/lib/cookies";
 import "../globals.css";
-import { getCookie } from "@/utils/utils";
-import StoreProvider from "@/components/redux/provider";
-import SocketProvider from "@/components/socket/SocketProvider";
+import StoreProvider from "@/src/lib/redux/Provider";
+import { SocketProvider } from "@/src/lib/context/Socket";
 
 export const metadata = {
   title: "El Dorado Spin",
   description: "Gaming platform",
 };
-
 
 export default async function RootLayout({
   children,

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { config as _config } from "./utils/config";
+import { config as _config } from "./lib/config";
 
 export default function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
@@ -13,7 +13,7 @@ export default function middleware(request: NextRequest) {
 
   if (!isPublicPath && !token) {
     return NextResponse.redirect(new URL("/login", request.nextUrl));
-    
+
   }
 
   return NextResponse.next();
