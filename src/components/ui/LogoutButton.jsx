@@ -16,6 +16,7 @@ const LogoutButton = () => {
     toast.custom((t) => (
       <Notification visible={t.visible} message="Logout successful" />
     ));
+    
     toast.remove();
   };
 
