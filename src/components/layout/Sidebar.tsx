@@ -1787,7 +1787,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         window.removeEventListener("resize", handleResize);
       };
     }
-  }, [open]);
+  }, [viewportWidth]);
 
   return (
     <div
