@@ -9,8 +9,8 @@ import { getCookie } from "@/src/lib/cookies";
 
 const Header = async () => {
   const token = await getCookie();
-  const decodedToken = await jwtDecode(token);
-  
+  const decodedToken = await jwtDecode(token as string);
+
   return (
     <header className="relative flex items-center justify-center">
       <User data={decodedToken} />

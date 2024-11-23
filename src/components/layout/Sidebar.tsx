@@ -1,9 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-const Sidebar = ({ onSelectCategory, selectedCategory }) => {
-  const [open, setOpen] = useState();
-  const [viewportWidth, setViewportWidth] = useState();
+interface SidebarProps {
+  onSelectCategory: (category: string) => void;
+  selectedCategory: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({
+  onSelectCategory,
+  selectedCategory,
+}) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [viewportWidth, setViewportWidth] = useState<number | undefined>(
+    undefined
+  );
 
   const categories = [
     {
@@ -1753,25 +1763,31 @@ const Sidebar = ({ onSelectCategory, selectedCategory }) => {
   ];
 
   useEffect(() => {
-    if (window !== "undefined") {
-      setViewportWidth(window.innerWidth);
-      if (viewportWidth < 640 && open) {
-        setOpen(false);
-      } else if (viewportWidth >= 640) {
-        setOpen(true);
-      }
-
+    // Check if window is defined (for SSR)
+    if (typeof window !== "undefined") {
       const handleResize = () => {
         setViewportWidth(window.innerWidth);
+
+        // Adjust sidebar open/close state based on width
+        if (window.innerWidth < 640 && open) {
+          setOpen(false);
+        } else if (window.innerWidth >= 640) {
+          setOpen(true);
+        }
       };
 
+      // Initialize viewport width
+      handleResize();
+
+      // Add event listener for resizing
       window.addEventListener("resize", handleResize);
 
+      // Cleanup on unmount
       return () => {
         window.removeEventListener("resize", handleResize);
       };
     }
-  }, [viewportWidth]);
+  }, [open]);
 
   return (
     <div

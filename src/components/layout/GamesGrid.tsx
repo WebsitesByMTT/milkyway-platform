@@ -6,7 +6,7 @@ import GameCard from "./GameCard";
 import Autoplay from "embla-carousel-autoplay";
 import Modal from "../ui/Modal";
 import Maintenance from "../ui/Maintenance";
-import { Data, Game } from "./Games";
+import { Data, Game } from "@/src/lib/types";
 
 interface GamesGridProps {
   favgame: { _id: string }[];
