@@ -8,6 +8,7 @@ import Connector from "../components/svgs/Connector";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux";
 
+
 const User = ({ data }) => {
   const [avatar, setAvatar] = useState("");
 
