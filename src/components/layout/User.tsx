@@ -6,7 +6,6 @@ import Logo from "../svgs/Logo";
 import Image from "next/image";
 import Connector from "../svgs/Connector";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "@/src/lib/redux/hooks";
 import { setAvatar } from "@/src/lib/redux/features/userSlice";
 

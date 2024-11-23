@@ -16,10 +16,12 @@ export default async function RootLayout({
   const token = await getCookie();
 
   return (
-    <main className="relative w-full h-full flex items-center justify-center flex-col">
-      <StoreProvider>
-        <SocketProvider token={token as string}>{children}</SocketProvider>
-      </StoreProvider>
-    </main>
+    <StoreProvider>
+      <SocketProvider token={token as string}>
+        <main className="relative w-full h-full flex items-center justify-center flex-col">
+          {children}
+        </main>
+      </SocketProvider>
+    </StoreProvider>
   );
 }

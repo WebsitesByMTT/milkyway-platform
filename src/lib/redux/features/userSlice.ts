@@ -5,14 +5,14 @@ interface UserState {
   username: string;
   credits: number,
   avatar: number,
-  favGames: Game[]
+  connected: boolean
 }
 
 const initialState: UserState = {
   username: "",
   credits: 0,
   avatar: 1,
-  favGames: []
+  connected: false
 };
 
 const userSlice = createSlice({
@@ -36,11 +36,11 @@ const userSlice = createSlice({
       state.credits = 0;
       state.avatar = 0;
     },
-    setFavGames: (state, action: PayloadAction<Game[]>) => {
-      state.favGames = action.payload; // Ensure it's type-safe with Game[]
+    updateConnection: (state, action: PayloadAction<boolean>) => {
+      state.connected = action.payload;
     },
   }
 });
 
-export const { setUsername, setCredits, setAvatar, updateCredits, resetUser } = userSlice.actions;
+export const { setUsername, setCredits, setAvatar, updateCredits, resetUser, updateConnection } = userSlice.actions;
 export default userSlice.reducer;

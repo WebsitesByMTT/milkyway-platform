@@ -5,7 +5,10 @@ import DeleteUser from "@/src/components/layout/DeleteUser";
 const Logout = async () => {
   async function deleteToken(): Promise<void> {
     "use server";
+
     cookies().delete("token");
+    cookies().delete("userToken");
+
     redirect("/login");
   }
   return <DeleteUser deleteToken={deleteToken} />;
