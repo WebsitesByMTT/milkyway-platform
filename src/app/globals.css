@@ -20,9 +20,7 @@
   z-index: 100;
 }
 
-::selection {
-  color: transparent;
-}
+
 button {
   cursor: inherit;
 }

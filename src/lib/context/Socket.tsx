@@ -2,18 +2,16 @@
 import { config } from "../config";
 import {
   resetUser,
-  setAvatar,
   setCredits,
-  updateConnection,
 } from "../redux/features/userSlice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch} from "../redux/hooks";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, createContext, useContext } from "react";
 import { io, Socket } from "socket.io-client";
 
 import toast from "react-hot-toast";
 import Notification from "@/src/components/ui/Notification";
-import FullScreenLoader from "@/src/components/layout/FullScreenLoader";
+import Loader from "@/src/components/ui/Loader";
 
 interface SocketContextType {
   socket: Socket | null;
@@ -34,8 +32,7 @@ export const SocketProvider: React.FC<{
 }> = ({ token, children }) => {
   const dispatch = useAppDispatch();
   const [socket, setSocket] = useState<Socket | null>(null);
-  const connection = useAppSelector((state) => state.user.connected);
-
+  const [connection,setConnection]=useState(false)
   const router = useRouter();
 
   useEffect(() => {
@@ -53,16 +50,12 @@ export const SocketProvider: React.FC<{
       setSocket(socketInstance);
 
       socketInstance.on("connect", () => {
-        console.log("Connected with socket id:", socketInstance.id);
-        setTimeout(() => {
-          dispatch(updateConnection(true));
-        }, 1000);
+          setConnection(true)
       });
 
       socketInstance.on("disconnect", () => {
-        console.log("Disconnected from socket");
         dispatch(resetUser());
-        dispatch(updateConnection(false));
+        setConnection(false)
       });
 
       socketInstance.on("data", (data: any) => {
@@ -79,7 +72,6 @@ export const SocketProvider: React.FC<{
           dispatch(resetUser());
           router.push("/logout");
         } else if (message === "NewTab") {
-          console.warn("ALERT : ", message);
           toast.custom(
             (t) => (
               <Notification
@@ -100,7 +92,7 @@ export const SocketProvider: React.FC<{
 
   return (
     <SocketContext.Provider value={{ socket }}>
-      {!connection ? <FullScreenLoader /> : children}
+      {connection?children:<Loader/>}
     </SocketContext.Provider>
   );
 };
